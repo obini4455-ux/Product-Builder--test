@@ -15,31 +15,32 @@
 <nav class="nav">
   <a href="index.html" class="nav-logo">🐾 Pet<span>mistry</span></a>
   <div class="nav-links">
-    <a href="blog.html">반려동물 정보</a>
-    <a href="about.html">소개</a>
-    <a href="contact.html">문의</a>
-    <a href="#test-section" class="nav-btn">테스트 시작</a>
+    <a href="blog.html" data-ko="반려동물 정보" data-en="Pet Info">반려동물 정보</a>
+    <a href="about.html" data-ko="소개" data-en="About">소개</a>
+    <a href="contact.html" data-ko="문의" data-en="Contact">문의</a>
+    <button onclick="toggleLang()" id="lang-btn" style="background:#f0eaff;border:none;border-radius:50px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;color:#2D1B69;font-family:inherit;">🇺🇸 EN</button>
+    <a href="#test-section" class="nav-btn" data-ko="테스트 시작" data-en="Start Test">테스트 시작</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section style="background: linear-gradient(135deg, #2D1B69 0%, #4A2FBA 50%, #7C3AED 100%); padding: 80px 24px; text-align: center; color: white;">
   <div style="max-width: 600px; margin: 0 auto;">
-    <div style="font-size: 16px; background: rgba(255,255,255,0.15); display: inline-block; padding: 6px 20px; border-radius: 50px; margin-bottom: 20px;">🤖 AI 기반 동물상 분석</div>
-    <h1 style="font-size: 42px; font-weight: 900; line-height: 1.25; margin-bottom: 16px;">나와 반려동물<br>궁합이 궁금해? 🐾</h1>
-    <p style="font-size: 17px; opacity: 0.85; margin-bottom: 36px; line-height: 1.7;">AI가 사진 두 장을 분석해서<br>우리의 케미와 궁합 점수를 알려드려요!</p>
-    <a href="#test-section" class="btn btn-accent" style="font-size: 17px; padding: 18px 48px;">🔮 지금 바로 테스트하기</a>
-    <p style="margin-top: 16px; font-size: 13px; opacity: 0.6;">무료 · 10초 완성 · 사진 저장 안 함</p>
+    <div style="font-size: 16px; background: rgba(255,255,255,0.15); display: inline-block; padding: 6px 20px; border-radius: 50px; margin-bottom: 20px;" data-ko="🤖 AI 기반 동물상 분석" data-en="🤖 AI-Powered Animal Face Analysis">🤖 AI 기반 동물상 분석</div>
+    <h1 style="font-size: 42px; font-weight: 900; line-height: 1.25; margin-bottom: 16px;" data-ko="나와 반려동물<br>궁합이 궁금해? 🐾" data-en="Curious About Your<br>Pet Compatibility? 🐾">나와 반려동물<br>궁합이 궁금해? 🐾</h1>
+    <p style="font-size: 17px; opacity: 0.85; margin-bottom: 36px; line-height: 1.7;" data-ko="AI가 사진 두 장을 분석해서<br>우리의 케미와 궁합 점수를 알려드려요!" data-en="Upload 2 photos and our AI will analyze<br>your chemistry and compatibility score!">AI가 사진 두 장을 분석해서<br>우리의 케미와 궁합 점수를 알려드려요!</p>
+    <a href="#test-section" class="btn btn-accent" style="font-size: 17px; padding: 18px 48px;" data-ko="🔮 지금 바로 테스트하기" data-en="🔮 Start Test Now">🔮 지금 바로 테스트하기</a>
+    <p style="margin-top: 16px; font-size: 13px; opacity: 0.6;" data-ko="무료 · 10초 완성 · 사진 저장 안 함" data-en="Free · 10 seconds · No photo storage">무료 · 10초 완성 · 사진 저장 안 함</p>
   </div>
 </section>
 
 <!-- STATS -->
 <section style="background: white; padding: 32px 24px; border-bottom: 1px solid #efefef;">
   <div style="max-width: 700px; margin: 0 auto; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 16px;">
-    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">10초</div><div style="font-size: 13px; color: #888;">빠른 분석</div></div>
-    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">100%</div><div style="font-size: 13px; color: #888;">무료</div></div>
-    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">AI</div><div style="font-size: 13px; color: #888;">딥러닝 분석</div></div>
-    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">0건</div><div style="font-size: 13px; color: #888;">사진 저장 없음</div></div>
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">10s</div><div style="font-size: 13px; color: #888;" data-ko="빠른 분석" data-en="Fast Analysis">빠른 분석</div></div>
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">100%</div><div style="font-size: 13px; color: #888;" data-ko="무료" data-en="Free">무료</div></div>
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">AI</div><div style="font-size: 13px; color: #888;" data-ko="딥러닝 분석" data-en="Deep Learning">딥러닝 분석</div></div>
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">0</div><div style="font-size: 13px; color: #888;" data-ko="사진 저장 없음" data-en="No Photo Storage">사진 저장 없음</div></div>
   </div>
 </section>
 
@@ -51,38 +52,38 @@
     <div id="upload-step">
       <div style="text-align: center; margin-bottom: 32px;">
         <span class="badge badge-purple">STEP 1</span>
-        <h2 style="font-size: 26px; font-weight: 900; margin-bottom: 8px;">사진을 올려주세요</h2>
-        <p style="color: #888; font-size: 14px;">얼굴이 잘 보이는 사진일수록 정확해요!</p>
+        <h2 style="font-size: 26px; font-weight: 900; margin-bottom: 8px;" data-ko="사진을 올려주세요" data-en="Upload Your Photos">사진을 올려주세요</h2>
+        <p style="color: #888; font-size: 14px;" data-ko="얼굴이 잘 보이는 사진일수록 정확해요!" data-en="Clear face photos give better results!">얼굴이 잘 보이는 사진일수록 정확해요!</p>
       </div>
 
       <div class="card" style="margin-bottom: 16px;">
-        <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">🧑 내 사진</div>
+        <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;" data-ko="🧑 내 사진" data-en="🧑 My Photo">🧑 내 사진</div>
         <div class="upload-zone" onclick="document.getElementById('inp-me').click()">
           <div class="uz-icon">🤳</div>
-          <p>클릭해서 내 사진 선택</p>
+          <p data-ko="클릭해서 내 사진 선택" data-en="Click to select my photo">클릭해서 내 사진 선택</p>
         </div>
         <input type="file" id="inp-me" accept="image/*" style="display:none" onchange="onPhoto(event,'prev-me','me')">
         <img id="prev-me" class="preview-circle" style="display:none">
       </div>
 
       <div class="card" style="margin-bottom: 24px;">
-        <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">🐾 반려동물 사진</div>
+        <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;" data-ko="🐾 반려동물 사진" data-en="🐾 Pet Photo">🐾 반려동물 사진</div>
         <div class="upload-zone" onclick="document.getElementById('inp-pet').click()">
           <div class="uz-icon">🐶</div>
-          <p>클릭해서 반려동물 사진 선택</p>
+          <p data-ko="클릭해서 반려동물 사진 선택" data-en="Click to select pet photo">클릭해서 반려동물 사진 선택</p>
         </div>
         <input type="file" id="inp-pet" accept="image/*" style="display:none" onchange="onPhoto(event,'prev-pet','pet')">
         <img id="prev-pet" class="preview-circle" style="display:none">
       </div>
 
-      <button class="btn btn-accent btn-full" id="go-btn" onclick="doAnalyze()" disabled>🔮 궁합 분석하기!</button>
+      <button class="btn btn-accent btn-full" id="go-btn" onclick="doAnalyze()" disabled data-ko="🔮 궁합 분석하기!" data-en="🔮 Analyze Compatibility!">🔮 궁합 분석하기!</button>
     </div>
 
     <!-- 로딩 -->
     <div id="loading-step" style="display:none; text-align:center; padding: 60px 0;">
       <div style="font-size: 64px; animation: spin 1.5s linear infinite; display:inline-block;">🔮</div>
-      <h2 style="margin-top: 24px; font-size: 22px; font-weight: 900;">AI가 분석 중이에요...</h2>
-      <p style="color: #888; margin-top: 8px;">잠깐만 기다려주세요!</p>
+      <h2 style="margin-top: 24px; font-size: 22px; font-weight: 900;" data-ko="AI가 분석 중이에요..." data-en="AI is analyzing...">AI가 분석 중이에요...</h2>
+      <p style="color: #888; margin-top: 8px;" data-ko="잠깐만 기다려주세요!" data-en="Please wait a moment!">잠깐만 기다려주세요!</p>
     </div>
 
     <!-- 결과 -->
@@ -115,8 +116,8 @@
         <div id="r-desc" style="background:#f5f2ff; border-radius:12px; padding:16px; font-size:14px; color:#444; line-height:1.8; text-align:left;"></div>
       </div>
 
-      <button class="btn btn-primary btn-full" onclick="doReset()" style="margin-bottom:10px;">🔄 다시 테스트하기</button>
-      <button class="btn btn-outline btn-full" onclick="doShare()">📤 결과 공유하기</button>
+      <button class="btn btn-primary btn-full" onclick="doReset()" style="margin-bottom:10px;" data-ko="🔄 다시 테스트하기" data-en="🔄 Try Again">🔄 다시 테스트하기</button>
+      <button class="btn btn-outline btn-full" onclick="doShare()" data-ko="📤 결과 공유하기" data-en="📤 Share Result">📤 결과 공유하기</button>
     </div>
   </div>
 </section>
@@ -124,28 +125,28 @@
 <!-- HOW IT WORKS -->
 <section style="background: white; padding: 64px 24px;">
   <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-    <span class="badge badge-red">사용 방법</span>
-    <h2 class="section-title">이렇게 하면 돼요!</h2>
+    <span class="badge badge-red" data-ko="사용 방법" data-en="How It Works">사용 방법</span>
+    <h2 class="section-title" data-ko="이렇게 하면 돼요!" data-en="Here's How It Works!">이렇게 하면 돼요!</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 32px;">
       <div class="card" style="text-align:center;">
         <div style="font-size:48px; margin-bottom:12px;">📸</div>
-        <div style="font-weight:800; margin-bottom:8px;">내 사진 업로드</div>
-        <div style="font-size:13px; color:#888;">얼굴이 잘 보이는<br>사진을 올려주세요</div>
+        <div style="font-weight:800; margin-bottom:8px;" data-ko="내 사진 업로드" data-en="Upload My Photo">내 사진 업로드</div>
+        <div style="font-size:13px; color:#888;" data-ko="얼굴이 잘 보이는<br>사진을 올려주세요" data-en="Upload a clear<br>photo of your face">얼굴이 잘 보이는<br>사진을 올려주세요</div>
       </div>
       <div class="card" style="text-align:center;">
         <div style="font-size:48px; margin-bottom:12px;">🐾</div>
-        <div style="font-weight:800; margin-bottom:8px;">반려동물 사진 업로드</div>
-        <div style="font-size:13px; color:#888;">강아지나 고양이<br>사진을 올려주세요</div>
+        <div style="font-weight:800; margin-bottom:8px;" data-ko="반려동물 사진 업로드" data-en="Upload Pet Photo">반려동물 사진 업로드</div>
+        <div style="font-size:13px; color:#888;" data-ko="강아지나 고양이<br>사진을 올려주세요" data-en="Upload a photo of<br>your dog or cat">강아지나 고양이<br>사진을 올려주세요</div>
       </div>
       <div class="card" style="text-align:center;">
         <div style="font-size:48px; margin-bottom:12px;">🔮</div>
-        <div style="font-weight:800; margin-bottom:8px;">AI 분석</div>
-        <div style="font-size:13px; color:#888;">딥러닝 AI가<br>10초 만에 분석해요</div>
+        <div style="font-weight:800; margin-bottom:8px;" data-ko="AI 분석" data-en="AI Analysis">AI 분석</div>
+        <div style="font-size:13px; color:#888;" data-ko="딥러닝 AI가<br>10초 만에 분석해요" data-en="Deep learning AI<br>analyzes in 10 seconds">딥러닝 AI가<br>10초 만에 분석해요</div>
       </div>
       <div class="card" style="text-align:center;">
         <div style="font-size:48px; margin-bottom:12px;">💕</div>
-        <div style="font-weight:800; margin-bottom:8px;">궁합 점수 확인</div>
-        <div style="font-size:13px; color:#888;">재미있는 결과와<br>궁합 점수를 받아요</div>
+        <div style="font-weight:800; margin-bottom:8px;" data-ko="궁합 점수 확인" data-en="Get Your Score">궁합 점수 확인</div>
+        <div style="font-size:13px; color:#888;" data-ko="재미있는 결과와<br>궁합 점수를 받아요" data-en="Get your fun result<br>and compatibility score">재미있는 결과와<br>궁합 점수를 받아요</div>
       </div>
     </div>
   </div>
@@ -211,6 +212,19 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script>
+// Language Toggle
+let currentLang = 'ko';
+function toggleLang() {
+  currentLang = currentLang === 'ko' ? 'en' : 'ko';
+  const btn = document.getElementById('lang-btn');
+  btn.textContent = currentLang === 'ko' ? '🇺🇸 EN' : '🇰🇷 KO';
+  document.querySelectorAll('[data-ko]').forEach(el => {
+    const text = el.getAttribute('data-' + currentLang);
+    if (text) el.innerHTML = text;
+  });
+  document.documentElement.lang = currentLang;
+}
+
 const MODEL_URL = "https://teachablemachine.withgoogle.com/models/aN2BwMiiZ/";
 let model = null, meLoaded = false, petLoaded = false;
 
