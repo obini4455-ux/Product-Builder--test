@@ -1,14 +1,114 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI 성격유형 테스트</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div id="app">
+        <div id="home-screen" class="screen active">
+            <div class="home-content">
+                <div class="logo">
+                    <span class="logo-icon">🧠</span>
+                </div>
+                <h1 class="home-title">MBTI 성격유형 테스트</h1>
+                <p class="home-subtitle">MBTI를 알면 향수 선택이 쉬워집니다<br>총 20문항, 약 5분 소요</p>
+                <button id="start-btn" class="btn-primary">테스트 시작하기</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <span class="progress-text" id="progress-text">1 / 20</span>
+            </div>
+
+            <div class="question-card" id="question-card">
+                <div class="question-number" id="question-number">Q1.</div>
+                <h2 class="question-text" id="question-text"></h2>
+                <div class="options" id="options">
+                    <button class="option-btn" data-value="3">매우 그렇다</button>
+                    <button class="option-btn" data-value="2">그렇다</button>
+                    <button class="option-btn" data-value="1">약간 그렇다</button>
+                    <button class="option-btn" data-value="0">보통이다</button>
+                    <button class="option-btn" data-value="-1">약간 아니다</button>
+                    <button class="option-btn" data-value="-2">아니다</button>
+                    <button class="option-btn" data-value="-3">전혀 아니다</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <div class="result-content">
+                <div class="result-type-badge" id="result-badge"></div>
+                <h1 class="result-title" id="result-title"></h1>
+                <div class="result-subtitle" id="result-subtitle"></div>
+                <div class="result-description" id="result-description"></div>
+
+                <div class="result-card result-aroma" id="result-aroma">
+                    <strong>🌿 아로마오일 추천</strong><br>
+                    <span></span>
+                </div>
+                <div class="result-card result-perfume" id="result-perfume">
+                    <strong>🧴 시중 향수 추천</strong><br>
+                    <span></span>
+                </div>
+
+                <div class="result-details">
+                    <div class="detail-row">
+                        <div class="detail-item">
+                            <span class="detail-label">E</span>
+                            <div class="detail-bar-bg">
+                                <div class="detail-bar" id="bar-e" style="width:50%"></div>
+                            </div>
+                            <span class="detail-label">I</span>
+                        </div>
+                        <div class="detail-percent" id="percent-ei">50% / 50%</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-item">
+                            <span class="detail-label">S</span>
+                            <div class="detail-bar-bg">
+                                <div class="detail-bar" id="bar-s" style="width:50%"></div>
+                            </div>
+                            <span class="detail-label">N</span>
+                        </div>
+                        <div class="detail-percent" id="percent-sn">50% / 50%</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-item">
+                            <span class="detail-label">T</span>
+                            <div class="detail-bar-bg">
+                                <div class="detail-bar" id="bar-t" style="width:50%"></div>
+                            </div>
+                            <span class="detail-label">F</span>
+                        </div>
+                        <div class="detail-percent" id="percent-tf">50% / 50%</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-item">
+                            <span class="detail-label">J</span>
+                            <div class="detail-bar-bg">
+                                <div class="detail-bar" id="bar-j" style="width:50%"></div>
+                            </div>
+                            <span class="detail-label">P</span>
+                        </div>
+                        <div class="detail-percent" id="percent-jp">50% / 50%</div>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button id="restart-btn" class="btn-primary">다시 테스트하기</button>
+                    <button id="share-btn" class="btn-secondary">결과 공유하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
