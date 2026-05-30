@@ -11,7 +11,10 @@
 <nav class="nav">
   <a href="../index.html" class="nav-logo">🐾 Pet<span>mistry</span></a>
   <div class="nav-links">
-    <a href="../blog.html">반려동물 정보</a><a href="../about.html">소개</a>
+    <a href="../blog.html">반려동물 정보</a>
+    <a href="../vets.html">동물병원</a>
+    <a href="../community.html">Community</a>
+    <a href="../about.html">소개</a>
     <a href="../contact.html">문의</a>
     <a href="../index.html#test-section" class="nav-btn">테스트 시작</a>
   </div>
@@ -148,7 +151,25 @@
     <p>반려동물과 함께하는 집이 향기롭고 쾌적하기를 바라는 마음은 모두가 같아요. 하지만 그 향기가 우리 아이에게 안전한지 먼저 확인하는 것이 진정한 반려인의 자세겠죠. 성분표를 꼼꼼히 읽고, 배치 위치를 신경 쓰고, 반려동물의 반응을 늘 살피는 것—이 세 가지만 기억해도 향기로운 집과 건강한 반려동물을 함께 지킬 수 있어요.</p>
 
   </div>
-  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #efefef;">
+
+<div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #efefef;">
+  <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 20px;">💬 댓글</h3>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = window.location.pathname;
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://rosa-10.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>댓글을 보려면 JavaScript를 활성화해주세요. <a href="https://disqus.com/?ref_noscript">Disqus</a></noscript>
+</div>
+  <div style="margin-top: 24px;">
     <a href="../blog.html" class="btn btn-outline">← 목록으로 돌아가기</a>
   </div>
 </article>

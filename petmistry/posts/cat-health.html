@@ -45,7 +45,25 @@
     <p>고양이는 1~7세는 연 1회, 7세 이상은 연 2회 정기 건강검진을 받는 것이 좋아요. 눈으로 보이지 않는 내부 질환을 조기에 발견할 수 있어요.</p>
     <div class="highlight">🐾 고양이는 아픔을 숨기는 동물이에요. 평소에 식사량, 음수량, 화장실 횟수를 체크하는 습관이 고양이 건강을 지키는 최선의 방법이에요.</div>
   </div>
-  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #efefef;">
+
+<div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #efefef;">
+  <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 20px;">💬 댓글</h3>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = window.location.pathname;
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://rosa-10.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>댓글을 보려면 JavaScript를 활성화해주세요. <a href="https://disqus.com/?ref_noscript">Disqus</a></noscript>
+</div>
+  <div style="margin-top: 24px;">
     <a href="../blog.html" class="btn btn-outline">← 목록으로 돌아가기</a>
   </div>
 </article>

@@ -11,7 +11,10 @@
 <nav class="nav">
   <a href="../index.html" class="nav-logo">🐾 Pet<span>mistry</span></a>
   <div class="nav-links">
-    <a href="../blog.html">반려동물 정보</a><a href="../about.html">소개</a>
+    <a href="../blog.html">반려동물 정보</a>
+    <a href="../vets.html">동물병원</a>
+    <a href="../community.html">Community</a>
+    <a href="../about.html">소개</a>
     <a href="../contact.html">문의</a>
     <a href="../index.html#test-section" class="nav-btn">테스트 시작</a>
   </div>
@@ -111,7 +114,25 @@
 <p>반려동물과 함께하는 일상은 무수한 작은 행동들로 이루어집니다. 오늘 저녁, 산책을 마치고 돌아온 우리 아이의 발바닥에 천천히 밤을 발라주며 오늘 하루 얼마나 열심히 걸어다녔는지 고마움을 전해보세요. 그 작은 손길이 쌓여, 우리 아이가 더 오래, 더 건강하게 우리 곁에서 뛰어다닐 수 있는 힘이 됩니다.</p>
 
   </div>
-  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #efefef;">
+
+<div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #efefef;">
+  <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 20px;">💬 댓글</h3>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = window.location.pathname;
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://rosa-10.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>댓글을 보려면 JavaScript를 활성화해주세요. <a href="https://disqus.com/?ref_noscript">Disqus</a></noscript>
+</div>
+  <div style="margin-top: 24px;">
     <a href="../blog.html" class="btn btn-outline">← 목록으로 돌아가기</a>
   </div>
 </article>

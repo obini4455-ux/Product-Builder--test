@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 주변 동물병원 찾기 - Fullerton & Placentia | 펫미스트리</title>
+  <meta name="description" content="Orange County Fullerton, Placentia 주변 동물병원 찾기. 믿을 수 있는 반려동물 의료 서비스를 펫미스트리에서 확인하세요.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .vet-hero { background: linear-gradient(135deg, #1a3c5e, #2d6a9f); padding: 56px 24px; text-align: center; color: white; }
+    .vet-hero h1 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
+    .vet-hero p { opacity: 0.85; font-size: 15px; margin-bottom: 24px; }
+    .search-bar { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; }
+    .search-bar input { flex: 1; padding: 13px 18px; border: none; border-radius: 50px; font-size: 15px; font-family: inherit; }
+    .search-bar button { background: #FF6B6B; color: white; border: none; border-radius: 50px; padding: 13px 24px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; }
+
+    .filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 32px 0 24px; }
+    .filter-tab { padding: 8px 20px; border-radius: 50px; border: 2px solid #e0e0e0; background: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .filter-tab.active, .filter-tab:hover { background: #2D1B69; color: white; border-color: #2D1B69; }
+
+    .vet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; padding: 0 24px 48px; }
+
+    .vet-card { background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .vet-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.13); }
+    .vet-card-header { padding: 20px 20px 0; display: flex; justify-content: space-between; align-items: flex-start; }
+    .vet-badge { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px; }
+    .badge-emergency { background: #ffe0e0; color: #d32f2f; }
+    .badge-specialist { background: #e8f0ff; color: #1565c0; }
+    .badge-general { background: #e8f5e9; color: #2e7d32; }
+    .badge-24h { background: #fff3e0; color: #e65100; }
+    .vet-rating { display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: #f57c00; }
+    .vet-card-body { padding: 16px 20px 20px; }
+    .vet-name { font-size: 17px; font-weight: 800; margin-bottom: 6px; color: #1a1a1a; }
+    .vet-address { font-size: 13px; color: #888; margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
+    .vet-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .vet-tag { font-size: 11px; background: #f5f2ff; color: #2D1B69; padding: 3px 10px; border-radius: 50px; font-weight: 600; }
+    .vet-hours { font-size: 12px; color: #555; margin-bottom: 14px; }
+    .vet-hours span { font-weight: 700; }
+    .vet-open { color: #2e7d32; font-weight: 700; }
+    .vet-closed { color: #d32f2f; font-weight: 700; }
+    .vet-card-footer { display: flex; gap: 8px; }
+    .vet-btn-call { flex: 1; background: #2D1B69; color: white; border: none; border-radius: 10px; padding: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .vet-btn-map { flex: 1; background: #f5f2ff; color: #2D1B69; border: none; border-radius: 10px; padding: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .vet-featured { border: 2px solid #FFB347; position: relative; }
+    .featured-label { position: absolute; top: -1px; right: 16px; background: #FFB347; color: white; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 0 0 8px 8px; }
+
+    .ad-banner { background: linear-gradient(135deg, #1a3c5e, #2d6a9f); color: white; border-radius: 24px; padding: 40px 32px; text-align: center; max-width: 800px; margin: 0 auto 60px; }
+    .ad-banner h2 { font-size: 24px; font-weight: 900; margin-bottom: 12px; }
+    .ad-banner p { font-size: 15px; opacity: 0.9; line-height: 1.7; margin-bottom: 8px; }
+    .ad-features { display: flex; justify-content: center; gap: 32px; margin: 24px 0; flex-wrap: wrap; }
+    .ad-feature { text-align: center; }
+    .ad-feature .num { font-size: 28px; font-weight: 900; color: #FFB347; }
+    .ad-feature .label { font-size: 12px; opacity: 0.8; margin-top: 4px; }
+    .ad-btn { background: #FF6B6B; color: white; border: none; border-radius: 50px; padding: 16px 40px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px; transition: opacity 0.2s; }
+    .ad-btn:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🐾 Pet<span>mistry</span></a>
+  <div class="nav-links">
+    <a href="blog.html">반려동물 정보</a>
+    <a href="vets.html">동물병원</a>
+    <a href="community.html">Community</a>
+    <a href="contact.html">문의</a>
+    <a href="index.html#test-section" class="nav-btn">테스트 시작</a>
+  </div>
+</nav>
+
+<div class="vet-hero">
+  <h1>🏥 내 주변 동물병원 찾기</h1>
+  <p>Orange County · Fullerton · Placentia 지역 믿을 수 있는 동물병원</p>
+  <div class="search-bar">
+    <input type="text" placeholder="병원명 또는 지역 검색..." id="search-input" oninput="filterVets()">
+    <button onclick="filterVets()">🔍 검색</button>
+  </div>
+</div>
+
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 24px;">
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="setFilter('all', this)">전체</button>
+    <button class="filter-tab" onclick="setFilter('24h', this)">24시간</button>
+    <button class="filter-tab" onclick="setFilter('emergency', this)">응급</button>
+    <button class="filter-tab" onclick="setFilter('specialist', this)">전문</button>
+    <button class="filter-tab" onclick="setFilter('fullerton', this)">Fullerton</button>
+    <button class="filter-tab" onclick="setFilter('placentia', this)">Placentia</button>
+  </div>
+</div>
+
+<div class="vet-grid" id="vet-grid">
+
+  <div class="vet-card vet-featured" data-tags="fullerton 24h emergency">
+    <div class="featured-label">⭐ 추천</div>
+    <div class="vet-card-header">
+      <span class="vet-badge badge-24h">24시간</span>
+      <div class="vet-rating">⭐ 4.8 <span style="color:#aaa;font-weight:400">(312)</span></div>
+    </div>
+    <div class="vet-card-body">
+      <div class="vet-name">VCA Yorba Regional Animal Hospital</div>
+      <div class="vet-address">📍 7670 Yorba Linda Blvd, Anaheim, CA 92808</div>
+      <div class="vet-tags">
+        <span class="vet-tag">24시간</span><span class="vet-tag">응급</span><span class="vet-tag">수술</span><span class="vet-tag">영상진단</span>
+      </div>
+      <div class="vet-hours">운영시간: <span class="vet-open">24시간 연중무휴</span></div>
+      <div class="vet-card-footer">
+        <button class="vet-btn-call" onclick="alert('📞 (714) 921-8700')">📞 전화하기</button>
+        <button class="vet-btn-map" onclick="window.open('https://maps.google.com/?q=VCA+Yorba+Regional+Animal+Hospital')">🗺 지도보기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vet-card" data-tags="fullerton general">
+    <div class="vet-card-header">
+      <span class="vet-badge badge-general">일반진료</span>
+      <div class="vet-rating">⭐ 4.7 <span style="color:#aaa;font-weight:400">(187)</span></div>
+    </div>
+    <div class="vet-card-body">
+      <div class="vet-name">Fullerton Animal Hospital</div>
+      <div class="vet-address">📍 1800 N Harbor Blvd, Fullerton, CA 92835</div>
+      <div class="vet-tags">
+        <span class="vet-tag">일반진료</span><span class="vet-tag">예방접종</span><span class="vet-tag">치과</span>
+      </div>
+      <div class="vet-hours">운영시간: <span>Mon–Fri 8am–6pm</span> · <span>Sat 8am–4pm</span></div>
+      <div class="vet-card-footer">
+        <button class="vet-btn-call" onclick="alert('📞 (714) 525-3610')">📞 전화하기</button>
+        <button class="vet-btn-map" onclick="window.open('https://maps.google.com/?q=Fullerton+Animal+Hospital')">🗺 지도보기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vet-card" data-tags="placentia general">
+    <div class="vet-card-header">
+      <span class="vet-badge badge-general">일반진료</span>
+      <div class="vet-rating">⭐ 4.9 <span style="color:#aaa;font-weight:400">(243)</span></div>
+    </div>
+    <div class="vet-card-body">
+      <div class="vet-name">Placentia Veterinary Center</div>
+      <div class="vet-address">📍 123 N Bradford Ave, Placentia, CA 92870</div>
+      <div class="vet-tags">
+        <span class="vet-tag">일반진료</span><span class="vet-tag">피부과</span><span class="vet-tag">내과</span>
+      </div>
+      <div class="vet-hours">운영시간: <span>Mon–Sat 8am–7pm</span></div>
+      <div class="vet-card-footer">
+        <button class="vet-btn-call" onclick="alert('📞 (714) 528-5000')">📞 전화하기</button>
+        <button class="vet-btn-map" onclick="window.open('https://maps.google.com/?q=Placentia+Veterinary+Center')">🗺 지도보기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vet-card" data-tags="fullerton specialist">
+    <div class="vet-card-header">
+      <span class="vet-badge badge-specialist">전문</span>
+      <div class="vet-rating">⭐ 4.6 <span style="color:#aaa;font-weight:400">(98)</span></div>
+    </div>
+    <div class="vet-card-body">
+      <div class="vet-name">Brea Veterinary Hospital</div>
+      <div class="vet-address">📍 300 W Central Ave, Brea, CA 92821</div>
+      <div class="vet-tags">
+        <span class="vet-tag">정형외과</span><span class="vet-tag">신경과</span><span class="vet-tag">종양</span>
+      </div>
+      <div class="vet-hours">운영시간: <span>Mon–Fri 7:30am–6pm</span></div>
+      <div class="vet-card-footer">
+        <button class="vet-btn-call" onclick="alert('📞 (714) 529-5600')">📞 전화하기</button>
+        <button class="vet-btn-map" onclick="window.open('https://maps.google.com/?q=Brea+Veterinary+Hospital')">🗺 지도보기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vet-card" data-tags="placentia general">
+    <div class="vet-card-header">
+      <span class="vet-badge badge-general">일반진료</span>
+      <div class="vet-rating">⭐ 4.5 <span style="color:#aaa;font-weight:400">(156)</span></div>
+    </div>
+    <div class="vet-card-body">
+      <div class="vet-name">East Orange County Animal Clinic</div>
+      <div class="vet-address">📍 400 N Placentia Ave, Placentia, CA 92870</div>
+      <div class="vet-tags">
+        <span class="vet-tag">일반진료</span><span class="vet-tag">예방접종</span><span class="vet-tag">중성화</span>
+      </div>
+      <div class="vet-hours">운영시간: <span>Mon–Fri 8am–5:30pm</span></div>
+      <div class="vet-card-footer">
+        <button class="vet-btn-call" onclick="alert('📞 (714) 524-1000')">📞 전화하기</button>
+        <button class="vet-btn-map" onclick="window.open('https://maps.google.com/?q=Placentia+Animal+Clinic')">🗺 지도보기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="vet-card vet-featured" data-tags="fullerton emergency 24h">
+    <div class="featured-label">⭐ 추천</div>
+    <div class="vet-card-header">
+      <span class="vet-badge badge-emergency">응급</span>
+      <div class="vet-rating">⭐ 4.7 <span style="color:#aaa;font-weight:400">(421)</span></div>
+    </div>
+    <div class="vet-card-body">
+      <div class="vet-name">Animal Emergency & Specialty Care</div>
+      <div class="vet-address">📍 1700 W La Palma Ave, Anaheim, CA 92801</div>
+      <div class="vet-tags">
+        <span class="vet-tag">24시간 응급</span><span class="vet-tag">중환자실</span><span class="vet-tag">수혈</span>
+      </div>
+      <div class="vet-hours">운영시간: <span class="vet-open">24시간 응급 가능</span></div>
+      <div class="vet-card-footer">
+        <button class="vet-btn-call" onclick="alert('📞 (714) 535-8600')">📞 전화하기</button>
+        <button class="vet-btn-map" onclick="window.open('https://maps.google.com/?q=Animal+Emergency+Anaheim')">🗺 지도보기</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 광고주 유치 배너 -->
+<div style="max-width: 1100px; margin: 0 auto; padding: 0 24px 80px;">
+  <div class="ad-banner">
+    <div style="font-size: 36px; margin-bottom: 12px;">🏥</div>
+    <h2>병원 관계자분들께</h2>
+    <p>펫미스트리에 공식 등록하고 상단 노출 광고를 집행해 보세요!</p>
+    <p style="font-size: 13px; opacity: 0.75;">월 수천 명의 반려동물 보호자에게 병원을 노출할 수 있어요.</p>
+    <div class="ad-features">
+      <div class="ad-feature">
+        <div class="num">5,000+</div>
+        <div class="label">월 방문자</div>
+      </div>
+      <div class="ad-feature">
+        <div class="num">Top</div>
+        <div class="label">상단 고정 노출</div>
+      </div>
+      <div class="ad-feature">
+        <div class="num">⭐</div>
+        <div class="label">추천 배지 제공</div>
+      </div>
+      <div class="ad-feature">
+        <div class="num">📊</div>
+        <div class="label">노출 통계 제공</div>
+      </div>
+    </div>
+    <button class="ad-btn" onclick="window.location.href='contact.html'">✉️ 광고 문의하기</button>
+    <p style="font-size: 12px; opacity: 0.6; margin-top: 12px;">obini4455@gmail.com으로 문의 주시면 빠르게 안내드려요</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🐾 Petmistry</div>
+    <div class="footer-desc">나와 반려동물의 궁합을 AI로 분석해드리는 서비스</div>
+    <div class="footer-links">
+      <a href="about.html">소개</a>
+      <a href="blog.html">반려동물 정보</a>
+      <a href="vets.html">동물병원</a>
+      <a href="community.html">Community</a>
+      <a href="contact.html">문의</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="terms.html">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2025 Petmistry. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+let currentFilter = 'all';
+
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  filterVets();
+}
+
+function filterVets() {
+  const query = document.getElementById('search-input').value.toLowerCase();
+  document.querySelectorAll('.vet-card').forEach(card => {
+    const tags = card.getAttribute('data-tags') || '';
+    const text = card.textContent.toLowerCase();
+    const matchFilter = currentFilter === 'all' || tags.includes(currentFilter);
+    const matchQuery = !query || text.includes(query);
+    card.style.display = matchFilter && matchQuery ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>펫미스트리 커뮤니티 - 기부형 반려동물 커뮤니티 | Petmistry</title>
+  <meta name="description" content="반려동물 사진을 올리면 포인트가 쌓이고, 그 포인트로 유기동물 보호협회에 기부하거나 커스텀 굿즈를 받을 수 있어요.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .comm-hero { background: linear-gradient(135deg, #2D1B69 0%, #7C3AED 60%, #DB2777 100%); padding: 64px 24px; text-align: center; color: white; }
+    .comm-hero h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; }
+    .comm-hero p { opacity: 0.88; font-size: 16px; line-height: 1.7; }
+
+    .point-board { max-width: 800px; margin: -32px auto 0; padding: 0 24px; position: relative; z-index: 10; }
+    .point-card { background: white; border-radius: 24px; padding: 28px 32px; box-shadow: 0 8px 40px rgba(0,0,0,0.14); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .point-total { text-align: center; }
+    .point-total .num { font-size: 48px; font-weight: 900; background: linear-gradient(135deg, #2D1B69, #DB2777); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+    .point-total .label { font-size: 13px; color: #888; margin-top: 4px; }
+    .point-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+    .point-stat { text-align: center; }
+    .point-stat .snum { font-size: 22px; font-weight: 900; color: #2D1B69; }
+    .point-stat .slabel { font-size: 12px; color: #aaa; margin-top: 2px; }
+    .point-actions { display: flex; flex-direction: column; gap: 10px; }
+    .pa-btn { padding: 12px 24px; border-radius: 50px; border: none; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; }
+    .pa-btn-primary { background: linear-gradient(135deg, #2D1B69, #7C3AED); color: white; }
+    .pa-btn-outline { background: transparent; border: 2px solid #2D1B69; color: #2D1B69; }
+
+    .how-section { max-width: 900px; margin: 48px auto; padding: 0 24px; }
+    .how-section h2 { font-size: 24px; font-weight: 900; margin-bottom: 24px; text-align: center; }
+    .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .how-card { background: white; border-radius: 20px; padding: 24px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+    .how-card .icon { font-size: 44px; margin-bottom: 12px; }
+    .how-card .action { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+    .how-card .point { font-size: 22px; font-weight: 900; color: #7C3AED; }
+    .how-card .desc { font-size: 12px; color: #888; margin-top: 4px; }
+
+    .upload-section { max-width: 700px; margin: 0 auto 48px; padding: 0 24px; }
+    .upload-box { background: white; border-radius: 24px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .upload-box h2 { font-size: 20px; font-weight: 900; margin-bottom: 20px; }
+    .upload-zone-comm { border: 2.5px dashed #c4b5fd; border-radius: 16px; padding: 40px; text-align: center; cursor: pointer; background: #faf8ff; transition: all 0.2s; margin-bottom: 16px; }
+    .upload-zone-comm:hover { border-color: #7C3AED; background: #f0eaff; }
+    .upload-zone-comm .icon { font-size: 48px; }
+    .upload-zone-comm p { color: #aaa; font-size: 14px; margin-top: 8px; }
+    .earn-preview { background: #f5f2ff; border-radius: 12px; padding: 14px 18px; font-size: 14px; color: #555; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .earn-amount { font-size: 20px; font-weight: 900; color: #7C3AED; }
+
+    .feed-section { max-width: 1000px; margin: 0 auto 48px; padding: 0 24px; }
+    .feed-section h2 { font-size: 22px; font-weight: 900; margin-bottom: 20px; }
+    .feed-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .feed-item { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); position: relative; }
+    .feed-thumb { width: 100%; height: 160px; background: linear-gradient(135deg, #ede9ff, #fce4ec); display: flex; align-items: center; justify-content: center; font-size: 56px; }
+    .feed-info { padding: 10px 12px; }
+    .feed-name { font-size: 13px; font-weight: 700; }
+    .feed-point { font-size: 12px; color: #7C3AED; font-weight: 600; }
+    .feed-likes { font-size: 12px; color: #aaa; margin-top: 4px; }
+
+    .reward-section { max-width: 900px; margin: 0 auto 48px; padding: 0 24px; }
+    .reward-section h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+    .reward-section .sub { color: #888; font-size: 14px; margin-bottom: 24px; }
+    .reward-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .reward-card { background: white; border-radius: 20px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); text-align: center; }
+    .reward-card .r-icon { font-size: 52px; margin-bottom: 14px; }
+    .reward-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+    .reward-card p { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 16px; }
+    .reward-card .r-point { font-size: 15px; font-weight: 700; color: #7C3AED; background: #f5f2ff; padding: 6px 16px; border-radius: 50px; display: inline-block; margin-bottom: 14px; }
+    .reward-card .r-btn { background: linear-gradient(135deg, #2D1B69, #7C3AED); color: white; border: none; border-radius: 50px; padding: 12px 28px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; width: 100%; }
+
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #2D1B69; color: white; padding: 14px 28px; border-radius: 50px; font-size: 15px; font-weight: 700; display: none; z-index: 9999; box-shadow: 0 8px 24px rgba(45,27,105,0.4); animation: slideUp 0.3s ease; }
+    @keyframes slideUp { from { transform: translateX(-50%) translateY(20px); opacity:0; } to { transform: translateX(-50%) translateY(0); opacity:1; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🐾 Pet<span>mistry</span></a>
+  <div class="nav-links">
+    <a href="blog.html">반려동물 정보</a>
+    <a href="vets.html">동물병원</a>
+    <a href="community.html">Community</a>
+    <a href="contact.html">문의</a>
+    <a href="index.html#test-section" class="nav-btn">테스트 시작</a>
+  </div>
+</nav>
+
+<div class="comm-hero">
+  <div style="font-size:14px; background:rgba(255,255,255,0.15); display:inline-block; padding:6px 20px; border-radius:50px; margin-bottom:16px;">💝 기부형 반려동물 커뮤니티</div>
+  <h1>우리 아이 사진 한 장이<br>세상을 바꿔요</h1>
+  <p>사진을 올릴수록 포인트가 쌓이고<br>그 포인트가 유기동물에게 희망이 됩니다 🐾</p>
+</div>
+
+<!-- 포인트 대시보드 -->
+<div class="point-board">
+  <div class="point-card">
+    <div class="point-total">
+      <div class="num" id="total-points">0</div>
+      <div class="label">나의 총 포인트</div>
+    </div>
+    <div class="point-stats">
+      <div class="point-stat">
+        <div class="snum" id="photo-count">0</div>
+        <div class="slabel">올린 사진</div>
+      </div>
+      <div class="point-stat">
+        <div class="snum" id="donation-amount">$0.00</div>
+        <div class="slabel">기부 가능 금액</div>
+      </div>
+      <div class="point-stat">
+        <div class="snum" id="rank-badge">🌱</div>
+        <div class="slabel">나의 등급</div>
+      </div>
+    </div>
+    <div class="point-actions">
+      <button class="pa-btn pa-btn-primary" onclick="showDonateModal()">💝 기부하기</button>
+      <button class="pa-btn pa-btn-outline" onclick="showGoodsModal()">🛍 굿즈 신청</button>
+    </div>
+  </div>
+</div>
+
+<!-- 포인트 적립 방법 -->
+<div class="how-section" style="margin-top: 60px;">
+  <h2>🪙 이렇게 포인트가 쌓여요</h2>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="icon">📸</div>
+      <div class="action">사진 업로드</div>
+      <div class="point">+1¢</div>
+      <div class="desc">반려동물 사진 1장마다</div>
+    </div>
+    <div class="how-card">
+      <div class="icon">🎬</div>
+      <div class="action">동영상 업로드</div>
+      <div class="point">+5¢</div>
+      <div class="desc">짧은 영상 1개마다</div>
+    </div>
+    <div class="how-card">
+      <div class="icon">❤️</div>
+      <div class="action">좋아요 받기</div>
+      <div class="point">+0.1¢</div>
+      <div class="desc">다른 회원의 좋아요</div>
+    </div>
+    <div class="how-card">
+      <div class="icon">🔗</div>
+      <div class="action">SNS 공유</div>
+      <div class="point">+10¢</div>
+      <div class="desc">사이트를 공유할 때마다</div>
+    </div>
+  </div>
+</div>
+
+<!-- 업로드 섹션 -->
+<div class="upload-section">
+  <div class="upload-box">
+    <h2>📸 우리 아이 사진 올리기</h2>
+    <div class="upload-zone-comm" onclick="simulateUpload()">
+      <div class="icon">🐾</div>
+      <p>클릭해서 사진 또는 동영상 선택<br><span style="font-size:12px; color:#bbb;">JPG, PNG, MP4 · 최대 10MB</span></p>
+    </div>
+    <div class="earn-preview">
+      <span>📸 사진 업로드 시 적립 예상 포인트</span>
+      <span class="earn-amount">+1¢</span>
+    </div>
+    <button class="btn btn-accent btn-full" onclick="simulateUpload()">✨ 지금 올리고 포인트 받기</button>
+  </div>
+</div>
+
+<!-- 커뮤니티 피드 -->
+<div class="feed-section">
+  <h2>🐾 오늘의 반려동물 갤러리</h2>
+  <div class="feed-grid">
+    <div class="feed-item">
+      <div class="feed-thumb">🐶</div>
+      <div class="feed-info"><div class="feed-name">몽이 (골든리트리버)</div><div class="feed-point">+1¢ 적립</div><div class="feed-likes">❤️ 142</div></div>
+    </div>
+    <div class="feed-item">
+      <div class="feed-thumb" style="background: linear-gradient(135deg, #fce4ec, #f8bbd0);">🐱</div>
+      <div class="feed-info"><div class="feed-name">나비 (러시안블루)</div><div class="feed-point">+1¢ 적립</div><div class="feed-likes">❤️ 98</div></div>
+    </div>
+    <div class="feed-item">
+      <div class="feed-thumb" style="background: linear-gradient(135deg, #e8f5e9, #a5d6a7);">🐩</div>
+      <div class="feed-info"><div class="feed-name">쿠키 (푸들)</div><div class="feed-point">+5¢ 적립</div><div class="feed-likes">❤️ 211</div></div>
+    </div>
+    <div class="feed-item">
+      <div class="feed-thumb" style="background: linear-gradient(135deg, #fff8e1, #ffe082);">🐱</div>
+      <div class="feed-info"><div class="feed-name">치즈 (코리안쇼트헤어)</div><div class="feed-point">+1¢ 적립</div><div class="feed-likes">❤️ 87</div></div>
+    </div>
+    <div class="feed-item">
+      <div class="feed-thumb" style="background: linear-gradient(135deg, #e3f2fd, #90caf9);">🐕</div>
+      <div class="feed-info"><div class="feed-name">두부 (말티즈)</div><div class="feed-point">+1¢ 적립</div><div class="feed-likes">❤️ 173</div></div>
+    </div>
+    <div class="feed-item">
+      <div class="feed-thumb" style="background: linear-gradient(135deg, #f3e5f5, #ce93d8);">🐈</div>
+      <div class="feed-info"><div class="feed-name">보라 (스핑크스)</div><div class="feed-point">+5¢ 적립</div><div class="feed-likes">❤️ 305</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 리워드 섹션 -->
+<div class="reward-section">
+  <h2>🎁 포인트로 받을 수 있는 것들</h2>
+  <p class="sub">쌓인 포인트를 의미 있게 사용해보세요!</p>
+  <div class="reward-grid">
+    <div class="reward-card">
+      <div class="r-icon">🐾</div>
+      <h3>유기동물 보호협회 기부</h3>
+      <p>매달 말 또는 연말에 쌓인 포인트를 실제 금액으로 환산하여 전국 유기동물 보호협회에 투명하게 기부합니다. 기부 영수증도 발급해드려요!</p>
+      <div class="r-point">최소 10¢부터</div>
+      <button class="r-btn" onclick="showDonateModal()">💝 기부 신청하기</button>
+    </div>
+    <div class="reward-card">
+      <div class="r-icon">👕</div>
+      <h3>커스텀 굿즈 이벤트</h3>
+      <p>우리 아이 얼굴이 박힌 티셔츠, 머그컵, 에코백! 매달 포인트 상위 10명에게 커스텀 굿즈를 제작해 배송해드립니다.</p>
+      <div class="r-point">월 TOP 10 선정</div>
+      <button class="r-btn" onclick="showGoodsModal()">🛍 굿즈 이벤트 참여</button>
+    </div>
+    <div class="reward-card">
+      <div class="r-icon">🏆</div>
+      <h3>이달의 반려동물 선정</h3>
+      <p>가장 많은 좋아요를 받은 반려동물이 메인 페이지에 한 달간 노출됩니다. 전국 반려동물 보호자들에게 우리 아이를 알려보세요!</p>
+      <div class="r-point">매월 1일 발표</div>
+      <button class="r-btn" onclick="alert('🏆 매월 좋아요가 가장 많은 반려동물을 선정합니다!')">🌟 도전하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 기부 투명성 섹션 -->
+<div style="max-width: 800px; margin: 0 auto 60px; padding: 0 24px;">
+  <div style="background: linear-gradient(135deg, #2D1B69, #7C3AED); color: white; border-radius: 24px; padding: 36px 32px; text-align: center;">
+    <div style="font-size: 36px; margin-bottom: 12px;">🌟</div>
+    <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 12px;">기부 투명성 약속</h2>
+    <p style="opacity: 0.9; font-size: 14px; line-height: 1.8;">펫미스트리는 모든 기부금 내역을 매달 공개합니다.<br>
+    회원들이 적립한 포인트의 100%가 유기동물 보호에 사용되며,<br>
+    정산 내역은 커뮤니티 게시판에 투명하게 공지됩니다.</p>
+    <div style="display: flex; justify-content: center; gap: 32px; margin-top: 24px; flex-wrap: wrap;">
+      <div style="text-align:center;"><div style="font-size:26px; font-weight:900; color:#FFB347;">100%</div><div style="font-size:12px; opacity:0.7;">기부금 직접 전달</div></div>
+      <div style="text-align:center;"><div style="font-size:26px; font-weight:900; color:#FFB347;">매월</div><div style="font-size:12px; opacity:0.7;">정산 내역 공개</div></div>
+      <div style="text-align:center;"><div style="font-size:26px; font-weight:900; color:#FFB347;">영수증</div><div style="font-size:12px; opacity:0.7;">기부 확인서 발급</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🐾 Petmistry</div>
+    <div class="footer-desc">나와 반려동물의 궁합을 AI로 분석해드리는 서비스</div>
+    <div class="footer-links">
+      <a href="about.html">소개</a>
+      <a href="blog.html">반려동물 정보</a>
+      <a href="vets.html">동물병원</a>
+      <a href="community.html">Community</a>
+      <a href="contact.html">문의</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="terms.html">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2025 Petmistry. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// localStorage로 포인트 관리
+function getPoints() { return parseInt(localStorage.getItem('petmistry_points') || '0'); }
+function getPhotos() { return parseInt(localStorage.getItem('petmistry_photos') || '0'); }
+function savePoints(p) { localStorage.setItem('petmistry_points', p); }
+function savePhotos(p) { localStorage.setItem('petmistry_photos', p); }
+
+function getRank(points) {
+  if (points >= 1000) return '🥇';
+  if (points >= 500) return '🥈';
+  if (points >= 100) return '🥉';
+  if (points >= 10) return '🌟';
+  return '🌱';
+}
+
+function updateDashboard() {
+  const points = getPoints();
+  const photos = getPhotos();
+  document.getElementById('total-points').textContent = points + '¢';
+  document.getElementById('photo-count').textContent = photos;
+  document.getElementById('donation-amount').textContent = '$' + (points / 100).toFixed(2);
+  document.getElementById('rank-badge').textContent = getRank(points);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2500);
+}
+
+function simulateUpload() {
+  const earned = 1;
+  savePoints(getPoints() + earned);
+  savePhotos(getPhotos() + 1);
+  updateDashboard();
+  showToast('🎉 +1¢ 포인트 적립! 우리 아이 사진 감사해요 🐾');
+}
+
+function showDonateModal() {
+  const points = getPoints();
+  if (points < 10) {
+    showToast('💙 최소 10¢ 이상부터 기부 신청 가능해요!');
+    return;
+  }
+  alert(`💝 기부 신청\n\n현재 포인트: ${points}¢\n기부 가능 금액: $${(points/100).toFixed(2)}\n\n기부 신청은 obini4455@gmail.com으로 연락 주세요!\n정기 정산은 매월 말일에 진행됩니다.`);
+}
+
+function showGoodsModal() {
+  alert(`🛍 커스텀 굿즈 이벤트\n\n매달 좋아요 상위 10명에게 우리 아이 얼굴이 박힌 굿즈를 제작해드려요!\n\n📦 제공 굿즈:\n• 커스텀 티셔츠\n• 머그컵\n• 에코백\n\n지금 사진을 올리고 좋아요를 모아보세요! 🌟`);
+}
+
+updateDashboard();
+</script>
+</body>
+</html>
