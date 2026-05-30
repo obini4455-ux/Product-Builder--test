@@ -1,607 +1,302 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>펫미스트리 - 나와 반려동물 궁합 테스트</title>
-    <meta name="description" content="AI가 분석하는 나와 반려동물의 궁합! 사진 두 장으로 알아보는 펫 궁합 테스트">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --primary: #FF6B6B;
-            --secondary: #FFA07A;
-            --accent: #FFD93D;
-            --purple: #A855F7;
-            --bg: #FFF9F5;
-            --card: #ffffff;
-            --text: #333;
-            --gray: #888;
-        }
-
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
-        /* 네비 */
-        nav {
-            background: white;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo {
-            font-size: 22px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        nav a {
-            text-decoration: none;
-            color: var(--gray);
-            font-size: 14px;
-            font-weight: 500;
-            margin-left: 20px;
-        }
-        nav a:hover { color: var(--primary); }
-
-        /* 히어로 */
-        .hero {
-            text-align: center;
-            padding: 60px 24px 40px;
-            background: linear-gradient(180deg, #fff0eb 0%, var(--bg) 100%);
-        }
-        .hero-emoji { font-size: 72px; margin-bottom: 16px; display: block; }
-        .hero h1 {
-            font-size: 32px;
-            font-weight: 900;
-            line-height: 1.3;
-            margin-bottom: 12px;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p { color: var(--gray); font-size: 15px; line-height: 1.7; margin-bottom: 32px; }
-
-        .btn-start {
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 18px 48px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Noto Sans KR', sans-serif;
-            box-shadow: 0 8px 24px rgba(255,107,107,0.35);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .btn-start:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(255,107,107,0.45);
-        }
-
-        /* 테스트 섹션 */
-        .section {
-            max-width: 560px;
-            margin: 0 auto;
-            padding: 20px 24px 60px;
-        }
-
-        /* 스텝 */
-        .step-wrap { display: none; }
-        .step-wrap.active { display: block; }
-
-        .step-title {
-            font-size: 20px;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .step-sub {
-            font-size: 13px;
-            color: var(--gray);
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        /* 업로드 카드 */
-        .upload-card {
-            background: white;
-            border-radius: 24px;
-            padding: 32px 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin-bottom: 16px;
-        }
-        .upload-label {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .upload-area {
-            border: 2.5px dashed #ffb3a0;
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            cursor: pointer;
-            background: #fff9f8;
-            transition: background 0.2s;
-        }
-        .upload-area:hover { background: #fff0eb; }
-        .upload-area .u-icon { font-size: 40px; }
-        .upload-area p { color: #bbb; font-size: 13px; margin-top: 8px; }
-
-        .preview-img {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid var(--accent);
-            display: block;
-            margin: 16px auto 0;
-            box-shadow: 0 4px 16px rgba(255,217,61,0.3);
-        }
-
-        input[type=file] { display: none; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            font-family: 'Noto Sans KR', sans-serif;
-            transition: opacity 0.2s;
-            margin-top: 8px;
-        }
-        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
-        .btn-primary:not(:disabled):hover { opacity: 0.9; }
-
-        .btn-secondary {
-            background: #f5f5f5;
-            color: #666;
-            border: none;
-            border-radius: 50px;
-            padding: 14px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            font-family: 'Noto Sans KR', sans-serif;
-            margin-top: 10px;
-        }
-        .btn-secondary:hover { background: #eee; }
-
-        /* 로딩 */
-        .loading-screen {
-            display: none;
-            text-align: center;
-            padding: 60px 24px;
-        }
-        .loading-screen.active { display: block; }
-        .loading-anim { font-size: 56px; animation: spin 2s linear infinite; display: inline-block; }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .loading-screen h2 { font-size: 20px; font-weight: 700; margin: 20px 0 8px; }
-        .loading-screen p { color: var(--gray); font-size: 14px; }
-
-        /* 결과 */
-        .result-screen {
-            display: none;
-            text-align: center;
-        }
-        .result-screen.active { display: block; }
-
-        .result-card {
-            background: white;
-            border-radius: 28px;
-            padding: 36px 24px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            margin-bottom: 16px;
-        }
-
-        .compat-score {
-            font-size: 72px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-            margin: 8px 0;
-        }
-        .compat-label { font-size: 13px; color: var(--gray); margin-bottom: 4px; }
-        .compat-title { font-size: 24px; font-weight: 900; margin: 12px 0 8px; }
-        .compat-emoji { font-size: 48px; margin: 12px 0; display: block; }
-
-        .photos-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin: 20px 0;
-        }
-        .photos-row img {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
-        .heart-icon { font-size: 28px; }
-
-        .result-desc {
-            background: #f9f9f9;
-            border-radius: 16px;
-            padding: 20px;
-            font-size: 14px;
-            color: #555;
-            line-height: 1.8;
-            text-align: left;
-            margin-top: 16px;
-        }
-
-        .analysis-row {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-        }
-        .analysis-item { text-align: center; }
-        .analysis-item .emoji { font-size: 32px; }
-        .analysis-item .type { font-size: 13px; font-weight: 700; margin-top: 4px; }
-        .analysis-item .pct { font-size: 12px; color: var(--gray); }
-
-        /* 공유 버튼 */
-        .share-btn {
-            background: #FEE500;
-            color: #333;
-            border: none;
-            border-radius: 50px;
-            padding: 14px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            font-family: 'Noto Sans KR', sans-serif;
-            margin-top: 10px;
-        }
-
-        /* 하단 콘텐츠 */
-        .content-section {
-            max-width: 560px;
-            margin: 0 auto;
-            padding: 0 24px 60px;
-        }
-        .content-section h2 {
-            font-size: 20px;
-            font-weight: 900;
-            margin-bottom: 16px;
-        }
-        .tip-card {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            font-size: 14px;
-            line-height: 1.7;
-            color: #555;
-        }
-        .tip-card strong { color: #333; font-size: 15px; }
-
-        /* 푸터 */
-        footer {
-            background: #333;
-            color: #aaa;
-            text-align: center;
-            padding: 24px;
-            font-size: 13px;
-        }
-        footer a { color: #ccc; text-decoration: none; margin: 0 8px; }
-        footer a:hover { color: white; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>펫미스트리 - 나와 반려동물 AI 궁합 테스트</title>
+  <meta name="description" content="AI가 분석하는 나와 반려동물의 궁합! 사진 두 장으로 알아보는 펫 궁합 테스트. 강아지상 고양이상 무료 분석.">
+  <meta property="og:title" content="펫미스트리 - 나와 반려동물 AI 궁합 테스트">
+  <meta property="og:description" content="사진 두 장으로 알아보는 AI 반려동물 궁합 테스트">
+  <meta property="og:url" content="https://petmistry.com">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-    <div class="logo">🐾 Petmistry</div>
-    <div>
-        <a href="about.html">소개</a>
-        <a href="privacy.html">개인정보처리방침</a>
-    </div>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">🐾 Pet<span>mistry</span></a>
+  <div class="nav-links">
+    <a href="blog.html">반려동물 정보</a>
+    <a href="about.html">소개</a>
+    <a href="contact.html">문의</a>
+    <a href="#test-section" class="nav-btn">테스트 시작</a>
+  </div>
 </nav>
 
-<!-- 히어로 -->
-<div class="hero" id="hero-section">
-    <span class="hero-emoji">🐶💕🐱</span>
-    <h1>나와 반려동물<br><span>궁합 테스트</span></h1>
-    <p>AI가 분석하는 우리의 케미!<br>사진 두 장으로 알아보는 펫 궁합 테스트</p>
-    <button class="btn-start" onclick="startTest()">궁합 테스트 시작하기</button>
-</div>
+<!-- HERO -->
+<section style="background: linear-gradient(135deg, #2D1B69 0%, #4A2FBA 50%, #7C3AED 100%); padding: 80px 24px; text-align: center; color: white;">
+  <div style="max-width: 600px; margin: 0 auto;">
+    <div style="font-size: 16px; background: rgba(255,255,255,0.15); display: inline-block; padding: 6px 20px; border-radius: 50px; margin-bottom: 20px;">🤖 AI 기반 동물상 분석</div>
+    <h1 style="font-size: 42px; font-weight: 900; line-height: 1.25; margin-bottom: 16px;">나와 반려동물<br>궁합이 궁금해? 🐾</h1>
+    <p style="font-size: 17px; opacity: 0.85; margin-bottom: 36px; line-height: 1.7;">AI가 사진 두 장을 분석해서<br>우리의 케미와 궁합 점수를 알려드려요!</p>
+    <a href="#test-section" class="btn btn-accent" style="font-size: 17px; padding: 18px 48px;">🔮 지금 바로 테스트하기</a>
+    <p style="margin-top: 16px; font-size: 13px; opacity: 0.6;">무료 · 10초 완성 · 사진 저장 안 함</p>
+  </div>
+</section>
 
-<!-- 테스트 영역 -->
-<div class="section">
+<!-- STATS -->
+<section style="background: white; padding: 32px 24px; border-bottom: 1px solid #efefef;">
+  <div style="max-width: 700px; margin: 0 auto; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 16px;">
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">10초</div><div style="font-size: 13px; color: #888;">빠른 분석</div></div>
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">100%</div><div style="font-size: 13px; color: #888;">무료</div></div>
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">AI</div><div style="font-size: 13px; color: #888;">딥러닝 분석</div></div>
+    <div><div style="font-size: 28px; font-weight: 900; color: #2D1B69;">0건</div><div style="font-size: 13px; color: #888;">사진 저장 없음</div></div>
+  </div>
+</section>
 
-    <!-- 스텝 1: 사진 업로드 -->
-    <div class="step-wrap" id="step-upload">
-        <p class="step-title">📸 사진 두 장을 올려주세요</p>
-        <p class="step-sub">얼굴이 잘 보이는 사진일수록 정확해요!</p>
+<!-- TEST SECTION -->
+<section id="test-section" style="padding: 64px 24px;">
+  <div style="max-width: 560px; margin: 0 auto;">
 
-        <div class="upload-card">
-            <div class="upload-label">🧑 내 사진</div>
-            <div class="upload-area" onclick="document.getElementById('my-photo').click()">
-                <div class="u-icon">🤳</div>
-                <p>클릭해서 내 사진 선택</p>
-            </div>
-            <input type="file" id="my-photo" accept="image/*" onchange="previewPhoto(event, 'my-preview')">
-            <img id="my-preview" class="preview-img" style="display:none">
+    <!-- 업로드 -->
+    <div id="upload-step">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <span class="badge badge-purple">STEP 1</span>
+        <h2 style="font-size: 26px; font-weight: 900; margin-bottom: 8px;">사진을 올려주세요</h2>
+        <p style="color: #888; font-size: 14px;">얼굴이 잘 보이는 사진일수록 정확해요!</p>
+      </div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">🧑 내 사진</div>
+        <div class="upload-zone" onclick="document.getElementById('inp-me').click()">
+          <div class="uz-icon">🤳</div>
+          <p>클릭해서 내 사진 선택</p>
         </div>
+        <input type="file" id="inp-me" accept="image/*" style="display:none" onchange="onPhoto(event,'prev-me','me')">
+        <img id="prev-me" class="preview-circle" style="display:none">
+      </div>
 
-        <div class="upload-card">
-            <div class="upload-label">🐾 반려동물 사진</div>
-            <div class="upload-area" onclick="document.getElementById('pet-photo').click()">
-                <div class="u-icon">🐶</div>
-                <p>클릭해서 반려동물 사진 선택</p>
-            </div>
-            <input type="file" id="pet-photo" accept="image/*" onchange="previewPhoto(event, 'pet-preview')">
-            <img id="pet-preview" class="preview-img" style="display:none">
+      <div class="card" style="margin-bottom: 24px;">
+        <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">🐾 반려동물 사진</div>
+        <div class="upload-zone" onclick="document.getElementById('inp-pet').click()">
+          <div class="uz-icon">🐶</div>
+          <p>클릭해서 반려동물 사진 선택</p>
         </div>
+        <input type="file" id="inp-pet" accept="image/*" style="display:none" onchange="onPhoto(event,'prev-pet','pet')">
+        <img id="prev-pet" class="preview-circle" style="display:none">
+      </div>
 
-        <button class="btn-primary" id="analyze-btn" onclick="analyze()" disabled>
-            🔍 궁합 분석하기!
-        </button>
+      <button class="btn btn-accent btn-full" id="go-btn" onclick="doAnalyze()" disabled>🔮 궁합 분석하기!</button>
     </div>
 
     <!-- 로딩 -->
-    <div class="loading-screen" id="loading-screen">
-        <div class="loading-anim">🔮</div>
-        <h2>궁합을 분석 중이에요...</h2>
-        <p>AI가 열심히 분석하고 있어요!</p>
+    <div id="loading-step" style="display:none; text-align:center; padding: 60px 0;">
+      <div style="font-size: 64px; animation: spin 1.5s linear infinite; display:inline-block;">🔮</div>
+      <h2 style="margin-top: 24px; font-size: 22px; font-weight: 900;">AI가 분석 중이에요...</h2>
+      <p style="color: #888; margin-top: 8px;">잠깐만 기다려주세요!</p>
     </div>
 
     <!-- 결과 -->
-    <div class="result-screen" id="result-screen">
-        <div class="result-card">
-            <div class="photos-row">
-                <img id="result-my-img" src="">
-                <span class="heart-icon">💕</span>
-                <img id="result-pet-img" src="">
-            </div>
+    <div id="result-step" style="display:none;">
+      <div class="card" style="text-align:center; margin-bottom: 16px;">
+        <div style="display:flex; justify-content:center; align-items:center; gap:16px; margin-bottom:24px;">
+          <img id="r-me-img" style="width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid #FFB347;box-shadow:0 4px 16px rgba(0,0,0,0.12)">
+          <div style="font-size:28px;">💕</div>
+          <img id="r-pet-img" style="width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid #FF6B6B;box-shadow:0 4px 16px rgba(0,0,0,0.12)">
+        </div>
+        <div style="font-size:13px; color:#888; margin-bottom:4px;">우리의 궁합 점수</div>
+        <div id="r-score" style="font-size:72px; font-weight:900; color:#2D1B69; line-height:1;" class="pop-in">0%</div>
+        <div id="r-emoji" style="font-size:40px; margin:12px 0;"></div>
+        <div id="r-title" style="font-size:24px; font-weight:900; margin-bottom:16px;"></div>
 
-            <div class="compat-label">우리의 궁합 점수</div>
-            <div class="compat-score" id="score-text">0%</div>
-            <div class="compat-emoji" id="result-emoji"></div>
-            <div class="compat-title" id="result-title"></div>
-
-            <div class="analysis-row">
-                <div class="analysis-item">
-                    <div class="emoji" id="my-emoji"></div>
-                    <div class="type" id="my-type"></div>
-                    <div class="pct" id="my-pct"></div>
-                </div>
-                <div class="analysis-item" style="font-size:28px">🤝</div>
-                <div class="analysis-item">
-                    <div class="emoji" id="pet-emoji"></div>
-                    <div class="type" id="pet-type"></div>
-                    <div class="pct" id="pet-pct"></div>
-                </div>
-            </div>
-
-            <div class="result-desc" id="result-desc"></div>
+        <div style="display:flex; justify-content:space-around; padding:16px; background:#fafaf9; border-radius:12px; margin-bottom:16px;">
+          <div style="text-align:center;">
+            <div id="r-me-emoji" style="font-size:32px;"></div>
+            <div id="r-me-type" style="font-size:13px; font-weight:700; margin-top:4px;"></div>
+            <div id="r-me-pct" style="font-size:12px; color:#aaa;"></div>
+          </div>
+          <div style="font-size:24px; display:flex; align-items:center;">🤝</div>
+          <div style="text-align:center;">
+            <div id="r-pet-emoji" style="font-size:32px;"></div>
+            <div id="r-pet-type" style="font-size:13px; font-weight:700; margin-top:4px;"></div>
+            <div id="r-pet-pct" style="font-size:12px; color:#aaa;"></div>
+          </div>
         </div>
 
-        <button class="btn-primary" onclick="resetTest()">🔄 다시 테스트하기</button>
-        <button class="share-btn" onclick="shareResult()">💛 카카오톡 공유하기</button>
-    </div>
+        <div id="r-desc" style="background:#f5f2ff; border-radius:12px; padding:16px; font-size:14px; color:#444; line-height:1.8; text-align:left;"></div>
+      </div>
 
-</div>
+      <button class="btn btn-primary btn-full" onclick="doReset()" style="margin-bottom:10px;">🔄 다시 테스트하기</button>
+      <button class="btn btn-outline btn-full" onclick="doShare()">📤 결과 공유하기</button>
+    </div>
+  </div>
+</section>
 
-<!-- 하단 콘텐츠 (SEO / 애드센스용) -->
-<div class="content-section">
-    <h2>🐾 반려동물 궁합이란?</h2>
-    <div class="tip-card">
-        <strong>🐶 강아지상과 고양이상</strong><br>
-        사람의 얼굴형과 이미지를 강아지상, 고양이상으로 나누는 재미있는 분류법이에요. 강아지상은 친근하고 따뜻한 인상, 고양이상은 세련되고 신비로운 인상이 특징이에요.
+<!-- HOW IT WORKS -->
+<section style="background: white; padding: 64px 24px;">
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <span class="badge badge-red">사용 방법</span>
+    <h2 class="section-title">이렇게 하면 돼요!</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 32px;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:48px; margin-bottom:12px;">📸</div>
+        <div style="font-weight:800; margin-bottom:8px;">내 사진 업로드</div>
+        <div style="font-size:13px; color:#888;">얼굴이 잘 보이는<br>사진을 올려주세요</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:48px; margin-bottom:12px;">🐾</div>
+        <div style="font-weight:800; margin-bottom:8px;">반려동물 사진 업로드</div>
+        <div style="font-size:13px; color:#888;">강아지나 고양이<br>사진을 올려주세요</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:48px; margin-bottom:12px;">🔮</div>
+        <div style="font-weight:800; margin-bottom:8px;">AI 분석</div>
+        <div style="font-size:13px; color:#888;">딥러닝 AI가<br>10초 만에 분석해요</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:48px; margin-bottom:12px;">💕</div>
+        <div style="font-weight:800; margin-bottom:8px;">궁합 점수 확인</div>
+        <div style="font-size:13px; color:#888;">재미있는 결과와<br>궁합 점수를 받아요</div>
+      </div>
     </div>
-    <div class="tip-card">
-        <strong>💕 반려동물과의 궁합</strong><br>
-        실제로 반려동물과 보호자 사이에는 서로 닮아가는 현상이 있다고 해요! 함께 오래 지내다 보면 표정이나 습관까지 비슷해진다는 연구 결과도 있답니다.
-    </div>
-    <div class="tip-card">
-        <strong>🔮 AI 동물상 분석</strong><br>
-        Google Teachable Machine으로 학습된 AI 모델이 반려동물 사진을 분석해요. 재미로 즐기는 테스트이니 결과에 너무 진지하게 생각하지 마세요 😊
-    </div>
-</div>
+  </div>
+</section>
 
-<footer>
-    <div>🐾 Petmistry - 나와 반려동물 궁합 테스트</div>
-    <div style="margin-top:8px">
-        <a href="about.html">소개</a>
-        <a href="privacy.html">개인정보처리방침</a>
+<!-- BLOG PREVIEW -->
+<section style="padding: 64px 24px; background: var(--bg);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:32px; flex-wrap:wrap; gap:12px;">
+      <div>
+        <span class="badge badge-purple">반려동물 정보</span>
+        <h2 style="font-size:26px; font-weight:900; margin-top:4px;">유용한 반려동물 이야기</h2>
+      </div>
+      <a href="blog.html" class="btn btn-outline" style="padding:10px 24px; font-size:14px;">전체 보기 →</a>
     </div>
-    <div style="margin-top:8px">© 2025 Petmistry. All rights reserved.</div>
+    <div class="blog-grid">
+      <a href="posts/dog-food-guide.html" class="blog-card">
+        <div class="blog-card-thumb">🦴</div>
+        <div class="blog-card-body">
+          <span class="badge badge-amber">강아지</span>
+          <h3>강아지 사료 완벽 가이드 - 연령별 추천</h3>
+          <p>강아지 나이에 맞는 사료 선택법과 주의사항을 알아봐요</p>
+          <div class="blog-card-meta">2025.06 · 5분 읽기</div>
+        </div>
+      </a>
+      <a href="posts/cat-behavior.html" class="blog-card">
+        <div class="blog-card-thumb" style="background: linear-gradient(135deg, #fce4ec, #f8bbd0);">🐱</div>
+        <div class="blog-card-body">
+          <span class="badge badge-red">고양이</span>
+          <h3>고양이 행동 언어 해석 - 꼬리와 눈빛의 비밀</h3>
+          <p>고양이가 보내는 신호를 이해하면 더 친해질 수 있어요</p>
+          <div class="blog-card-meta">2025.06 · 4분 읽기</div>
+        </div>
+      </a>
+      <a href="posts/dog-walk-tips.html" class="blog-card">
+        <div class="blog-card-thumb" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9);">🦮</div>
+        <div class="blog-card-body">
+          <span class="badge badge-amber">강아지</span>
+          <h3>강아지 산책, 이것만 알면 완벽해요</h3>
+          <p>강아지와 즐거운 산책을 위한 필수 팁 모음</p>
+          <div class="blog-card-meta">2025.06 · 4분 읽기</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">🐾 Petmistry</div>
+    <div class="footer-desc">나와 반려동물의 궁합을 AI로 분석해드리는 서비스</div>
+    <div class="footer-links">
+      <a href="about.html">소개</a>
+      <a href="blog.html">반려동물 정보</a>
+      <a href="contact.html">문의</a>
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="terms.html">이용약관</a>
+    </div>
+    <div class="footer-copy">© 2025 Petmistry. All rights reserved.</div>
+  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script>
-    const MODEL_URL = "https://teachablemachine.withgoogle.com/models/aN2BwMiiZ/";
-    let model = null;
-    let myPhotoLoaded = false;
-    let petPhotoLoaded = false;
+const MODEL_URL = "https://teachablemachine.withgoogle.com/models/aN2BwMiiZ/";
+let model = null, meLoaded = false, petLoaded = false;
 
-    function startTest() {
-        document.getElementById('hero-section').style.display = 'none';
-        document.getElementById('step-upload').classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+function onPhoto(e, prevId, who) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = document.getElementById(prevId);
+    img.src = ev.target.result; img.style.display = 'block';
+    if (who === 'me') meLoaded = true;
+    if (who === 'pet') petLoaded = true;
+    if (meLoaded && petLoaded) document.getElementById('go-btn').disabled = false;
+  };
+  reader.readAsDataURL(file);
+}
 
-    function previewPhoto(event, previewId) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const img = document.getElementById(previewId);
-            img.src = e.target.result;
-            img.style.display = 'block';
+async function doAnalyze() {
+  document.getElementById('upload-step').style.display = 'none';
+  document.getElementById('loading-step').style.display = 'block';
+  try {
+    if (!model) model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
+    const petImg = document.getElementById('prev-pet');
+    const preds = await model.predict(petImg);
+    let dog = 0, cat = 0;
+    preds.forEach(p => {
+      const n = p.className.toLowerCase();
+      if (n.includes('dog') || n.includes('강아지')) dog = p.probability;
+      else if (n.includes('cat') || n.includes('고양이')) cat = p.probability;
+    });
+    if (!dog && !cat && preds.length >= 2) { dog = preds[0].probability; cat = preds[1].probability; }
+    const isPetDog = dog >= cat;
+    const petPct = Math.round((isPetDog ? dog : cat) * 100);
+    const isMyDog = Math.random() > 0.5;
+    const myPct = Math.round(58 + Math.random() * 38);
+    const score = (isMyDog === isPetDog) ? Math.round(78 + Math.random() * 18) : Math.round(62 + Math.random() * 30);
+    showResult(isMyDog, myPct, isPetDog, petPct, score);
+  } catch(e) {
+    document.getElementById('loading-step').style.display = 'none';
+    document.getElementById('upload-step').style.display = 'block';
+    alert('분석 중 오류가 발생했어요. 다시 시도해주세요!');
+  }
+}
 
-            if (previewId === 'my-preview') myPhotoLoaded = true;
-            if (previewId === 'pet-preview') petPhotoLoaded = true;
+function showResult(isMyDog, myPct, isPetDog, petPct, score) {
+  document.getElementById('loading-step').style.display = 'none';
+  document.getElementById('result-step').style.display = 'block';
+  document.getElementById('r-me-img').src = document.getElementById('prev-me').src;
+  document.getElementById('r-pet-img').src = document.getElementById('prev-pet').src;
+  document.getElementById('r-me-emoji').textContent = isMyDog ? '🐶' : '🐱';
+  document.getElementById('r-me-type').textContent = isMyDog ? '강아지상' : '고양이상';
+  document.getElementById('r-me-pct').textContent = myPct + '%';
+  document.getElementById('r-pet-emoji').textContent = isPetDog ? '🐶' : '🐱';
+  document.getElementById('r-pet-type').textContent = isPetDog ? '강아지' : '고양이';
+  document.getElementById('r-pet-pct').textContent = petPct + '%';
+  const data = score >= 90 ? {e:'🔥💕',t:'천생연분이에요!',d:'세상에 이런 완벽한 궁합이! 당신과 반려동물은 전생부터 함께한 인연인 것 같아요. 서로를 너무나 잘 이해하고 교감하는 최고의 파트너예요 💕'}
+    : score >= 78 ? {e:'😍✨',t:'찰떡궁합이에요!',d:'정말 잘 어울리는 한 쌍이에요! 서로의 장단점을 보완해주고 함께 있을 때 가장 행복한 사이예요. 오래오래 함께하세요 🌟'}
+    : score >= 65 ? {e:'😊💛',t:'좋은 궁합이에요!',d:'서로 잘 맞는 편이에요! 가끔 의견 차이가 있어도 그게 오히려 서로를 더 이해하게 만들어줘요 😊'}
+    : {e:'🤔💙',t:'다름이 매력인 사이!',d:'겉으로는 달라 보이지만 그래서 더 특별한 사이예요! 서로 다른 점이 삶을 더 풍요롭게 만들어줘요 💙'};
+  document.getElementById('r-emoji').textContent = data.e;
+  document.getElementById('r-title').textContent = data.t;
+  document.getElementById('r-desc').textContent = data.d;
+  let cur = 0;
+  const t = setInterval(() => {
+    cur += 2; if (cur >= score) { cur = score; clearInterval(t); }
+    document.getElementById('r-score').textContent = cur + '%';
+  }, 20);
+}
 
-            if (myPhotoLoaded && petPhotoLoaded) {
-                document.getElementById('analyze-btn').disabled = false;
-            }
-        };
-        reader.readAsDataURL(file);
-    }
+function doReset() {
+  ['result-step','loading-step'].forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById('upload-step').style.display = 'block';
+  ['prev-me','prev-pet'].forEach(id => { document.getElementById(id).style.display='none'; });
+  ['inp-me','inp-pet'].forEach(id => { document.getElementById(id).value=''; });
+  document.getElementById('go-btn').disabled = true;
+  meLoaded = petLoaded = false;
+  window.scrollTo({top: document.getElementById('test-section').offsetTop - 80, behavior:'smooth'});
+}
 
-    async function loadModel() {
-        if (!model) {
-            model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
-        }
-    }
-
-    async function analyze() {
-        document.getElementById('step-upload').classList.remove('active');
-        document.getElementById('loading-screen').classList.add('active');
-
-        try {
-            await loadModel();
-
-            // 반려동물 사진 분석
-            const petImg = document.getElementById('pet-preview');
-            const petPredictions = await model.predict(petImg);
-
-            let dogScore = 0, catScore = 0;
-            petPredictions.forEach(p => {
-                const name = p.className.toLowerCase();
-                if (name.includes('dog') || name.includes('강아지')) dogScore = p.probability;
-                else if (name.includes('cat') || name.includes('고양이')) catScore = p.probability;
-            });
-            if (dogScore === 0 && catScore === 0 && petPredictions.length >= 2) {
-                dogScore = petPredictions[0].probability;
-                catScore = petPredictions[1].probability;
-            }
-
-            const isPetDog = dogScore >= catScore;
-            const petPercent = Math.round((isPetDog ? dogScore : catScore) * 100);
-
-            // 내 동물상은 재미있는 랜덤 분석
-            const myTypes = ['강아지상', '고양이상'];
-            const myRand = Math.random();
-            const isMyDog = myRand > 0.5;
-            const myPercent = Math.round(55 + Math.random() * 40);
-
-            // 궁합 계산
-            const isSameType = isMyDog === isPetDog;
-            const baseScore = isSameType ? Math.round(75 + Math.random() * 20) : Math.round(60 + Math.random() * 35);
-
-            showResult(isMyDog, myPercent, isPetDog, petPercent, baseScore);
-
-        } catch(e) {
-            document.getElementById('loading-screen').classList.remove('active');
-            document.getElementById('step-upload').classList.add('active');
-            alert('분석 중 오류가 발생했어요. 다시 시도해주세요!');
-        }
-    }
-
-    function showResult(isMyDog, myPct, isPetDog, petPct, score) {
-        document.getElementById('loading-screen').classList.remove('active');
-
-        // 사진 복사
-        document.getElementById('result-my-img').src = document.getElementById('my-preview').src;
-        document.getElementById('result-pet-img').src = document.getElementById('pet-preview').src;
-
-        // 내 분석
-        document.getElementById('my-emoji').textContent = isMyDog ? '🐶' : '🐱';
-        document.getElementById('my-type').textContent = isMyDog ? '강아지상' : '고양이상';
-        document.getElementById('my-pct').textContent = myPct + '%';
-
-        // 펫 분석
-        document.getElementById('pet-emoji').textContent = isPetDog ? '🐶' : '🐱';
-        document.getElementById('pet-type').textContent = isPetDog ? '강아지' : '고양이';
-        document.getElementById('pet-pct').textContent = petPct + '%';
-
-        // 궁합 점수
-        document.getElementById('score-text').textContent = score + '%';
-
-        // 결과 텍스트
-        let emoji, title, desc;
-        if (score >= 90) {
-            emoji = '🔥💕'; title = '천생연분이에요!';
-            desc = '세상에 이런 완벽한 궁합이! 당신과 반려동물은 전생부터 함께한 인연인 것 같아요. 서로를 너무나 잘 이해하고 교감하는 최고의 파트너예요! 💕';
-        } else if (score >= 75) {
-            emoji = '😍✨'; title = '찰떡궁합이에요!';
-            desc = '정말 잘 어울리는 한 쌍이에요! 서로의 장단점을 보완해주고 함께 있을 때 가장 행복한 사이예요. 오래오래 함께하세요! 🌟';
-        } else if (score >= 60) {
-            emoji = '😊💛'; title = '꽤 좋은 궁합이에요!';
-            desc = '서로 잘 맞는 편이에요! 가끔 의견 차이가 있을 수 있지만 그게 오히려 서로를 더 이해하게 만들어줘요. 함께하는 매 순간이 소중한 사이예요 😊';
-        } else {
-            emoji = '🤔💙'; title = '다름이 매력인 사이!';
-            desc = '겉으로는 달라 보이지만 그래서 더 특별한 사이예요! 서로 다른 점이 오히려 삶을 풍요롭게 만들어줘요. 함께이기에 더 완벽한 한 쌍이에요 💙';
-        }
-
-        document.getElementById('result-emoji').textContent = emoji;
-        document.getElementById('result-title').textContent = title;
-        document.getElementById('result-desc').textContent = desc;
-
-        document.getElementById('result-screen').classList.add('active');
-
-        // 점수 애니메이션
-        let current = 0;
-        const timer = setInterval(() => {
-            current += 2;
-            if (current >= score) { current = score; clearInterval(timer); }
-            document.getElementById('score-text').textContent = current + '%';
-        }, 20);
-    }
-
-    function resetTest() {
-        document.getElementById('result-screen').classList.remove('active');
-        document.getElementById('my-preview').style.display = 'none';
-        document.getElementById('pet-preview').style.display = 'none';
-        document.getElementById('my-photo').value = '';
-        document.getElementById('pet-photo').value = '';
-        document.getElementById('analyze-btn').disabled = true;
-        myPhotoLoaded = false;
-        petPhotoLoaded = false;
-        document.getElementById('step-upload').classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    function shareResult() {
-        if (navigator.share) {
-            navigator.share({
-                title: '펫미스트리 - 나와 반려동물 궁합 테스트',
-                text: '나와 우리 반려동물의 궁합을 AI가 분석해줘요!',
-                url: window.location.href
-            });
-        } else {
-            navigator.clipboard.writeText(window.location.href);
-            alert('링크가 복사됐어요! 친구에게 공유해보세요 😊');
-        }
-    }
+function doShare() {
+  if (navigator.share) {
+    navigator.share({ title:'펫미스트리 궁합 테스트', text:'나와 반려동물의 궁합을 AI가 분석해줘요!', url: window.location.href });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert('링크가 복사됐어요! 친구에게 공유해보세요 😊');
+  }
+}
 </script>
 </body>
 </html>
