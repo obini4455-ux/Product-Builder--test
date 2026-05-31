@@ -478,6 +478,41 @@ const SAMPLE_VETS = {
   ];
 });
 
+
+// ── 미국 OC 지역 데이터 ──
+const US_VETS = {
+  'cypress': [
+    { name: 'Cypress Animal Hospital', addr: '9800 Valley View St, Cypress, CA 90630', tags: ['General','Vaccines','Surgery'], rating: '4.8', reviews: '312', hours: 'Mon–Fri 8am–6pm · Sat 8am–2pm', type: 'all', tel: '(714) 821-6085' },
+    { name: 'VCA Cypress Animal Hospital', addr: '4901 Cerritos Ave, Cypress, CA 90630', tags: ['24hr','Emergency','Internal Med'], rating: '4.7', reviews: '198', hours: '24 Hours', type: '24h emg', open: true, tel: '(714) 826-6223' },
+    { name: 'Knott Animal Clinic', addr: '8101 Knott Ave, Buena Park, CA 90620', tags: ['General','Dental','Grooming'], rating: '4.6', reviews: '145', hours: 'Mon–Sat 8am–5pm', type: 'all', tel: '(714) 523-3066' },
+  ],
+  'fullerton': [
+    { name: 'Fullerton Animal Hospital', addr: '1800 N Harbor Blvd, Fullerton, CA 92835', tags: ['General','Vaccines','Dental'], rating: '4.7', reviews: '187', hours: 'Mon–Fri 8am–6pm · Sat 8am–4pm', type: 'all', tel: '(714) 525-3610' },
+    { name: 'VCA Yorba Regional Animal Hospital', addr: '7670 Yorba Linda Blvd, Anaheim, CA 92808', tags: ['24hr','Emergency','Surgery'], rating: '4.8', reviews: '312', hours: '24 Hours', type: '24h emg', open: true, tel: '(714) 921-8700' },
+    { name: 'Brea Veterinary Hospital', addr: '300 W Central Ave, Brea, CA 92821', tags: ['Orthopedics','Neurology','Oncology'], rating: '4.6', reviews: '98', hours: 'Mon–Fri 7:30am–6pm', type: 'spec', tel: '(714) 529-5600' },
+  ],
+  'placentia': [
+    { name: 'Placentia Veterinary Center', addr: '123 N Bradford Ave, Placentia, CA 92870', tags: ['General','Dermatology','Internal Med'], rating: '4.9', reviews: '243', hours: 'Mon–Sat 8am–7pm', type: 'all', tel: '(714) 528-5000' },
+    { name: 'East Orange County Animal Clinic', addr: '400 N Placentia Ave, Placentia, CA 92870', tags: ['General','Vaccines','Neuter'], rating: '4.5', reviews: '156', hours: 'Mon–Fri 8am–5:30pm', type: 'all', tel: '(714) 524-1000' },
+  ],
+  'anaheim': [
+    { name: 'Animal Emergency & Specialty Care', addr: '1700 W La Palma Ave, Anaheim, CA 92801', tags: ['24hr','Emergency','ICU'], rating: '4.7', reviews: '421', hours: '24 Hours', type: '24h emg', open: true, tel: '(714) 535-8600' },
+    { name: 'Anaheim Hills Pet Clinic', addr: '8062 E Santa Ana Canyon Rd, Anaheim, CA 92808', tags: ['General','Vaccines','Surgery'], rating: '4.6', reviews: '201', hours: 'Mon–Fri 8am–6pm', type: 'all', tel: '(714) 998-0990' },
+  ],
+  'irvine': [
+    { name: 'Advanced Critical Care & Internal Medicine', addr: '2965 Edinger Ave, Tustin, CA 92780', tags: ['24hr','Critical Care','Internal Med'], rating: '4.8', reviews: '356', hours: '24 Hours', type: '24h emg', open: true, tel: '(714) 573-7244' },
+    { name: 'Irvine Animal Care Center', addr: '6443 Irvine Blvd, Irvine, CA 92620', tags: ['General','Vaccines','Dental'], rating: '4.7', reviews: '278', hours: 'Mon–Fri 8am–6pm · Sat 8am–2pm', type: 'all', tel: '(949) 552-8600' },
+  ],
+};
+
+// 검색어에서 미국 도시 감지
+function detectUSCity(q) {
+  const lower = q.toLowerCase();
+  const map = { 'cypress':'cypress','fullerton':'fullerton','placentia':'placentia','anaheim':'anaheim','irvine':'irvine' };
+  for (const [k,v] of Object.entries(map)) { if (lower.includes(k)) return v; }
+  return null;
+}
+
 let currentFilter = 'all';
 let currentCity = '';
 
@@ -486,6 +521,8 @@ function searchCity(city) {
   document.querySelectorAll('.city-chip').forEach(c => c.classList.remove('active'));
   event.target.classList.add('active');
   currentCity = city;
+  const usCity = detectUSCity(city);
+  if (usCity) { updateMap(city + ' animal hospital'); renderUSList(usCity, city); return; }
   updateMap(city + ' 동물병원');
   renderList(city);
 }
@@ -493,10 +530,44 @@ function searchCity(city) {
 function doSearch() {
   const q = document.getElementById('search-input').value.trim();
   if (!q) return;
+  const usCity = detectUSCity(q);
+  if (usCity) {
+    currentCity = q;
+    updateMap(q + ' animal hospital');
+    renderUSList(usCity, q);
+    return;
+  }
   const city = q.replace(/\s*동물병원.*/,'').trim();
   currentCity = city;
-  updateMap(q);
+  updateMap(q.includes('동물병원') ? q : q + ' 동물병원');
   renderList(city);
+}
+
+function renderUSList(usKey, label) {
+  const vets = US_VETS[usKey] || [];
+  const container = document.getElementById('search-results');
+  document.getElementById('result-title').textContent = `🏥 ${label} Veterinary Clinics (${vets.length + 2})`;
+  document.getElementById('result-num').textContent = (vets.length + 2) + ' found';
+  document.getElementById('cur-region').textContent = label;
+  container.innerHTML = vets.map(v => `
+    <div class="vc" onclick="openMap('${v.name}')">
+      <div class="vc-top">
+        <div class="vc-name">${v.name}</div>
+        <span class="vc-badge ${v.type.includes('24h')?'b-24h':v.type.includes('spec')?'b-24h':'b-gen'}">
+          ${v.type.includes('24h')?'24hr':v.type.includes('spec')?'Specialist':'General'}
+        </span>
+      </div>
+      <div class="vc-addr">📍 ${v.addr}</div>
+      <div class="vc-tags">${v.tags.map(t=>`<span class="vc-tag">${t}</span>`).join('')}</div>
+      <div class="vc-bottom">
+        <div class="vc-rating">⭐ ${v.rating} (${v.reviews})</div>
+        <div class="vc-hours">${v.open?'<span class="vc-open">● Open 24hr</span>':v.hours}</div>
+      </div>
+      <div class="vc-btns">
+        <button class="vb vb-call" onclick="event.stopPropagation();showToast('📞 ${v.tel}')">📞 Call</button>
+        <button class="vb vb-map" onclick="event.stopPropagation();openMap('${v.name}')">🗺 Map</button>
+      </div>
+    </div>`).join('');
 }
 
 function updateMap(query) {
