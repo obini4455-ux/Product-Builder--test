@@ -19,195 +19,180 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>전생 테스트 - 나는 전생에 어떤 강아지/고양이였을까? | 펫미스트리</title>
-  <meta name="description" content="전생에 나는 페르시안 고양이? 골든 리트리버? 10가지 질문으로 알아보는 나의 전생 동물 품종 테스트!">
-  <meta property="og:title" content="전생 테스트 - 나는 전생에 어떤 품종이었을까?">
-  <meta property="og:description" content="페르시안? 골든 리트리버? 나의 전생 동물 품종을 알아보세요!">
+  <meta name="description" content="우리 아가 품종 선택 후 나의 전생 동물을 알아보는 테스트. 페르시안? 골든 리트리버? 실사 사진과 함께 확인해보세요!">
   <link rel="stylesheet" href="style.css">
   <style>
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { background:#0a0818; font-family:'Noto Sans KR',sans-serif; color:white; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:#0a0818;font-family:'Noto Sans KR',sans-serif;color:white;overflow-x:hidden;}
 
     /* NAV */
-    .nav { background:rgba(10,8,24,.9); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.08); padding:0 28px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:999; }
-    .nav-logo { font-size:20px; font-weight:900; color:white; text-decoration:none; }
-    .nav-logo span { color:#f472b6; }
-    .nav-links { display:flex; gap:16px; align-items:center; }
-    .nav-links a { text-decoration:none; color:rgba(255,255,255,.55); font-size:13px; }
-    .nav-links .nb { background:linear-gradient(135deg,#a78bfa,#f472b6); color:white !important; padding:8px 18px; border-radius:50px; font-weight:700 !important; }
+    .nav{background:rgba(10,8,24,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:999;}
+    .nav-logo{font-size:20px;font-weight:900;color:white;text-decoration:none;}
+    .nav-logo span{color:#f472b6;}
+    .nav-links{display:flex;gap:14px;align-items:center;}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,.5);font-size:13px;}
+    .nav-links .nb{background:linear-gradient(135deg,#a78bfa,#f472b6);color:white!important;padding:8px 18px;border-radius:50px;font-weight:700!important;font-size:13px!important;}
+    @media(max-width:640px){.nav-links a:not(.nb){display:none;}}
 
     /* HERO */
-    .hero {
-      min-height:100vh; display:flex; flex-direction:column;
-      align-items:center; justify-content:center; text-align:center;
-      padding:80px 24px 60px; position:relative; overflow:hidden;
-      background:linear-gradient(160deg,#0a0818 0%,#1a0f3c 40%,#0d1f3c 100%);
-    }
-    .hero::before {
-      content:''; position:absolute; inset:0;
-      background: radial-gradient(ellipse at 20% 30%,rgba(167,139,250,.3) 0%,transparent 55%),
-                  radial-gradient(ellipse at 80% 70%,rgba(244,114,182,.2) 0%,transparent 50%),
-                  radial-gradient(ellipse at 60% 20%,rgba(56,189,248,.15) 0%,transparent 45%);
-    }
-    .hero-inner { position:relative; z-index:2; max-width:640px; }
-    .hero-pill { display:inline-flex; align-items:center; gap:8px; background:rgba(167,139,250,.15); border:1px solid rgba(167,139,250,.3); color:#c4b5fd; padding:8px 22px; border-radius:50px; font-size:13px; font-weight:600; margin-bottom:24px; }
-    .hero-pill .dot { width:8px; height:8px; background:#a78bfa; border-radius:50%; animation:pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
-    .hero h1 { font-size:clamp(32px,6vw,58px); font-weight:900; line-height:1.2; margin-bottom:16px; }
-    .hero h1 .g1 { background:linear-gradient(90deg,#a78bfa,#818cf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .hero h1 .g2 { background:linear-gradient(90deg,#f472b6,#fb7185); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .hero-sub { font-size:16px; color:rgba(255,255,255,.7); line-height:1.8; margin-bottom:36px; }
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0a0818 0%,#1a0f3c 40%,#0d1f3c 100%);}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(167,139,250,.3) 0%,transparent 55%),radial-gradient(ellipse at 80% 70%,rgba(244,114,182,.2) 0%,transparent 50%);}
+    .hero-inner{position:relative;z-index:2;max-width:640px;}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.3);color:#c4b5fd;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:24px;}
+    .pill .dot{width:8px;height:8px;background:#a78bfa;border-radius:50%;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+    .hero h1{font-size:clamp(30px,6vw,56px);font-weight:900;line-height:1.2;margin-bottom:16px;}
+    .g1{background:linear-gradient(90deg,#a78bfa,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .g2{background:linear-gradient(90deg,#f472b6,#fb7185);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero-sub{font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:32px;}
+    .breed-preview{display:flex;gap:10px;justify-content:center;margin-bottom:32px;flex-wrap:wrap;}
+    .bp{width:72px;height:72px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.15);}
+    .bp img{width:100%;height:100%;object-fit:cover;}
+    .bp .bf{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;background:rgba(255,255,255,.06);}
+    .start-btn{background:linear-gradient(135deg,#a78bfa,#f472b6);color:white;border:none;border-radius:50px;padding:20px 52px;font-size:18px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 10px 40px rgba(167,139,250,.45);transition:transform .2s;}
+    .start-btn:hover{transform:translateY(-3px);}
+    .hero-note{margin-top:14px;font-size:12px;color:rgba(255,255,255,.35);}
 
-    /* 품종 미리보기 */
-    .breed-preview { display:flex; gap:12px; justify-content:center; margin-bottom:36px; flex-wrap:wrap; }
-    .bp-item {
-      width:80px; height:80px; border-radius:50%; overflow:hidden;
-      border:2px solid rgba(255,255,255,.15); position:relative;
-      transition:transform .2s; cursor:pointer;
-    }
-    .bp-item:hover { transform:scale(1.1); border-color:#a78bfa; }
-    .bp-item img { width:100%; height:100%; object-fit:cover; }
-    .bp-item .bp-fallback { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:36px; }
+    /* ── 품종 선택 스텝 ── */
+    .step-wrap{max-width:620px;margin:0 auto;padding:48px 24px 80px;display:none;}
+    .step-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:36px 28px;}
+    .step-title{font-size:22px;font-weight:900;margin-bottom:6px;}
+    .step-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:28px;line-height:1.6;}
 
-    .start-btn {
-      background:linear-gradient(135deg,#a78bfa,#f472b6); color:white; border:none;
-      border-radius:50px; padding:20px 52px; font-size:18px; font-weight:800;
-      cursor:pointer; font-family:inherit; box-shadow:0 10px 40px rgba(167,139,250,.45);
-      transition:transform .2s,box-shadow .2s;
-    }
-    .start-btn:hover { transform:translateY(-3px); box-shadow:0 16px 48px rgba(167,139,250,.55); }
-    .hero-note { margin-top:16px; font-size:13px; color:rgba(255,255,255,.4); }
+    /* 동물 타입 선택 */
+    .animal-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:0;}
+    .animal-btn{background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.12);border-radius:18px;padding:20px 12px;cursor:pointer;text-align:center;transition:all .2s;font-family:inherit;}
+    .animal-btn:hover{border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.1);}
+    .animal-btn.on{border-color:#a78bfa;background:rgba(167,139,250,.18);}
+    .animal-btn .ab-emoji{font-size:40px;margin-bottom:8px;display:block;}
+    .animal-btn .ab-label{font-size:13px;font-weight:700;color:white;}
+    .animal-btn .ab-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:3px;}
+
+    /* 품종 선택 영역 */
+    .breed-select-wrap{margin-top:24px;display:none;}
+    .breed-select-label{font-size:14px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:10px;}
+
+    /* 검색 + 셀렉트 */
+    .breed-search-box{position:relative;margin-bottom:10px;}
+    .breed-search-input{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);color:white;border-radius:12px;padding:12px 16px 12px 40px;font-size:14px;font-family:inherit;outline:none;transition:border .2s;}
+    .breed-search-input::placeholder{color:rgba(255,255,255,.35);}
+    .breed-search-input:focus{border-color:#a78bfa;}
+    .breed-search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;}
+
+    .breed-scroll{max-height:260px;overflow-y:auto;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.04);}
+    .breed-scroll::-webkit-scrollbar{width:4px;}
+    .breed-scroll::-webkit-scrollbar-track{background:transparent;}
+    .breed-scroll::-webkit-scrollbar-thumb{background:rgba(167,139,250,.4);border-radius:2px;}
+
+    .breed-group-label{font-size:11px;font-weight:700;color:rgba(167,139,250,.7);padding:10px 14px 4px;letter-spacing:.08em;text-transform:uppercase;}
+    .breed-item{padding:11px 14px;cursor:pointer;font-size:14px;color:rgba(255,255,255,.8);transition:background .15s;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.04);}
+    .breed-item:hover{background:rgba(167,139,250,.15);}
+    .breed-item.selected{background:rgba(167,139,250,.2);color:#c4b5fd;font-weight:700;}
+    .breed-item .bi-emoji{font-size:18px;width:24px;flex-shrink:0;}
+    .breed-item.hidden{display:none;}
+
+    /* 이름 입력 */
+    .name-input-wrap{margin-top:16px;}
+    .name-input{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);color:white;border-radius:12px;padding:13px 16px;font-size:15px;font-family:inherit;outline:none;transition:border .2s;}
+    .name-input::placeholder{color:rgba(255,255,255,.3);}
+    .name-input:focus{border-color:#a78bfa;}
+
+    /* 선택 완료 표시 */
+    .selected-badge{display:none;background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.3);border-radius:12px;padding:12px 16px;margin-top:14px;font-size:14px;color:#c4b5fd;display:none;align-items:center;gap:10px;}
+    .selected-badge.show{display:flex;}
+
+    .step-next-btn{width:100%;background:linear-gradient(135deg,#a78bfa,#f472b6);color:white;border:none;border-radius:50px;padding:17px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:20px;transition:opacity .2s;box-shadow:0 6px 24px rgba(167,139,250,.3);}
+    .step-next-btn:disabled{opacity:.35;cursor:not-allowed;box-shadow:none;}
+    .step-skip{width:100%;background:transparent;border:none;color:rgba(255,255,255,.35);font-size:13px;cursor:pointer;font-family:inherit;padding:10px;margin-top:6px;}
 
     /* QUIZ */
-    .quiz-section { max-width:620px; margin:0 auto; padding:48px 24px 80px; display:none; }
-    .progress-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-    .progress-label { font-size:13px; color:rgba(255,255,255,.5); }
-    .progress-bg { background:rgba(255,255,255,.08); border-radius:50px; height:5px; margin-bottom:32px; }
-    .progress-fill { background:linear-gradient(90deg,#a78bfa,#f472b6); height:5px; border-radius:50px; transition:width .4s ease; }
-
-    .q-card {
-      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
-      border-radius:28px; padding:36px 28px; animation:slideUp .35s ease;
-    }
-    @keyframes slideUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-    .q-num { font-size:12px; font-weight:700; color:#a78bfa; letter-spacing:.1em; margin-bottom:8px; }
-    .q-emoji-big { font-size:52px; margin-bottom:14px; display:block; }
-    .q-text { font-size:19px; font-weight:800; line-height:1.5; margin-bottom:26px; }
-
-    .opts { display:flex; flex-direction:column; gap:10px; }
-    .opt {
-      background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.1);
-      color:rgba(255,255,255,.9); border-radius:16px; padding:15px 18px;
-      font-size:14px; font-weight:600; cursor:pointer; font-family:inherit;
-      text-align:left; transition:all .2s; display:flex; align-items:center; gap:12px;
-    }
-    .opt:hover { background:rgba(167,139,250,.18); border-color:rgba(167,139,250,.5); transform:translateX(5px); }
-    .opt.selected { background:rgba(167,139,250,.25); border-color:#a78bfa; }
-    .opt .oi { font-size:24px; flex-shrink:0; width:32px; text-align:center; }
+    .quiz-section{max-width:620px;margin:0 auto;padding:48px 24px 80px;display:none;}
+    .progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+    .progress-label{font-size:13px;color:rgba(255,255,255,.5);}
+    .progress-bg{background:rgba(255,255,255,.08);border-radius:50px;height:5px;margin-bottom:28px;}
+    .progress-fill{background:linear-gradient(90deg,#a78bfa,#f472b6);height:5px;border-radius:50px;transition:width .4s ease;}
+    .q-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:32px 26px;animation:slideUp .3s ease;}
+    @keyframes slideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .q-num{font-size:12px;font-weight:700;color:#a78bfa;letter-spacing:.1em;margin-bottom:8px;}
+    .q-emoji-big{font-size:48px;margin-bottom:12px;display:block;}
+    .q-text{font-size:18px;font-weight:800;line-height:1.5;margin-bottom:22px;}
+    .pet-context{background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);border-radius:10px;padding:9px 14px;font-size:12px;color:#c4b5fd;margin-bottom:16px;display:none;}
+    .opts{display:flex;flex-direction:column;gap:9px;}
+    .opt{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);color:rgba(255,255,255,.9);border-radius:14px;padding:14px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left;transition:all .2s;display:flex;align-items:center;gap:10px;}
+    .opt:hover{background:rgba(167,139,250,.18);border-color:rgba(167,139,250,.5);transform:translateX(4px);}
+    .opt.selected{background:rgba(167,139,250,.25);border-color:#a78bfa;}
+    .opt .oi{font-size:22px;flex-shrink:0;width:30px;text-align:center;}
 
     /* LOADING */
-    .loading-section { display:none; text-align:center; padding:80px 24px; max-width:500px; margin:0 auto; }
-    .orb-wrap { width:120px; height:120px; margin:0 auto 28px; position:relative; }
-    .orb { width:120px; height:120px; border-radius:50%; background:linear-gradient(135deg,#a78bfa,#f472b6); animation:glow 2s ease-in-out infinite; display:flex; align-items:center; justify-content:center; font-size:52px; }
-    @keyframes glow { 0%,100%{box-shadow:0 0 30px rgba(167,139,250,.5)} 50%{box-shadow:0 0 60px rgba(244,114,182,.7),0 0 100px rgba(167,139,250,.4)} }
-    .loading-section h2 { font-size:22px; font-weight:800; margin-bottom:8px; }
-    .loading-section p { color:rgba(255,255,255,.55); font-size:15px; line-height:1.7; }
-    .loading-dots { display:flex; gap:6px; justify-content:center; margin-top:20px; }
-    .ld { width:8px; height:8px; background:#a78bfa; border-radius:50%; animation:ldot 1.4s ease infinite; }
-    .ld:nth-child(2) { animation-delay:.2s; background:#c084fc; }
-    .ld:nth-child(3) { animation-delay:.4s; background:#f472b6; }
-    @keyframes ldot { 0%,100%{transform:translateY(0);opacity:.5} 50%{transform:translateY(-8px);opacity:1} }
+    .loading-section{display:none;text-align:center;padding:80px 24px;max-width:500px;margin:0 auto;}
+    .orb{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#f472b6);margin:0 auto 28px;display:flex;align-items:center;justify-content:center;font-size:48px;animation:glow 2s ease-in-out infinite;}
+    @keyframes glow{0%,100%{box-shadow:0 0 30px rgba(167,139,250,.5)}50%{box-shadow:0 0 60px rgba(244,114,182,.7)}}
+    .loading-section h2{font-size:21px;font-weight:800;margin-bottom:8px;}
+    .loading-section p{color:rgba(255,255,255,.55);font-size:14px;line-height:1.7;}
+    .ld-dots{display:flex;gap:6px;justify-content:center;margin-top:20px;}
+    .ld{width:8px;height:8px;background:#a78bfa;border-radius:50%;animation:ldot 1.4s ease infinite;}
+    .ld:nth-child(2){animation-delay:.2s;background:#c084fc;}
+    .ld:nth-child(3){animation-delay:.4s;background:#f472b6;}
+    @keyframes ldot{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-8px);opacity:1}}
 
     /* RESULT */
-    .result-section { display:none; max-width:620px; margin:0 auto; padding:32px 24px 80px; }
+    .result-section{display:none;max-width:620px;margin:0 auto;padding:32px 24px 80px;}
+    .r-card{border-radius:30px;overflow:hidden;margin-bottom:14px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+    @keyframes popIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+    .r-photo-wrap{position:relative;height:300px;overflow:hidden;}
+    .r-photo{width:100%;height:100%;object-fit:cover;display:none;}
+    .r-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:110px;}
+    .r-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 25%,rgba(0,0,0,.9) 100%);}
+    .r-photo-text{position:absolute;bottom:0;left:0;right:0;padding:24px;}
+    .r-prev-label{font-size:11px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.55);margin-bottom:5px;}
+    .r-bname{font-size:28px;font-weight:900;line-height:1.1;}
+    .r-ben{font-size:14px;color:rgba(255,255,255,.55);margin-top:3px;}
+    .r-body{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:24px;}
+    .r-tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;}
+    .r-tag{padding:5px 13px;border-radius:50px;font-size:11px;font-weight:700;}
+    .tag-cat{background:rgba(167,139,250,.2);color:#c4b5fd;border:1px solid rgba(167,139,250,.3);}
+    .tag-dog{background:rgba(255,179,71,.2);color:#FFB347;border:1px solid rgba(255,179,71,.3);}
+    .tag-n{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);}
 
-    .r-card {
-      border-radius:32px; overflow:hidden; margin-bottom:16px;
-      box-shadow:0 20px 60px rgba(0,0,0,.5);
-      animation:resultPop .5s cubic-bezier(.34,1.56,.64,1);
-    }
-    @keyframes resultPop { from{opacity:0;transform:scale(.85)} to{opacity:1;transform:scale(1)} }
+    /* 반려동물 연결 배너 */
+    .pet-connection{background:linear-gradient(135deg,rgba(167,139,250,.15),rgba(244,114,182,.1));border:1px solid rgba(167,139,250,.25);border-radius:16px;padding:16px 18px;margin-bottom:18px;font-size:14px;color:rgba(255,255,255,.9);line-height:1.8;display:none;}
+    .pet-connection.show{display:block;}
+    .pet-connection strong{color:#c4b5fd;}
 
-    .r-photo-wrap { position:relative; height:320px; overflow:hidden; }
-    .r-photo { width:100%; height:100%; object-fit:cover; display:block; }
-    .r-photo-fallback { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:120px; }
-    .r-photo-overlay {
-      position:absolute; inset:0;
-      background:linear-gradient(to bottom, transparent 30%, rgba(0,0,0,.9) 100%);
-    }
-    .r-photo-text { position:absolute; bottom:0; left:0; right:0; padding:28px; }
-    .r-breed-label { font-size:12px; font-weight:700; letter-spacing:.12em; color:rgba(255,255,255,.6); margin-bottom:6px; text-transform:uppercase; }
-    .r-breed-name { font-size:32px; font-weight:900; line-height:1.1; margin-bottom:4px; }
-    .r-breed-en { font-size:15px; color:rgba(255,255,255,.6); }
+    .r-desc{font-size:14px;color:rgba(255,255,255,.82);line-height:1.9;margin-bottom:18px;}
+    .r-desc strong{color:#f472b6;}
+    .r-traits-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px;}
+    .r-trait{background:rgba(255,255,255,.07);border-radius:13px;padding:13px 11px;text-align:center;}
+    .r-trait .ti{font-size:24px;margin-bottom:5px;}
+    .r-trait .tl{font-size:11px;font-weight:700;color:rgba(255,255,255,.78);}
+    .r-story{background:linear-gradient(135deg,rgba(167,139,250,.1),rgba(244,114,182,.06));border:1px solid rgba(167,139,250,.18);border-radius:16px;padding:18px;font-size:14px;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:18px;}
+    .r-story-title{font-size:12px;font-weight:700;color:#a78bfa;margin-bottom:9px;}
+    .r-bar-section{margin-bottom:18px;}
+    .rbs-title{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:9px;}
+    .rbs-row{display:flex;align-items:center;gap:9px;margin-bottom:7px;}
+    .rbs-label{font-size:11px;font-weight:600;width:52px;flex-shrink:0;color:rgba(255,255,255,.55);}
+    .rbs-bg{flex:1;background:rgba(255,255,255,.08);border-radius:50px;height:7px;}
+    .rbs-fill{height:7px;border-radius:50px;transition:width 1.2s ease;}
+    .fp{background:linear-gradient(90deg,#a78bfa,#818cf8);}
+    .fpi{background:linear-gradient(90deg,#f472b6,#fb923c);}
+    .fb{background:linear-gradient(90deg,#38bdf8,#6366f1);}
+    .fg{background:linear-gradient(90deg,#4ade80,#22d3ee);}
+    .r-compat{background:rgba(255,179,71,.1);border:1px solid rgba(255,179,71,.2);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.82);}
+    .r-compat .ci{font-size:26px;flex-shrink:0;}
+    .btn-retry{width:100%;background:linear-gradient(135deg,#a78bfa,#f472b6);color:white;border:none;border-radius:50px;padding:16px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;margin-bottom:9px;box-shadow:0 6px 24px rgba(167,139,250,.3);transition:opacity .2s;}
+    .btn-retry:hover{opacity:.9;}
+    .btn-compat{width:100%;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.18);color:white;border-radius:50px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;text-decoration:none;display:block;text-align:center;margin-bottom:9px;transition:background .2s;}
+    .btn-compat:hover{background:rgba(255,255,255,.16);}
+    .btn-share{width:100%;background:#FEE500;color:#333;border:none;border-radius:50px;padding:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;}
 
-    .r-body { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); padding:28px; }
-    .r-tag-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
-    .r-tag { padding:5px 14px; border-radius:50px; font-size:12px; font-weight:700; }
-    .tag-dog { background:rgba(255,179,71,.2); color:#FFB347; border:1px solid rgba(255,179,71,.3); }
-    .tag-cat { background:rgba(167,139,250,.2); color:#c4b5fd; border:1px solid rgba(167,139,250,.3); }
-    .tag-neutral { background:rgba(255,255,255,.1); color:rgba(255,255,255,.7); border:1px solid rgba(255,255,255,.15); }
-
-    .r-desc { font-size:15px; color:rgba(255,255,255,.85); line-height:1.9; margin-bottom:20px; }
-    .r-desc strong { color:#f472b6; }
-
-    .r-traits-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
-    .r-trait { background:rgba(255,255,255,.07); border-radius:14px; padding:14px 12px; text-align:center; }
-    .r-trait .ti { font-size:26px; margin-bottom:6px; }
-    .r-trait .tl { font-size:12px; font-weight:700; color:rgba(255,255,255,.8); }
-
-    .r-story {
-      background:linear-gradient(135deg,rgba(167,139,250,.12),rgba(244,114,182,.08));
-      border:1px solid rgba(167,139,250,.2); border-radius:18px;
-      padding:20px; font-size:14px; color:rgba(255,255,255,.8); line-height:1.9;
-      margin-bottom:20px;
-    }
-    .r-story .story-title { font-size:13px; font-weight:700; color:#a78bfa; margin-bottom:10px; }
-
-    .r-bar-section { margin-bottom:20px; }
-    .rbs-title { font-size:13px; color:rgba(255,255,255,.5); margin-bottom:10px; }
-    .rbs-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-    .rbs-label { font-size:12px; font-weight:600; width:60px; flex-shrink:0; color:rgba(255,255,255,.6); }
-    .rbs-bg { flex:1; background:rgba(255,255,255,.08); border-radius:50px; height:8px; }
-    .rbs-fill { height:8px; border-radius:50px; transition:width 1.2s ease; }
-    .fill-purple { background:linear-gradient(90deg,#a78bfa,#818cf8); }
-    .fill-pink { background:linear-gradient(90deg,#f472b6,#fb923c); }
-    .fill-blue { background:linear-gradient(90deg,#38bdf8,#6366f1); }
-    .fill-green { background:linear-gradient(90deg,#4ade80,#22d3ee); }
-
-    .r-compat {
-      background:rgba(255,179,71,.1); border:1px solid rgba(255,179,71,.2);
-      border-radius:16px; padding:16px 18px; display:flex; align-items:center; gap:12px;
-      font-size:14px; color:rgba(255,255,255,.85); margin-bottom:20px;
-    }
-    .r-compat .ci { font-size:28px; flex-shrink:0; }
-
-    .btn-retry-new {
-      width:100%; background:linear-gradient(135deg,#a78bfa,#f472b6); color:white; border:none;
-      border-radius:50px; padding:17px; font-size:16px; font-weight:800; cursor:pointer;
-      font-family:inherit; margin-bottom:10px; transition:opacity .2s;
-      box-shadow:0 6px 24px rgba(167,139,250,.35);
-    }
-    .btn-retry-new:hover { opacity:.9; }
-    .btn-test-compat {
-      width:100%; background:rgba(255,255,255,.1); border:1.5px solid rgba(255,255,255,.2);
-      color:white; border-radius:50px; padding:15px; font-size:15px; font-weight:700;
-      cursor:pointer; font-family:inherit; text-decoration:none; display:block;
-      text-align:center; margin-bottom:10px; transition:background .2s;
-    }
-    .btn-test-compat:hover { background:rgba(255,255,255,.18); }
-    .btn-share-new {
-      width:100%; background:#FEE500; color:#333; border:none;
-      border-radius:50px; padding:15px; font-size:15px; font-weight:800;
-      cursor:pointer; font-family:inherit;
-    }
-
-    /* Related */
-    .related-section { max-width:620px; margin:0 auto; padding:0 24px 80px; display:none; }
-    .related-section h3 { font-size:17px; font-weight:800; margin-bottom:14px; color:rgba(255,255,255,.8); }
-    .rel-item { display:flex; align-items:center; gap:14px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:14px; text-decoration:none; color:white; margin-bottom:10px; transition:background .2s; }
-    .rel-item:hover { background:rgba(255,255,255,.1); }
-    .rel-item .ri { font-size:32px; }
-    .rel-item .rt { font-size:14px; font-weight:700; }
-    .rel-item .rd { font-size:12px; color:rgba(255,255,255,.5); margin-top:2px; }
+    /* RELATED */
+    .related-section{display:none;max-width:620px;margin:0 auto;padding:0 24px 80px;}
+    .related-section h3{font-size:16px;font-weight:800;margin-bottom:13px;color:rgba(255,255,255,.75);}
+    .rel-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px;text-decoration:none;color:white;margin-bottom:9px;transition:background .2s;}
+    .rel-item:hover{background:rgba(255,255,255,.1);}
+    .rel-item .ri{font-size:30px;}
+    .rel-item .rt{font-size:13px;font-weight:700;}
+    .rel-item .rd{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;}
   </style>
 </head>
 <body>
@@ -224,20 +209,77 @@
 <!-- HERO -->
 <div class="hero" id="hero">
   <div class="hero-inner">
-    <div class="hero-pill"><span class="dot"></span>전생 동물 품종 테스트</div>
+    <div class="pill"><span class="dot"></span>전생 동물 품종 테스트</div>
     <h1>전생에 나는<br><span class="g1">어떤 강아지</span>였을까<br><span class="g2">어떤 고양이</span>였을까?</h1>
-    <p class="hero-sub">페르시안? 골든 리트리버? 시바이누?<br>나의 전생 동물 품종을 실사 사진으로 확인해요!</p>
+    <p class="hero-sub">우리 아가 품종 선택 후 나의 전생 동물을 알아봐요!<br>페르시안? 골든 리트리버? 실사 사진으로 확인!</p>
+    <div class="breed-preview" id="bp-row">
+      <div class="bp"><div class="bf">🐱</div></div>
+      <div class="bp"><div class="bf">🐶</div></div>
+      <div class="bp"><div class="bf">😼</div></div>
+      <div class="bp"><div class="bf">🐕</div></div>
+      <div class="bp"><div class="bf">🐈</div></div>
+    </div>
+    <button class="start-btn" onclick="goBreedStep()">🐾 우리 아가 품종 선택하기</button>
+    <p class="hero-note">10문항 · 무료 · 실사 품종 사진 · 완전 무료</p>
+  </div>
+</div>
 
-    <div class="breed-preview" id="breed-preview">
-      <div class="bp-item"><div class="bp-fallback">🐱</div></div>
-      <div class="bp-item"><div class="bp-fallback">🐶</div></div>
-      <div class="bp-item"><div class="bp-fallback">🐱</div></div>
-      <div class="bp-item"><div class="bp-fallback">🐶</div></div>
-      <div class="bp-item"><div class="bp-fallback">🐱</div></div>
+<!-- ── STEP: 품종 선택 ── -->
+<div class="step-wrap" id="breed-step">
+  <div class="step-card">
+    <div class="step-title">🐾 우리 아가를 알려주세요!</div>
+    <div class="step-sub">품종을 선택하면 전생 결과에 우리 아가 이야기가 함께 나와요 ✨<br>반려동물이 없어도 괜찮아요!</div>
+
+    <!-- 동물 타입 선택 -->
+    <div class="animal-btns">
+      <button class="animal-btn" onclick="selectAnimal('dog',this)">
+        <span class="ab-emoji">🐶</span>
+        <div class="ab-label">강아지 키워요</div>
+        <div class="ab-sub">멍멍이 보호자</div>
+      </button>
+      <button class="animal-btn" onclick="selectAnimal('cat',this)">
+        <span class="ab-emoji">🐱</span>
+        <div class="ab-label">고양이 키워요</div>
+        <div class="ab-sub">냥이 집사</div>
+      </button>
+      <button class="animal-btn" onclick="selectAnimal('none',this)">
+        <span class="ab-emoji">✨</span>
+        <div class="ab-label">아직 없어요</div>
+        <div class="ab-sub">나만 테스트</div>
+      </button>
     </div>
 
-    <button class="start-btn" onclick="startTest()">🔮 내 전생 동물 알아보기</button>
-    <p class="hero-note">10문항 · 무료 · 실사 품종 사진 제공</p>
+    <!-- 품종 선택 영역 -->
+    <div class="breed-select-wrap" id="breed-select-wrap">
+      <div class="breed-select-label" id="breed-select-label">품종을 선택해주세요</div>
+
+      <!-- 검색 -->
+      <div class="breed-search-box">
+        <span class="breed-search-icon">🔍</span>
+        <input type="text" class="breed-search-input" id="breed-search"
+          placeholder="품종 검색... (예: 포메라니안, 페르시안)"
+          oninput="filterBreeds()">
+      </div>
+
+      <!-- 품종 리스트 -->
+      <div class="breed-scroll" id="breed-list"></div>
+
+      <!-- 이름 입력 -->
+      <div class="name-input-wrap">
+        <input type="text" class="name-input" id="pet-name-input"
+          placeholder="🏷️ 우리 아가 이름 (선택사항)" maxlength="10">
+      </div>
+
+      <!-- 선택 완료 배지 -->
+      <div class="selected-badge" id="selected-badge">
+        <span id="selected-badge-text"></span>
+      </div>
+    </div>
+
+    <button class="step-next-btn" id="step-next-btn" onclick="startQuiz()" disabled>
+      🔮 전생 테스트 시작하기
+    </button>
+    <button class="step-skip" onclick="skipBreedStep()">건너뛰기 (품종 선택 없이 테스트)</button>
   </div>
 </div>
 
@@ -251,6 +293,7 @@
   <div class="q-card" id="qcard">
     <div class="q-num" id="qnum">Q 01</div>
     <span class="q-emoji-big" id="qemoji"></span>
+    <div class="pet-context" id="pet-context"></div>
     <div class="q-text" id="qtext"></div>
     <div class="opts" id="opts"></div>
   </div>
@@ -258,340 +301,398 @@
 
 <!-- LOADING -->
 <div class="loading-section" id="loading">
-  <div class="orb-wrap"><div class="orb">🔮</div></div>
+  <div class="orb">🔮</div>
   <h2>전생 기록을 열람 중이에요...</h2>
-  <p>수천 년 전 당신의 영혼이<br>어떤 모습이었는지 찾고 있어요</p>
-  <div class="loading-dots"><div class="ld"></div><div class="ld"></div><div class="ld"></div></div>
+  <p>수천 년 전 당신의 영혼이<br>어떤 모습이었는지 찾고 있어요 ✨</p>
+  <div class="ld-dots"><div class="ld"></div><div class="ld"></div><div class="ld"></div></div>
 </div>
 
 <!-- RESULT -->
 <div class="result-section" id="result">
   <div class="r-card" id="rcard">
     <div class="r-photo-wrap">
-      <div class="r-photo-fallback" id="r-fallback" style="display:none;"></div>
-      <img id="r-photo" class="r-photo" src="" alt="" style="display:none;" onerror="photoError()">
-      <div class="r-photo-overlay"></div>
+      <div class="r-fallback" id="r-fallback"></div>
+      <img id="r-photo" class="r-photo" src="" alt="" onerror="photoError()">
+      <div class="r-overlay"></div>
       <div class="r-photo-text">
-        <div class="r-breed-label" id="r-prev-life">나의 전생은</div>
-        <div class="r-breed-name" id="r-bname"></div>
-        <div class="r-breed-en" id="r-ben"></div>
+        <div class="r-prev-label">나의 전생은</div>
+        <div class="r-bname" id="r-bname"></div>
+        <div class="r-ben" id="r-ben"></div>
       </div>
     </div>
     <div class="r-body">
       <div class="r-tag-row" id="r-tags"></div>
+      <div class="pet-connection" id="pet-connection"></div>
       <p class="r-desc" id="r-desc"></p>
       <div class="r-traits-grid" id="r-traits"></div>
-      <div class="r-story"><div class="story-title">✨ 전생 이야기</div><div id="r-story-text"></div></div>
+      <div class="r-story"><div class="r-story-title">✨ 전생 이야기</div><div id="r-story-text"></div></div>
       <div class="r-bar-section">
         <div class="rbs-title">나의 기질 분석</div>
         <div id="r-bars"></div>
       </div>
-      <div class="r-compat"><div class="ci" id="r-compat-icon"></div><div id="r-compat-text"></div></div>
+      <div class="r-compat"><div class="ci" id="r-ci"></div><div id="r-ct"></div></div>
     </div>
   </div>
-
-  <button class="btn-retry-new" onclick="resetTest()">🔮 다시 테스트하기</button>
-  <a href="index.html#test-section" class="btn-test-compat">🐾 현생 반려동물과 궁합 확인하기 →</a>
-  <button class="btn-share-new" onclick="shareResult()">💛 카카오톡으로 공유하기</button>
+  <button class="btn-retry" onclick="resetAll()">🔮 다시 테스트하기</button>
+  <a href="index.html#test-section" class="btn-compat">🐾 현생 반려동물과 궁합 확인 →</a>
+  <button class="btn-share" onclick="shareResult()">💛 카카오톡으로 공유하기</button>
 </div>
 
+<!-- RELATED -->
 <div class="related-section" id="related">
   <h3>이런 테스트도 있어요</h3>
-  <a href="index.html#test-section" class="rel-item"><div class="ri">💕</div><div><div class="rt">AI 반려동물 궁합 테스트</div><div class="rd">내 사진 + 반려동물 사진으로 궁합 점수 확인!</div></div></a>
+  <a href="index.html#test-section" class="rel-item"><div class="ri">💕</div><div><div class="rt">AI 반려동물 궁합 테스트</div><div class="rd">내 사진 + 반려동물 사진으로 궁합 점수!</div></div></a>
   <a href="posts/mbti-pet-compatibility.html" class="rel-item"><div class="ri">🧠</div><div><div class="rt">MBTI 유형별 고양이 궁합 매칭</div><div class="rd">내 MBTI에 딱 맞는 완벽한 반려묘는?</div></div></a>
-  <a href="community.html" class="rel-item"><div class="ri">🐾</div><div><div class="rt">기부형 커뮤니티</div><div class="rd">사진 올리고 포인트 쌓아서 유기동물 기부!</div></div></a>
+  <a href="community.html" class="rel-item"><div class="ri">🐾</div><div><div class="rt">기부형 커뮤니티</div><div class="rd">사진 올리고 포인트 적립 → 유기동물 기부!</div></div></a>
 </div>
 
-<footer style="background:#060412; color:rgba(255,255,255,.35); text-align:center; padding:28px 24px; font-size:12px;">
+<footer style="background:#060412;color:rgba(255,255,255,.3);text-align:center;padding:28px 24px;font-size:12px;">
   <a href="index.html" style="color:rgba(255,255,255,.5);text-decoration:none;font-weight:700;font-size:14px;">🐾 Petmistry</a>
-  <div style="margin-top:10px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-    <a href="index.html" style="color:rgba(255,255,255,.35);text-decoration:none;">홈</a>
-    <a href="blog.html" style="color:rgba(255,255,255,.35);text-decoration:none;">반려동물 정보</a>
-    <a href="privacy.html" style="color:rgba(255,255,255,.35);text-decoration:none;">개인정보처리방침</a>
+  <div style="margin-top:10px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a href="index.html" style="color:rgba(255,255,255,.3);text-decoration:none;">홈</a>
+    <a href="blog.html" style="color:rgba(255,255,255,.3);text-decoration:none;">반려동물 정보</a>
+    <a href="privacy.html" style="color:rgba(255,255,255,.3);text-decoration:none;">개인정보처리방침</a>
   </div>
   <div style="margin-top:8px;">© 2025 Petmistry. All rights reserved.</div>
 </footer>
 
 <script>
-/* ── 품종 데이터 ── */
-const BREEDS = {
-  // ── 고양이 ──
-  persian: {
-    type:'cat', name:'페르시안 고양이', en:'Persian Cat',
-    tags:['고양이 영혼','고귀한 기질','독립적'],
-    color:'#c4b5fd',
-    imgApi: () => fetchCatImg('pers'),
-    fallback:'🐱',
-    desc:'당신의 전생은 <strong>세상에서 가장 우아한 고양이, 페르시안</strong>이었어요.\n귀족적인 외모와 차분한 성격으로 주변의 모든 이들을 사로잡았죠.\n조용하고 아늑한 공간을 좋아하고, 마음에 드는 사람에게만 살며시 다가가는 섬세한 영혼이에요.',
-    traits:[{i:'👑',l:'고귀한 품위'},{i:'🌙',l:'신비로운 매력'},{i:'🕊️',l:'평화로운 성품'},{i:'💎',l:'섬세한 감수성'}],
-    story:'수백 년 전 한 귀족의 저택에서 태어난 당신은 비단처럼 부드러운 흰 털을 가진 페르시안이었어요. 주인의 무릎 위에서 조용히 세상을 바라보며, 어떤 소란스러운 것도 당신의 평온을 흔들 수 없었죠. 그 고귀하고 우아한 영혼이 지금도 당신 안에 흐르고 있어요.',
-    bars:[{l:'독립성',v:90,c:'fill-purple'},{l:'우아함',v:95,c:'fill-pink'},{l:'감수성',v:80,c:'fill-blue'},{l:'여유',v:88,c:'fill-green'}],
-    compat:{ icon:'🐶', text:'전생 페르시안인 당신, <strong>현생에서 강아지상</strong>인 사람과 완벽한 궁합이에요! 당신의 차분함이 그들의 활력과 만나 최고의 케미를 만들어요.' }
-  },
-  mainecoon: {
-    type:'cat', name:'메인쿤', en:'Maine Coon',
-    tags:['고양이 영혼','대형 고양이','사교적'],
-    color:'#fb923c',
-    imgApi: () => fetchCatImg('mcoo'),
-    fallback:'🐈',
-    desc:'당신의 전생은 <strong>고양이 중의 왕, 메인쿤</strong>이었어요.\n강아지처럼 사람을 좋아하고 활발하지만, 고양이 특유의 자존감도 가지고 있죠.\n크고 북실북실한 모습처럼 당신의 마음도 넉넉하고 따뜻해요.',
-    traits:[{i:'🦁',l:'당당한 존재감'},{i:'🤗',l:'사교적인 성격'},{i:'🌲',l:'자연을 사랑'},{i:'💪',l:'강인한 체력'}],
-    story:'숲 속 마을에서 자유롭게 살던 당신은 마을 사람들에게 큰 사랑을 받던 메인쿤이었어요. 강아지처럼 주인을 따라다니면서도, 필요할 때는 혼자만의 시간도 즐겼죠. 그 당당하고 자유로운 영혼이 지금도 당신 안에 살아있어요.',
-    bars:[{l:'사교성',v:82,c:'fill-purple'},{l:'활동성',v:78,c:'fill-pink'},{l:'독립성',v:65,c:'fill-blue'},{l:'친화력',v:85,c:'fill-green'}],
-    compat:{ icon:'🐶', text:'전생 메인쿤인 당신, <strong>강아지상</strong>과 최고의 궁합! 둘 다 활발하고 사교적이라 함께하면 에너지가 두 배가 돼요!' }
-  },
-  siamese: {
-    type:'cat', name:'샴 고양이', en:'Siamese Cat',
-    tags:['고양이 영혼','표현적','영리한'],
-    color:'#38bdf8',
-    imgApi: () => fetchCatImg('siam'),
-    fallback:'😼',
-    desc:'당신의 전생은 <strong>세상에서 가장 말이 많은 고양이, 샴</strong>이었어요.\n자신의 감정을 솔직하게 표현하고, 원하는 것을 명확하게 요구하는 당당한 영혼이죠.\n깊은 파란 눈으로 상대의 마음을 꿰뚫어 보는 통찰력을 가지고 있어요.',
-    traits:[{i:'💬',l:'표현력 넘침'},{i:'🔍',l:'날카로운 통찰'},{i:'💙',l:'깊은 감수성'},{i:'🎭',l:'다채로운 감정'}],
-    story:'동양의 왕실에서 살던 당신은 섬세한 무늬를 가진 샴이었어요. 왕족들만이 키울 수 있었던 당신은 자신의 아름다움을 알고 있었고, 원하는 것은 반드시 얻어냈죠. 그 영리하고 표현적인 영혼이 지금도 당신 안에서 빛나고 있어요.',
-    bars:[{l:'표현력',v:93,c:'fill-purple'},{l:'영리함',v:88,c:'fill-pink'},{l:'애정표현',v:85,c:'fill-blue'},{l:'호기심',v:90,c:'fill-green'}],
-    compat:{ icon:'🐶', text:'전생 샴인 당신은 감정 표현이 풍부한 <strong>강아지상</strong>과 잘 맞아요! 서로 감정을 솔직하게 나누는 최고의 파트너예요.' }
-  },
-  russianblue: {
-    type:'cat', name:'러시안 블루', en:'Russian Blue',
-    tags:['고양이 영혼','신비로운','내성적'],
-    color:'#818cf8',
-    imgApi: () => fetchCatImg('rblu'),
-    fallback:'🔷',
-    desc:'당신의 전생은 <strong>신비로운 회색빛 영혼, 러시안 블루</strong>였어요.\n처음엔 거리를 두지만 진심으로 신뢰하게 되면 그 누구보다 깊은 사랑을 주는 영혼이에요.\n조용하고 깔끔한 환경을 좋아하고, 예민한 감각으로 세상을 느껴요.',
-    traits:[{i:'❄️',l:'차분한 내면'},{i:'🌌',l:'신비로운 매력'},{i:'🔮',l:'예민한 감각'},{i:'💜',l:'깊은 신뢰'}],
-    story:'러시아 황실에서 조용히 살던 당신은 비밀을 많이 알고 있는 러시안 블루였어요. 차가운 겨울처럼 처음엔 거리를 두었지만, 한번 마음을 열면 그 온기는 세상 어떤 것보다 따뜻했죠. 그 신비롭고 깊은 영혼이 지금도 당신 안에 잠들어 있어요.',
-    bars:[{l:'독립성',v:92,c:'fill-purple'},{l:'신중함',v:90,c:'fill-pink'},{l:'신뢰감',v:95,c:'fill-blue'},{l:'감수성',v:85,c:'fill-green'}],
-    compat:{ icon:'🐕', text:'전생 러시안 블루인 당신, 따뜻하고 활발한 <strong>강아지상</strong>이 당신의 마음을 열어줄 최고의 파트너예요.' }
-  },
-  bengal: {
-    type:'cat', name:'벵골 고양이', en:'Bengal Cat',
-    tags:['고양이 영혼','야생적','활발한'],
-    color:'#f59e0b',
-    imgApi: () => fetchCatImg('beng'),
-    fallback:'🐆',
-    desc:'당신의 전생은 <strong>야생의 혼을 가진 벵골 고양이</strong>였어요.\n에너지가 넘치고 호기심이 강해 항상 새로운 것을 탐험하죠.\n아표 무늬처럼 독특하고 강렬한 존재감으로 어디서나 눈에 띄어요.',
-    traits:[{i:'🐆',l:'야생의 본능'},{i:'⚡',l:'넘치는 에너지'},{i:'🔭',l:'강한 호기심'},{i:'🌟',l:'독보적 존재감'}],
-    story:'정글의 경계를 자유롭게 넘나들던 당신은 야생의 혼을 가진 벵골이었어요. 어떤 울타리도 당신을 막을 수 없었고, 항상 새로운 세계를 향해 달려갔죠. 그 자유롭고 강렬한 영혼이 지금도 당신의 심장 속에서 뛰고 있어요.',
-    bars:[{l:'활동성',v:95,c:'fill-purple'},{l:'호기심',v:92,c:'fill-pink'},{l:'자유로움',v:90,c:'fill-blue'},{l:'독립성',v:80,c:'fill-green'}],
-    compat:{ icon:'🐕', text:'전생 벵골인 당신은 에너지 넘치는 <strong>대형견상</strong>과 최고의 궁합! 함께라면 세상이 좁게 느껴질 거예요.' }
-  },
-  scottishfold: {
-    type:'cat', name:'스코티시 폴드', en:'Scottish Fold',
-    tags:['고양이 영혼','귀여운','온순한'],
-    color:'#f472b6',
-    imgApi: () => fetchCatImg('sfld'),
-    fallback:'🐱',
-    desc:'당신의 전생은 <strong>접힌 귀가 매력인 스코티시 폴드</strong>였어요.\n동그란 얼굴과 큰 눈으로 모든 사람의 마음을 사로잡는 천상 애교쟁이예요.\n온순하고 적응력이 좋아 어디서든 사랑받는 영혼이에요.',
-    traits:[{i:'🥺',l:'천상 애교쟁이'},{i:'😊',l:'온순한 성격'},{i:'🌸',l:'사랑스러운 외모'},{i:'🤍',l:'적응력 뛰어남'}],
-    story:'스코틀랜드의 작은 농가에서 태어난 당신은 귀가 접힌 채 태어난 특별한 스코티시 폴드였어요. 그 독특한 모습 덕에 모든 이의 사랑을 받았고, 당신도 그 사랑에 넉넉히 응답했죠. 그 사랑스럽고 따뜻한 영혼이 지금도 당신에게 살아있어요.',
-    bars:[{l:'친화력',v:90,c:'fill-purple'},{l:'온순함',v:92,c:'fill-pink'},{l:'적응력',v:88,c:'fill-blue'},{l:'애교',v:95,c:'fill-green'}],
-    compat:{ icon:'🐶', text:'전생 스코티시 폴드인 당신, 모든 타입과 잘 어울리지만 특히 <strong>강아지상</strong>이 당신의 애교를 가장 잘 받아줘요!' }
-  },
-
-  // ── 강아지 ──
-  golden: {
-    type:'dog', name:'골든 리트리버', en:'Golden Retriever',
-    tags:['강아지 영혼','온화한 성품','최고의 친구'],
-    color:'#FFB347',
-    imgApi: () => fetchDogImg('retriever/golden'),
-    fallback:'🐕',
-    desc:'당신의 전생은 <strong>세상에서 가장 사랑받는 강아지, 골든 리트리버</strong>였어요.\n햇살처럼 따뜻한 성격으로 누구에게든 먼저 다가가 친구가 되는 영혼이에요.\n신뢰와 충성이 당신 영혼의 핵심이에요.',
-    traits:[{i:'☀️',l:'햇살 같은 성격'},{i:'💛',l:'무한한 사랑'},{i:'🤝',l:'최고의 친구'},{i:'🛡️',l:'믿음직한 동반자'}],
-    story:'넓은 들판을 뛰어다니던 당신은 황금빛 털을 가진 골든 리트리버였어요. 슬픈 사람 옆에 조용히 앉아주고, 기쁜 날에는 함께 뛰어놀며 가족의 모든 순간을 함께했죠. 그 따뜻하고 충성스러운 영혼이 지금 당신 안에 빛나고 있어요.',
-    bars:[{l:'친화력',v:98,c:'fill-purple'},{l:'충성심',v:95,c:'fill-pink'},{l:'온화함',v:92,c:'fill-blue'},{l:'활동성',v:85,c:'fill-green'}],
-    compat:{ icon:'🐱', text:'전생 골든 리트리버인 당신, 신비롭고 독립적인 <strong>고양이상</strong>과 최고의 궁합! 당신의 따뜻함이 그들의 마음을 녹여줄 거예요.' }
-  },
-  samoyed: {
-    type:'dog', name:'사모예드', en:'Samoyed',
-    tags:['강아지 영혼','순백의 영혼','행복 바이러스'],
-    color:'#e2e8f0',
-    imgApi: () => fetchDogImg('samoyed'),
-    fallback:'🤍',
-    desc:'당신의 전생은 <strong>하얀 눈처럼 순수한 사모예드</strong>였어요.\n항상 웃고 있는 듯한 표정처럼, 주변 사람들에게 행복을 나눠주는 것이 당신의 사명이에요.\n순백의 외모처럼 순수하고 맑은 영혼이에요.',
-    traits:[{i:'😊',l:'행복 바이러스'},{i:'❄️',l:'순수한 영혼'},{i:'🌟',l:'빛나는 존재감'},{i:'🤗',l:'넘치는 애교'}],
-    story:'시베리아 설원을 달리던 당신은 새하얀 사모예드였어요. 매서운 추위 속에서도 항상 웃는 얼굴로 썰매를 끌며 주인과 함께였죠. 그 순수하고 밝은 에너지가 지금도 당신 주변 사람들을 행복하게 만들어요.',
-    bars:[{l:'밝은 에너지',v:97,c:'fill-purple'},{l:'순수함',v:95,c:'fill-pink'},{l:'친화력',v:92,c:'fill-blue'},{l:'애교',v:90,c:'fill-green'}],
-    compat:{ icon:'🐱', text:'전생 사모예드인 당신은 차분하고 신비로운 <strong>고양이상</strong>과 완벽한 밸런스! 당신의 밝음이 그들의 일상을 환하게 밝혀줘요.' }
-  },
-  shiba: {
-    type:'dog', name:'시바이누', en:'Shiba Inu',
-    tags:['강아지 영혼','자존감 높음','독립적'],
-    color:'#f97316',
-    imgApi: () => fetchDogImg('shiba'),
-    fallback:'🦊',
-    desc:'당신의 전생은 <strong>여우를 닮은 당당한 시바이누</strong>였어요.\n자존심이 강하고 독립적이지만, 진심으로 사랑하는 사람에게는 깊은 충성을 다하는 영혼이에요.\n강아지지만 고양이 같은 자유로운 영혼의 소유자예요.',
-    traits:[{i:'🦊',l:'자존감 넘침'},{i:'👑',l:'당당한 자아'},{i:'🔥',l:'열정적 내면'},{i:'🎯',l:'확실한 취향'}],
-    story:'일본의 산속 마을을 누비던 당신은 불꽃색 털의 시바이누였어요. 주인에게도 자기 방식을 고집하고, 싫은 건 싫다고 표현하는 당당함으로 오히려 더 큰 사랑을 받았죠. 그 자존감 높고 독립적인 영혼이 지금 당신을 특별하게 만들어요.',
-    bars:[{l:'자존감',v:95,c:'fill-purple'},{l:'독립성',v:90,c:'fill-pink'},{l:'충성심',v:85,c:'fill-blue'},{l:'개성',v:93,c:'fill-green'}],
-    compat:{ icon:'🐱', text:'전생 시바이누인 당신과 <strong>고양이상</strong>은 서로의 독립성을 존중하는 최고의 파트너! 같은 공간에서 각자의 세계를 즐겨요.' }
-  },
-  pomeranian: {
-    type:'dog', name:'포메라니안', en:'Pomeranian',
-    tags:['강아지 영혼','작지만 강한','에너지 폭발'],
-    color:'#fbbf24',
-    imgApi: () => fetchDogImg('pomeranian'),
-    fallback:'🐩',
-    desc:'당신의 전생은 <strong>작지만 누구보다 당당한 포메라니안</strong>이었어요.\n작은 몸에 가득 찬 자신감과 에너지로 항상 주변의 시선을 사로잡는 영혼이에요.\n솜사탕처럼 폭신한 외모만큼 달콤한 매력을 가지고 있어요.',
-    traits:[{i:'⚡',l:'폭발적 에너지'},{i:'💫',l:'넘치는 자신감'},{i:'🎀',l:'사랑스러운 외모'},{i:'🌈',l:'다채로운 매력'}],
-    story:'왕실 귀족의 무릎 위에 앉아 세상을 내려다보던 당신은 포메라니안이었어요. 작은 몸이지만 궁전에서 가장 당당했고, 모든 귀족들의 사랑을 독차지했죠. 그 자신감 넘치는 영혼이 지금도 당신의 매력이 되고 있어요.',
-    bars:[{l:'자신감',v:92,c:'fill-purple'},{l:'활동성',v:88,c:'fill-pink'},{l:'애교',v:94,c:'fill-blue'},{l:'사교성',v:86,c:'fill-green'}],
-    compat:{ icon:'🐱', text:'전생 포메라니안인 당신, 차분한 <strong>고양이상</strong>과 환상의 콤비! 당신의 에너지를 그들이 부드럽게 안아줘요.' }
-  },
-  husky: {
-    type:'dog', name:'시베리안 허스키', en:'Siberian Husky',
-    tags:['강아지 영혼','자유로운 영혼','야성적'],
-    color:'#818cf8',
-    imgApi: () => fetchDogImg('husky'),
-    fallback:'🐺',
-    desc:'당신의 전생은 <strong>늑대의 눈빛을 가진 시베리안 허스키</strong>였어요.\n자유를 사랑하고 넓은 세상을 향해 달려가는 것을 멈출 수 없는 영혼이에요.\n독립적이면서도 무리를 사랑하는 복잡하고 아름다운 내면을 가지고 있어요.',
-    traits:[{i:'🌊',l:'자유로운 영혼'},{i:'❄️',l:'강인한 정신'},{i:'🐺',l:'야성적 매력'},{i:'💙',l:'깊은 내면'}],
-    story:'끝없이 펼쳐진 시베리아 설원을 달리던 당신은 허스키였어요. 극한의 추위도 당신의 발걸음을 막을 수 없었고, 자유를 향한 갈망은 늘 설원보다 넓었죠. 그 자유롭고 강인한 영혼이 지금도 당신 안에서 달리고 있어요.',
-    bars:[{l:'자유로움',v:94,c:'fill-purple'},{l:'강인함',v:90,c:'fill-pink'},{l:'독립성',v:87,c:'fill-blue'},{l:'카리스마',v:92,c:'fill-green'}],
-    compat:{ icon:'🐱', text:'전생 허스키인 당신과 신비로운 <strong>고양이상</strong>은 서로의 자유로운 영혼을 이해하는 최고의 파트너!' }
-  },
+/* ════════════════════════════════════
+   품종 데이터베이스 (완전판)
+════════════════════════════════════ */
+const DOG_BREEDS = {
+  '소형견': [
+    {emoji:'🐩', name:'포메라니안'},
+    {emoji:'🤍', name:'말티즈'},
+    {emoji:'🐩', name:'토이 푸들'},
+    {emoji:'🐩', name:'미니어처 푸들'},
+    {emoji:'🦊', name:'치와와'},
+    {emoji:'🐶', name:'시츄'},
+    {emoji:'🐕', name:'요크셔테리어'},
+    {emoji:'☁️', name:'비숑 프리제'},
+    {emoji:'🌭', name:'닥스훈트'},
+    {emoji:'🐶', name:'미니어처 슈나우저'},
+    {emoji:'🐕', name:'미니어처 핀셔'},
+    {emoji:'🦋', name:'파피용'},
+    {emoji:'🐷', name:'프렌치 불독'},
+    {emoji:'😤', name:'퍼그'},
+    {emoji:'🐾', name:'보스턴 테리어'},
+    {emoji:'🐕', name:'잭 러셀 테리어'},
+    {emoji:'🐶', name:'포메치'},
+    {emoji:'🐾', name:'하바니즈'},
+    {emoji:'🐕', name:'카발리에 킹 찰스 스패니얼'},
+    {emoji:'🐩', name:'로렌 쉽독'},
+  ],
+  '중형견': [
+    {emoji:'🐕', name:'비글'},
+    {emoji:'🐶', name:'코카 스파니엘'},
+    {emoji:'🦊', name:'시바이누'},
+    {emoji:'🐾', name:'웰시 코기 (펨브로크)'},
+    {emoji:'🐾', name:'웰시 코기 (카디건)'},
+    {emoji:'🐕', name:'바센지'},
+    {emoji:'🐶', name:'아메리칸 코커 스패니얼'},
+    {emoji:'🐕', name:'잉글리시 스프링거 스패니얼'},
+    {emoji:'🐾', name:'오스트레일리안 셰퍼드'},
+    {emoji:'🐶', name:'달마시안'},
+    {emoji:'🐕', name:'보더 테리어'},
+  ],
+  '대형견': [
+    {emoji:'🌟', name:'골든 리트리버'},
+    {emoji:'🐕', name:'래브라도 리트리버'},
+    {emoji:'🐾', name:'보더 콜리'},
+    {emoji:'🐺', name:'시베리안 허스키'},
+    {emoji:'🐺', name:'알래스칸 말라뮤트'},
+    {emoji:'🤍', name:'사모예드'},
+    {emoji:'🦁', name:'진돗개'},
+    {emoji:'🐺', name:'저먼 셰퍼드'},
+    {emoji:'💪', name:'로트와일러'},
+    {emoji:'⚡', name:'도베르만'},
+    {emoji:'🐩', name:'스탠다드 푸들'},
+    {emoji:'🐕', name:'아이리시 세터'},
+    {emoji:'🐶', name:'골든두들'},
+    {emoji:'🏔️', name:'버니즈 마운틴 독'},
+    {emoji:'🐾', name:'그레이트 데인'},
+    {emoji:'🐕', name:'보르조이'},
+    {emoji:'🦁', name:'뉴펀들랜드'},
+    {emoji:'🐺', name:'사플로스 울프독'},
+    {emoji:'🦮', name:'골든 리트리버 믹스'},
+    {emoji:'🐕', name:'차우차우'},
+  ],
+  '믹스견': [
+    {emoji:'🐩', name:'말티푸 (말티즈+푸들)'},
+    {emoji:'🐺', name:'폼스키 (포메라니안+허스키)'},
+    {emoji:'🐩', name:'골든두들 (골든+푸들)'},
+    {emoji:'🐕', name:'라브라두들 (래브라도+푸들)'},
+    {emoji:'🐶', name:'포키 (포메라니안+요크셔)'},
+    {emoji:'🐾', name:'치와푸 (치와와+푸들)'},
+    {emoji:'🐕', name:'말시즈 (말티즈+시츄)'},
+    {emoji:'🦊', name:'시바믹스'},
+    {emoji:'🐩', name:'비숑푸 (비숑+푸들)'},
+    {emoji:'🐕', name:'믹스견 (기타)'},
+  ],
 };
 
-/* ── 질문 데이터 ── */
-// score 형식: {type: 'cat'|'dog', traits: [...]}
+const CAT_BREEDS = {
+  '단모종': [
+    {emoji:'🐱', name:'코리안 숏헤어 (코숏)'},
+    {emoji:'😼', name:'샴'},
+    {emoji:'💙', name:'러시안 블루'},
+    {emoji:'🐱', name:'브리티시 숏헤어'},
+    {emoji:'🐱', name:'아메리칸 숏헤어'},
+    {emoji:'🐆', name:'벵골'},
+    {emoji:'🤍', name:'스핑크스'},
+    {emoji:'🏃', name:'아비시니안'},
+    {emoji:'🌙', name:'버미즈'},
+    {emoji:'🐱', name:'이집션 마우'},
+    {emoji:'🐾', name:'오리엔탈 숏헤어'},
+    {emoji:'😺', name:'데본 렉스'},
+    {emoji:'😸', name:'코니시 렉스'},
+    {emoji:'🐱', name:'통키니즈'},
+    {emoji:'🐾', name:'하바나 브라운'},
+  ],
+  '장모종': [
+    {emoji:'👑', name:'페르시안'},
+    {emoji:'🤍', name:'터키시 앙고라'},
+    {emoji:'🌲', name:'노르웨이 숲 고양이'},
+    {emoji:'🦁', name:'메인쿤'},
+    {emoji:'💜', name:'랙돌'},
+    {emoji:'💝', name:'라가머핀'},
+    {emoji:'🌊', name:'터키시 반'},
+    {emoji:'🐾', name:'버만'},
+    {emoji:'🤍', name:'실버바인'},
+    {emoji:'🐱', name:'소말리'},
+  ],
+  '특이종': [
+    {emoji:'🐱', name:'스코티시 폴드'},
+    {emoji:'🐾', name:'스코티시 스트레이트'},
+    {emoji:'🦵', name:'먼치킨'},
+    {emoji:'🤸', name:'먼치킨 롱헤어'},
+    {emoji:'🐾', name:'아메리칸 컬'},
+    {emoji:'😺', name:'셀커크 렉스'},
+    {emoji:'🐱', name:'오시캣'},
+    {emoji:'🐾', name:'픽시밥'},
+    {emoji:'🐱', name:'샤르트뢰'},
+    {emoji:'🤍', name:'바리네즈'},
+  ],
+  '믹스': [
+    {emoji:'🐱', name:'믹스 고양이 (길냥이 출신)'},
+    {emoji:'😸', name:'믹스 (기타)'},
+  ],
+};
+
+/* ════════════════════════════════════
+   품종별 전생 데이터
+════════════════════════════════════ */
+const BREEDS = {
+  persian:     { type:'cat', name:'페르시안 고양이', en:'Persian Cat', emoji:'👑', fallback:'🐱', color:'#c4b5fd', imgApi:()=>fetchCatImg('pers'), tags:['고양이 영혼','고귀한 기질','독립적'], desc:'당신의 전생은 <strong>세상에서 가장 우아한 고양이, 페르시안</strong>이었어요.\n조용하고 아늑한 공간을 좋아하며 마음에 드는 사람에게만 살며시 다가가는 섬세한 영혼이에요.', traits:[{i:'👑',l:'고귀한 품위'},{i:'🌙',l:'신비로운 매력'},{i:'🕊️',l:'평화로운 성품'},{i:'💎',l:'섬세한 감수성'}], story:'수백 년 전 귀족의 저택에서 태어난 당신은 비단처럼 부드러운 흰 털을 가진 페르시안이었어요. 주인의 무릎 위에서 조용히 세상을 바라보며, 그 고귀한 영혼이 지금도 당신 안에 흐르고 있어요.', bars:[{l:'독립성',v:90,c:'fp'},{l:'우아함',v:95,c:'fpi'},{l:'감수성',v:80,c:'fb'},{l:'여유',v:88,c:'fg'}], compat:{icon:'🐶',text:'전생 페르시안인 당신, <strong>강아지상</strong>과 완벽한 궁합이에요!'} },
+  mainecoon:   { type:'cat', name:'메인쿤', en:'Maine Coon', emoji:'🦁', fallback:'🐈', color:'#fb923c', imgApi:()=>fetchCatImg('mcoo'), tags:['고양이 영혼','대형 고양이','사교적'], desc:'당신의 전생은 <strong>고양이 중의 왕, 메인쿤</strong>이었어요.\n강아지처럼 사람을 좋아하고 활발하지만, 고양이 특유의 자존감도 가진 넉넉한 영혼이에요.', traits:[{i:'🦁',l:'당당한 존재감'},{i:'🤗',l:'사교적인 성격'},{i:'🌲',l:'자연을 사랑'},{i:'💪',l:'강인한 체력'}], story:'숲 속 마을에서 자유롭게 살던 당신은 마을 사람들에게 큰 사랑을 받던 메인쿤이었어요. 그 당당하고 자유로운 영혼이 지금도 당신 안에 살아있어요.', bars:[{l:'사교성',v:82,c:'fp'},{l:'활동성',v:78,c:'fpi'},{l:'독립성',v:65,c:'fb'},{l:'친화력',v:85,c:'fg'}], compat:{icon:'🐶',text:'전생 메인쿤인 당신, <strong>강아지상</strong>과 최고의 궁합!'} },
+  siamese:     { type:'cat', name:'샴 고양이', en:'Siamese Cat', emoji:'💬', fallback:'😼', color:'#38bdf8', imgApi:()=>fetchCatImg('siam'), tags:['고양이 영혼','표현적','영리한'], desc:'당신의 전생은 <strong>세상에서 가장 표현이 풍부한 고양이, 샴</strong>이었어요.\n자신의 감정을 솔직하게 표현하고, 깊은 파란 눈으로 상대의 마음을 꿰뚫어 봐요.', traits:[{i:'💬',l:'표현력 넘침'},{i:'🔍',l:'날카로운 통찰'},{i:'💙',l:'깊은 감수성'},{i:'🎭',l:'다채로운 감정'}], story:'동양의 왕실에서 살던 당신은 섬세한 무늬를 가진 샴이었어요. 원하는 것은 반드시 얻어냈고, 그 영리하고 표현적인 영혼이 지금도 당신 안에서 빛나고 있어요.', bars:[{l:'표현력',v:93,c:'fp'},{l:'영리함',v:88,c:'fpi'},{l:'애정표현',v:85,c:'fb'},{l:'호기심',v:90,c:'fg'}], compat:{icon:'🐶',text:'전생 샴인 당신은 <strong>강아지상</strong>과 감정을 솔직하게 나누는 최고의 파트너!'} },
+  russianblue: { type:'cat', name:'러시안 블루', en:'Russian Blue', emoji:'❄️', fallback:'🔷', color:'#818cf8', imgApi:()=>fetchCatImg('rblu'), tags:['고양이 영혼','신비로운','내성적'], desc:'당신의 전생은 <strong>신비로운 회색빛 영혼, 러시안 블루</strong>였어요.\n처음엔 거리를 두지만 진심으로 신뢰하면 누구보다 깊은 사랑을 주는 영혼이에요.', traits:[{i:'❄️',l:'차분한 내면'},{i:'🌌',l:'신비로운 매력'},{i:'🔮',l:'예민한 감각'},{i:'💜',l:'깊은 신뢰'}], story:'러시아 황실에서 조용히 살던 당신은 비밀을 많이 알고 있는 러시안 블루였어요. 그 신비롭고 깊은 영혼이 지금도 당신 안에 잠들어 있어요.', bars:[{l:'독립성',v:92,c:'fp'},{l:'신중함',v:90,c:'fpi'},{l:'신뢰감',v:95,c:'fb'},{l:'감수성',v:85,c:'fg'}], compat:{icon:'🐶',text:'전생 러시안 블루인 당신, 따뜻한 <strong>강아지상</strong>이 마음을 열어줄 최고의 파트너!'} },
+  bengal:      { type:'cat', name:'벵골 고양이', en:'Bengal Cat', emoji:'🐆', fallback:'🐆', color:'#f59e0b', imgApi:()=>fetchCatImg('beng'), tags:['고양이 영혼','야생적','활발한'], desc:'당신의 전생은 <strong>야생의 혼을 가진 벵골 고양이</strong>였어요.\n아표 무늬처럼 독특하고 강렬한 존재감으로 어디서나 눈에 띄어요.', traits:[{i:'🐆',l:'야생의 본능'},{i:'⚡',l:'넘치는 에너지'},{i:'🔭',l:'강한 호기심'},{i:'🌟',l:'독보적 존재감'}], story:'정글의 경계를 자유롭게 넘나들던 당신은 야생의 혼을 가진 벵골이었어요. 그 자유롭고 강렬한 영혼이 지금도 당신의 심장 속에서 뛰고 있어요.', bars:[{l:'활동성',v:95,c:'fp'},{l:'호기심',v:92,c:'fpi'},{l:'자유로움',v:90,c:'fb'},{l:'독립성',v:80,c:'fg'}], compat:{icon:'🐕',text:'전생 벵골인 당신은 에너지 넘치는 <strong>대형견상</strong>과 최고의 궁합!'} },
+  scottishfold:{ type:'cat', name:'스코티시 폴드', en:'Scottish Fold', emoji:'🥺', fallback:'🐱', color:'#f472b6', imgApi:()=>fetchCatImg('sfld'), tags:['고양이 영혼','귀여운','온순한'], desc:'당신의 전생은 <strong>접힌 귀가 매력인 스코티시 폴드</strong>였어요.\n동그란 얼굴과 큰 눈으로 모든 사람의 마음을 사로잡는 천상 애교쟁이예요.', traits:[{i:'🥺',l:'천상 애교쟁이'},{i:'😊',l:'온순한 성격'},{i:'🌸',l:'사랑스러운 외모'},{i:'🤍',l:'적응력 뛰어남'}], story:'스코틀랜드의 작은 농가에서 태어난 당신은 귀가 접힌 스코티시 폴드였어요. 그 사랑스럽고 따뜻한 영혼이 지금도 당신에게 살아있어요.', bars:[{l:'친화력',v:90,c:'fp'},{l:'온순함',v:92,c:'fpi'},{l:'적응력',v:88,c:'fb'},{l:'애교',v:95,c:'fg'}], compat:{icon:'🐶',text:'전생 스코티시 폴드인 당신, <strong>강아지상</strong>이 당신의 애교를 가장 잘 받아줘요!'} },
+  golden:      { type:'dog', name:'골든 리트리버', en:'Golden Retriever', emoji:'☀️', fallback:'🐕', color:'#FFB347', imgApi:()=>fetchDogImg('retriever/golden'), tags:['강아지 영혼','온화한 성품','최고의 친구'], desc:'당신의 전생은 <strong>세상에서 가장 사랑받는 강아지, 골든 리트리버</strong>였어요.\n햇살처럼 따뜻한 성격으로 누구에게든 먼저 다가가 친구가 되는 영혼이에요.', traits:[{i:'☀️',l:'햇살 같은 성격'},{i:'💛',l:'무한한 사랑'},{i:'🤝',l:'최고의 친구'},{i:'🛡️',l:'믿음직한 동반자'}], story:'넓은 들판을 뛰어다니던 당신은 황금빛 털을 가진 골든 리트리버였어요. 그 따뜻하고 충성스러운 영혼이 지금 당신 안에 빛나고 있어요.', bars:[{l:'친화력',v:98,c:'fp'},{l:'충성심',v:95,c:'fpi'},{l:'온화함',v:92,c:'fb'},{l:'활동성',v:85,c:'fg'}], compat:{icon:'🐱',text:'전생 골든 리트리버인 당신, 신비로운 <strong>고양이상</strong>과 최고의 궁합!'} },
+  samoyed:     { type:'dog', name:'사모예드', en:'Samoyed', emoji:'🤍', fallback:'🤍', color:'#e2e8f0', imgApi:()=>fetchDogImg('samoyed'), tags:['강아지 영혼','순백의 영혼','행복 바이러스'], desc:'당신의 전생은 <strong>하얀 눈처럼 순수한 사모예드</strong>였어요.\n항상 웃고 있는 듯한 표정처럼 주변 사람들에게 행복을 나눠주는 것이 사명이에요.', traits:[{i:'😊',l:'행복 바이러스'},{i:'❄️',l:'순수한 영혼'},{i:'🌟',l:'빛나는 존재감'},{i:'🤗',l:'넘치는 애교'}], story:'시베리아 설원을 달리던 당신은 새하얀 사모예드였어요. 그 순수하고 밝은 에너지가 지금도 당신 주변 사람들을 행복하게 만들어요.', bars:[{l:'밝은 에너지',v:97,c:'fp'},{l:'순수함',v:95,c:'fpi'},{l:'친화력',v:92,c:'fb'},{l:'애교',v:90,c:'fg'}], compat:{icon:'🐱',text:'전생 사모예드인 당신은 차분한 <strong>고양이상</strong>과 완벽한 밸런스!'} },
+  shiba:       { type:'dog', name:'시바이누', en:'Shiba Inu', emoji:'🦊', fallback:'🦊', color:'#f97316', imgApi:()=>fetchDogImg('shiba'), tags:['강아지 영혼','자존감 높음','독립적'], desc:'당신의 전생은 <strong>여우를 닮은 당당한 시바이누</strong>였어요.\n자존심이 강하고 독립적이지만, 진심으로 사랑하는 사람에겐 깊은 충성을 다해요.', traits:[{i:'🦊',l:'자존감 넘침'},{i:'👑',l:'당당한 자아'},{i:'🔥',l:'열정적 내면'},{i:'🎯',l:'확실한 취향'}], story:'일본의 산속 마을을 누비던 당신은 불꽃색 털의 시바이누였어요. 그 자존감 높고 독립적인 영혼이 지금 당신을 특별하게 만들어요.', bars:[{l:'자존감',v:95,c:'fp'},{l:'독립성',v:90,c:'fpi'},{l:'충성심',v:85,c:'fb'},{l:'개성',v:93,c:'fg'}], compat:{icon:'🐱',text:'전생 시바이누인 당신과 <strong>고양이상</strong>은 서로의 독립성을 존중하는 완벽한 파트너!'} },
+  pomeranian:  { type:'dog', name:'포메라니안', en:'Pomeranian', emoji:'⚡', fallback:'🐩', color:'#fbbf24', imgApi:()=>fetchDogImg('pomeranian'), tags:['강아지 영혼','작지만 강한','에너지 폭발'], desc:'당신의 전생은 <strong>작지만 누구보다 당당한 포메라니안</strong>이었어요.\n작은 몸에 가득 찬 자신감과 에너지로 항상 주변의 시선을 사로잡아요.', traits:[{i:'⚡',l:'폭발적 에너지'},{i:'💫',l:'넘치는 자신감'},{i:'🎀',l:'사랑스러운 외모'},{i:'🌈',l:'다채로운 매력'}], story:'왕실 귀족의 무릎 위에 앉아 세상을 내려다보던 당신은 포메라니안이었어요. 그 자신감 넘치는 영혼이 지금도 당신의 매력이 되고 있어요.', bars:[{l:'자신감',v:92,c:'fp'},{l:'활동성',v:88,c:'fpi'},{l:'애교',v:94,c:'fb'},{l:'사교성',v:86,c:'fg'}], compat:{icon:'🐱',text:'전생 포메라니안인 당신, 차분한 <strong>고양이상</strong>과 환상의 콤비!'} },
+  husky:       { type:'dog', name:'시베리안 허스키', en:'Siberian Husky', emoji:'🐺', fallback:'🐺', color:'#818cf8', imgApi:()=>fetchDogImg('husky'), tags:['강아지 영혼','자유로운 영혼','야성적'], desc:'당신의 전생은 <strong>늑대의 눈빛을 가진 시베리안 허스키</strong>였어요.\n자유를 사랑하고 넓은 세상을 향해 달려가는 것을 멈출 수 없는 영혼이에요.', traits:[{i:'🌊',l:'자유로운 영혼'},{i:'❄️',l:'강인한 정신'},{i:'🐺',l:'야성적 매력'},{i:'💙',l:'깊은 내면'}], story:'끝없이 펼쳐진 시베리아 설원을 달리던 당신은 허스키였어요. 그 자유롭고 강인한 영혼이 지금도 당신 안에서 달리고 있어요.', bars:[{l:'자유로움',v:94,c:'fp'},{l:'강인함',v:90,c:'fpi'},{l:'독립성',v:87,c:'fb'},{l:'카리스마',v:92,c:'fg'}], compat:{icon:'🐱',text:'전생 허스키인 당신과 신비로운 <strong>고양이상</strong>은 서로의 자유로운 영혼을 이해하는 최고의 파트너!'} },
+};
+
+/* ════════════════════════════════════
+   질문 데이터
+════════════════════════════════════ */
 const QUESTIONS = [
-  {
-    emoji:'✨', text:'당신이 가장 끌리는 분위기는?',
-    opts:[
-      {i:'🏰',t:'조용하고 우아한 클래식 분위기',     scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
-      {i:'🌿',t:'따뜻하고 아늑한 자연 친화적 분위기', scores:{type:'dog',fluffy:1,big:1,calm:0,ind:0}},
-      {i:'🌙',t:'세련되고 미니멀한 모던 분위기',      scores:{type:'cat',fluffy:0,big:0,calm:1,ind:1}},
-      {i:'🎉',t:'활기차고 사람들이 많은 생동감 있는 분위기', scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
-    ]
-  },
-  {
-    emoji:'🌅', text:'이상적인 하루를 고른다면?',
-    opts:[
-      {i:'🛋️',t:'햇볕 드는 창가에서 책 읽으며 혼자 보내기',      scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
-      {i:'🏃',t:'친구들과 함께 야외에서 신나게 보내기',           scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
-      {i:'☕',t:'카페에서 조용히 생각 정리하며 보내기',            scores:{type:'cat',fluffy:0,big:0,calm:1,ind:1}},
-      {i:'🎈',t:'가족 또는 소중한 사람들과 따뜻하게 보내기',       scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
-    ]
-  },
-  {
-    emoji:'💅', text:'만약 반려동물을 키운다면 어떤 스타일?',
-    opts:[
-      {i:'🐕',t:'대형견 — 크고 북실북실, 같이 달리고 싶어',       scores:{type:'dog',fluffy:1,big:1,calm:0,ind:0}},
-      {i:'🐩',t:'소형견 — 작고 귀여운 아기 같은 강아지',          scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
-      {i:'😼',t:'고급 고양이 — 페르시안 같은 우아한 고양이',       scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
-      {i:'🐆',t:'야생적 고양이 — 벵골처럼 활동적인 고양이',        scores:{type:'cat',fluffy:0,big:1,calm:0,ind:1}},
-    ]
-  },
-  {
-    emoji:'🌸', text:'내 털 스타일을 고른다면?',
-    opts:[
-      {i:'☁️',t:'풍성하고 북실북실한 털이 좋아! 만지고 싶은 느낌',  scores:{type:'cat',fluffy:2,big:0,calm:1,ind:0}},
-      {i:'💫',t:'길고 우아하게 흘러내리는 실크 같은 털',            scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
-      {i:'🐅',t:'짧고 윤기 나는 야생적인 무늬 털',                 scores:{type:'cat',fluffy:0,big:1,calm:0,ind:1}},
-      {i:'🦮',t:'황금빛이나 눈처럼 흰 두꺼운 겨울 털',              scores:{type:'dog',fluffy:2,big:1,calm:0,ind:0}},
-    ]
-  },
-  {
-    emoji:'🏠', text:'내가 꿈꾸는 집의 모습은?',
-    opts:[
-      {i:'🏯',t:'고급스럽고 조용한 단독주택',  scores:{type:'cat',fluffy:0,big:0,calm:1,ind:1}},
-      {i:'🌲',t:'마당이 넓은 전원주택',         scores:{type:'dog',fluffy:1,big:1,calm:0,ind:0}},
-      {i:'🏙️',t:'세련된 도심 아파트',           scores:{type:'cat',fluffy:0,big:0,calm:0,ind:1}},
-      {i:'🏡',t:'따뜻한 가족 느낌의 아담한 집', scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
-    ]
-  },
-  {
-    emoji:'🎭', text:'나의 사교 스타일은?',
-    opts:[
-      {i:'👀',t:'관찰하다가 마음에 들면 조용히 다가간다',           scores:{type:'cat',fluffy:0,big:0,calm:1,ind:2}},
-      {i:'🙌',t:'처음 보는 사람에게도 먼저 인사한다',               scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
-      {i:'🌙',t:'소수의 깊은 관계를 선호한다',                     scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
-      {i:'🎊',t:'많은 사람들과 어울리는 것을 즐긴다',               scores:{type:'dog',fluffy:1,big:0,calm:0,ind:0}},
-    ]
-  },
-  {
-    emoji:'🌙', text:'혼자 있는 시간에 대해 어떻게 생각해?',
-    opts:[
-      {i:'😌',t:'혼자 있는 시간이 꼭 필요해, 그래야 충전된다',       scores:{type:'cat',fluffy:0,big:0,calm:1,ind:2}},
-      {i:'😊',t:'혼자도 괜찮지만 누군가 있으면 더 좋다',             scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
-      {i:'😰',t:'혼자 있는 게 별로야, 항상 누군가와 함께하고 싶다',   scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
-      {i:'🤔',t:'상황에 따라 달라. 때로는 혼자, 때로는 같이',        scores:{type:'cat',fluffy:1,big:0,calm:0,ind:1}},
-    ]
-  },
-  {
-    emoji:'💪', text:'나의 에너지 레벨은?',
-    opts:[
-      {i:'🌋',t:'항상 활동적! 가만히 있는 게 제일 힘들다',           scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
-      {i:'⚡',t:'할 때는 하지만 집에 오면 누워있고 싶다',             scores:{type:'dog',fluffy:1,big:0,calm:0,ind:1}},
-      {i:'🌿',t:'천천히 여유롭게. 조급하지 않아',                   scores:{type:'cat',fluffy:1,big:0,calm:2,ind:1}},
-      {i:'🌊',t:'평소엔 조용하지만 흥이 오르면 폭발한다',             scores:{type:'cat',fluffy:0,big:1,calm:0,ind:1}},
-    ]
-  },
-  {
-    emoji:'👑', text:'나를 한 단어로 표현한다면?',
-    opts:[
-      {i:'🌹',t:'우아함',   scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
-      {i:'☀️',t:'따뜻함',   scores:{type:'dog',fluffy:1,big:1,calm:1,ind:0}},
-      {i:'🔥',t:'자유로움', scores:{type:'cat',fluffy:0,big:1,calm:0,ind:2}},
-      {i:'💫',t:'순수함',   scores:{type:'dog',fluffy:2,big:0,calm:1,ind:0}},
-    ]
-  },
-  {
-    emoji:'🌌', text:'전생에서 어떤 삶을 살았을 것 같아?',
-    opts:[
-      {i:'🏯',t:'고귀한 귀족의 저택에서 우아하게',             scores:{type:'cat',fluffy:2,big:0,calm:1,ind:1}},
-      {i:'🌾',t:'사람들과 함께 따뜻하게',                     scores:{type:'dog',fluffy:1,big:1,calm:1,ind:0}},
-      {i:'❄️',t:'광활한 자연 속을 자유롭게',                   scores:{type:'dog',fluffy:1,big:1,calm:0,ind:1}},
-      {i:'🌙',t:'조용한 밤, 혼자만의 세계에서 신비롭게',        scores:{type:'cat',fluffy:0,big:0,calm:1,ind:2}},
-    ]
-  },
+  {emoji:'✨',text:'당신이 가장 끌리는 분위기는?',opts:[
+    {i:'🏰',t:'조용하고 우아한 클래식 분위기',scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
+    {i:'🌿',t:'따뜻하고 아늑한 자연 친화적 분위기',scores:{type:'dog',fluffy:1,big:1,calm:0,ind:0}},
+    {i:'🌙',t:'세련되고 미니멀한 모던 분위기',scores:{type:'cat',fluffy:0,big:0,calm:1,ind:1}},
+    {i:'🎉',t:'활기차고 생동감 있는 분위기',scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
+  ]},
+  {emoji:'🐾',text:'만약 반려동물을 키운다면 어떤 스타일?',opts:[
+    {i:'🐕',t:'대형견 — 크고 북실북실, 같이 달리고 싶어',scores:{type:'dog',fluffy:1,big:1,calm:0,ind:0}},
+    {i:'🐩',t:'소형견 — 작고 귀여운 아기 같은 강아지',scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
+    {i:'😼',t:'고급 고양이 — 페르시안 같은 우아한 고양이',scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
+    {i:'🐆',t:'야생적 고양이 — 벵골처럼 활동적인 고양이',scores:{type:'cat',fluffy:0,big:1,calm:0,ind:1}},
+  ]},
+  {emoji:'🌸',text:'나의 이상적인 털 스타일은?',opts:[
+    {i:'☁️',t:'풍성하고 북실북실! 만지고 싶은 느낌',scores:{type:'cat',fluffy:2,big:0,calm:1,ind:0}},
+    {i:'💫',t:'길고 우아하게 흘러내리는 실크 같은 털',scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
+    {i:'🐅',t:'짧고 윤기 나는 야생적인 무늬 털',scores:{type:'cat',fluffy:0,big:1,calm:0,ind:1}},
+    {i:'🦮',t:'황금빛이나 눈처럼 흰 두꺼운 털',scores:{type:'dog',fluffy:2,big:1,calm:0,ind:0}},
+  ]},
+  {emoji:'🏠',text:'내가 꿈꾸는 집의 모습은?',opts:[
+    {i:'🏯',t:'고급스럽고 조용한 단독주택',scores:{type:'cat',fluffy:0,big:0,calm:1,ind:1}},
+    {i:'🌲',t:'마당이 넓은 전원주택',scores:{type:'dog',fluffy:1,big:1,calm:0,ind:0}},
+    {i:'🏙️',t:'세련된 도심 아파트',scores:{type:'cat',fluffy:0,big:0,calm:0,ind:1}},
+    {i:'🏡',t:'따뜻한 가족 느낌의 아담한 집',scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
+  ]},
+  {emoji:'🎭',text:'나의 사교 스타일은?',opts:[
+    {i:'👀',t:'관찰하다가 마음에 들면 조용히 다가간다',scores:{type:'cat',fluffy:0,big:0,calm:1,ind:2}},
+    {i:'🙌',t:'처음 보는 사람에게도 먼저 인사한다',scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
+    {i:'🌙',t:'소수의 깊은 관계를 선호한다',scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
+    {i:'🎊',t:'많은 사람들과 어울리는 것을 즐긴다',scores:{type:'dog',fluffy:1,big:0,calm:0,ind:0}},
+  ]},
+  {emoji:'🌙',text:'혼자 있는 시간에 대해 어떻게 생각해?',opts:[
+    {i:'😌',t:'혼자 있는 시간이 꼭 필요해, 그래야 충전된다',scores:{type:'cat',fluffy:0,big:0,calm:1,ind:2}},
+    {i:'😊',t:'혼자도 괜찮지만 누군가 있으면 더 좋다',scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
+    {i:'😰',t:'혼자 있는 게 별로야, 항상 함께하고 싶다',scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
+    {i:'🤔',t:'상황에 따라 달라, 때로는 혼자 때로는 같이',scores:{type:'cat',fluffy:1,big:0,calm:0,ind:1}},
+  ]},
+  {emoji:'💪',text:'나의 에너지 레벨은?',opts:[
+    {i:'🌋',t:'항상 활동적! 가만히 있는 게 제일 힘들다',scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
+    {i:'⚡',t:'할 때는 하지만 집에 오면 눕고 싶다',scores:{type:'dog',fluffy:1,big:0,calm:0,ind:1}},
+    {i:'🌿',t:'천천히 여유롭게. 조급하지 않아',scores:{type:'cat',fluffy:1,big:0,calm:2,ind:1}},
+    {i:'🌊',t:'평소엔 조용하지만 흥이 오르면 폭발한다',scores:{type:'cat',fluffy:0,big:1,calm:0,ind:1}},
+  ]},
+  {emoji:'👑',text:'나를 한 단어로 표현한다면?',opts:[
+    {i:'🌹',t:'우아함',scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
+    {i:'☀️',t:'따뜻함',scores:{type:'dog',fluffy:1,big:1,calm:1,ind:0}},
+    {i:'🔥',t:'자유로움',scores:{type:'cat',fluffy:0,big:1,calm:0,ind:2}},
+    {i:'💫',t:'순수함',scores:{type:'dog',fluffy:2,big:0,calm:1,ind:0}},
+  ]},
+  {emoji:'🌅',text:'이상적인 하루를 고른다면?',opts:[
+    {i:'🛋️',t:'햇볕 드는 창가에서 책 읽으며 혼자 보내기',scores:{type:'cat',fluffy:1,big:0,calm:1,ind:1}},
+    {i:'🏃',t:'친구들과 야외에서 신나게 보내기',scores:{type:'dog',fluffy:0,big:1,calm:0,ind:0}},
+    {i:'☕',t:'카페에서 조용히 생각 정리하며 보내기',scores:{type:'cat',fluffy:0,big:0,calm:1,ind:1}},
+    {i:'🎈',t:'소중한 사람들과 따뜻하게 보내기',scores:{type:'dog',fluffy:1,big:0,calm:1,ind:0}},
+  ]},
+  {emoji:'🌌',text:'전생에서 어떤 삶을 살았을 것 같아?',opts:[
+    {i:'🏯',t:'고귀한 귀족의 저택에서 우아하게',scores:{type:'cat',fluffy:2,big:0,calm:1,ind:1}},
+    {i:'🌾',t:'사람들과 함께 따뜻하게',scores:{type:'dog',fluffy:1,big:1,calm:1,ind:0}},
+    {i:'❄️',t:'광활한 자연 속을 자유롭게',scores:{type:'dog',fluffy:1,big:1,calm:0,ind:1}},
+    {i:'🌙',t:'조용한 밤, 혼자만의 세계에서 신비롭게',scores:{type:'cat',fluffy:0,big:0,calm:1,ind:2}},
+  ]},
 ];
 
-/* ── 상태 ── */
+/* ════════════════════════════════════
+   상태 관리
+════════════════════════════════════ */
+let selectedAnimalType = null;
+let selectedBreed = null;
+let petName = '';
 let qIdx = 0;
-let score = { cat:0, dog:0, fluffy:0, big:0, calm:0, ind:0 };
+let score = {cat:0,dog:0,fluffy:0,big:0,calm:0,ind:0};
 
-function startTest() {
+/* ════════════════════════════════════
+   품종 선택 UI
+════════════════════════════════════ */
+function goBreedStep() {
   document.getElementById('hero').style.display = 'none';
+  document.getElementById('breed-step').style.display = 'block';
+  loadBreedPreviews();
+}
+
+function selectAnimal(type, btn) {
+  selectedAnimalType = type;
+  document.querySelectorAll('.animal-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const wrap = document.getElementById('breed-select-wrap');
+  const nextBtn = document.getElementById('step-next-btn');
+  if (type === 'none') {
+    wrap.style.display = 'none';
+    nextBtn.disabled = false;
+  } else {
+    wrap.style.display = 'block';
+    document.getElementById('breed-select-label').textContent =
+      type === 'dog' ? '🐶 강아지 품종을 선택해주세요' : '🐱 고양이 품종을 선택해주세요';
+    renderBreedList(type, '');
+    nextBtn.disabled = true;
+  }
+}
+
+function renderBreedList(type, query) {
+  const db = type === 'dog' ? DOG_BREEDS : CAT_BREEDS;
+  const list = document.getElementById('breed-list');
+  let html = '';
+  for (const [group, breeds] of Object.entries(db)) {
+    const filtered = breeds.filter(b => b.name.toLowerCase().includes(query.toLowerCase()));
+    if (!filtered.length) continue;
+    html += `<div class="breed-group-label">${group}</div>`;
+    filtered.forEach(b => {
+      const sel = selectedBreed === b.name ? ' selected' : '';
+      html += `<div class="breed-item${sel}" onclick="pickBreed('${b.name.replace(/'/g,"\\'")}')">
+        <span class="bi-emoji">${b.emoji}</span><span>${b.name}</span></div>`;
+    });
+  }
+  if (!html) html = '<div style="padding:20px;text-align:center;color:rgba(255,255,255,.4);font-size:13px;">검색 결과가 없어요</div>';
+  list.innerHTML = html;
+}
+
+function filterBreeds() {
+  if (!selectedAnimalType || selectedAnimalType === 'none') return;
+  const q = document.getElementById('breed-search').value;
+  renderBreedList(selectedAnimalType, q);
+}
+
+function pickBreed(name) {
+  selectedBreed = name;
+  document.querySelectorAll('.breed-item').forEach(el => el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  const badge = document.getElementById('selected-badge');
+  document.getElementById('selected-badge-text').textContent = `✅ ${name} 선택됨`;
+  badge.classList.add('show');
+  document.getElementById('step-next-btn').disabled = false;
+}
+
+function skipBreedStep() {
+  selectedAnimalType = null; selectedBreed = null; petName = '';
+  document.getElementById('breed-step').style.display = 'none';
+  beginQuiz();
+}
+
+function startQuiz() {
+  petName = document.getElementById('pet-name-input').value.trim();
+  document.getElementById('breed-step').style.display = 'none';
+  beginQuiz();
+}
+
+/* ════════════════════════════════════
+   퀴즈
+════════════════════════════════════ */
+function beginQuiz() {
+  qIdx = 0; score = {cat:0,dog:0,fluffy:0,big:0,calm:0,ind:0};
   document.getElementById('quiz').style.display = 'block';
   renderQ();
-  loadBreedPreviews();
 }
 
 function renderQ() {
   const q = QUESTIONS[qIdx];
-  const pct = Math.round((qIdx / QUESTIONS.length) * 100);
+  const pct = Math.round((qIdx/QUESTIONS.length)*100);
   document.getElementById('q-label').textContent = `질문 ${qIdx+1} / ${QUESTIONS.length}`;
-  document.getElementById('q-pct').textContent = pct + '%';
-  document.getElementById('pfill').style.width = pct + '%';
+  document.getElementById('q-pct').textContent = pct+'%';
+  document.getElementById('pfill').style.width = pct+'%';
   document.getElementById('qnum').textContent = `Q ${String(qIdx+1).padStart(2,'0')}`;
   document.getElementById('qemoji').textContent = q.emoji;
   document.getElementById('qtext').textContent = q.text;
-  const el = document.getElementById('opts');
-  el.innerHTML = q.opts.map((o,i) => `
-    <button class="opt" onclick="pickOpt(${i})">
-      <span class="oi">${o.i}</span><span>${o.t}</span>
-    </button>`).join('');
+
+  // 반려동물 컨텍스트
+  const ctx = document.getElementById('pet-context');
+  if (selectedBreed && petName) {
+    ctx.textContent = `🐾 ${petName}(${selectedBreed}) 보호자님의 테스트`;
+    ctx.style.display = 'block';
+  } else if (selectedBreed) {
+    ctx.textContent = `🐾 ${selectedBreed} 보호자님의 테스트`;
+    ctx.style.display = 'block';
+  } else { ctx.style.display = 'none'; }
+
+  document.getElementById('opts').innerHTML = q.opts.map((o,i)=>
+    `<button class="opt" onclick="pickOpt(${i})"><span class="oi">${o.i}</span><span>${o.t}</span></button>`
+  ).join('');
 }
 
 function pickOpt(i) {
   const s = QUESTIONS[qIdx].opts[i].scores;
-  if (s.type === 'cat') score.cat += 2; else score.dog += 2;
-  score.fluffy += s.fluffy || 0;
-  score.big    += s.big    || 0;
-  score.calm   += s.calm   || 0;
-  score.ind    += s.ind    || 0;
+  if (s.type==='cat') score.cat+=2; else score.dog+=2;
+  score.fluffy+=(s.fluffy||0); score.big+=(s.big||0);
+  score.calm+=(s.calm||0); score.ind+=(s.ind||0);
   document.querySelectorAll('.opt')[i].classList.add('selected');
-  setTimeout(() => {
-    qIdx++;
-    if (qIdx >= QUESTIONS.length) showLoading();
-    else renderQ();
-  }, 380);
+  setTimeout(()=>{ qIdx++; if(qIdx>=QUESTIONS.length) showLoading(); else renderQ(); }, 360);
 }
 
 function showLoading() {
-  document.getElementById('quiz').style.display = 'none';
-  document.getElementById('loading').style.display = 'block';
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('loading').style.display='block';
+  const petMsg = selectedBreed ? (petName ? `${petName}(${selectedBreed})` : selectedBreed) : '';
+  if (petMsg) document.querySelector('.loading-section p').innerHTML = `수천 년 전 당신의 영혼이<br>어떤 모습이었는지 찾고 있어요 ✨<br><span style="color:#a78bfa;font-size:12px;margin-top:8px;display:block;">${petMsg}와 함께한 전생을 분석 중...</span>`;
   setTimeout(determineBreed, 2800);
 }
 
@@ -601,7 +702,6 @@ function determineBreed() {
   const isBig    = score.big    >= 4;
   const isCalm   = score.calm   >= 4;
   const isInd    = score.ind    >= 5;
-
   let breed;
   if (isCat) {
     if (isFluffy && isCalm && isInd) breed = BREEDS.persian;
@@ -621,117 +721,122 @@ function determineBreed() {
   showResult(breed);
 }
 
+/* ════════════════════════════════════
+   결과
+════════════════════════════════════ */
 async function showResult(breed) {
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('result').style.display = 'block';
-  document.getElementById('related').style.display = 'block';
+  document.getElementById('loading').style.display='none';
+  document.getElementById('result').style.display='block';
+  document.getElementById('related').style.display='block';
 
   document.getElementById('r-bname').textContent = breed.name;
-  document.getElementById('r-ben').textContent  = breed.en;
-  document.getElementById('r-desc').innerHTML   = breed.desc.replace(/\n/g,'<br>');
+  document.getElementById('r-ben').textContent   = breed.en;
+  document.getElementById('r-desc').innerHTML    = breed.desc.replace(/\n/g,'<br>');
   document.getElementById('r-story-text').textContent = breed.story;
 
-  document.getElementById('r-tags').innerHTML = breed.tags.map(t =>
-    `<span class="r-tag ${breed.type === 'cat' ? 'tag-cat' : 'tag-dog'}">${t}</span>`
+  document.getElementById('r-tags').innerHTML = breed.tags.map(t=>
+    `<span class="r-tag ${breed.type==='cat'?'tag-cat':'tag-dog'}">${t}</span>`
   ).join('');
 
-  document.getElementById('r-traits').innerHTML = breed.traits.map(t =>
+  document.getElementById('r-traits').innerHTML = breed.traits.map(t=>
     `<div class="r-trait"><div class="ti">${t.i}</div><div class="tl">${t.l}</div></div>`
   ).join('');
 
-  document.getElementById('r-bars').innerHTML = breed.bars.map(b =>
-    `<div class="rbs-row">
-      <span class="rbs-label">${b.l}</span>
-      <div class="rbs-bg"><div class="rbs-fill ${b.c}" style="width:0%" data-val="${b.v}"></div></div>
-    </div>`
+  document.getElementById('r-bars').innerHTML = breed.bars.map(b=>
+    `<div class="rbs-row"><span class="rbs-label">${b.l}</span>
+     <div class="rbs-bg"><div class="rbs-fill ${b.c}" style="width:0%" data-val="${b.v}"></div></div></div>`
   ).join('');
 
-  document.getElementById('r-compat-icon').textContent = breed.compat.icon;
-  document.getElementById('r-compat-text').innerHTML   = breed.compat.text;
+  document.getElementById('r-ci').textContent = breed.compat.icon;
+  document.getElementById('r-ct').innerHTML   = breed.compat.text;
 
-  // 카드 배경색
-  document.getElementById('rcard').style.border = `1px solid ${breed.color}33`;
+  // 반려동물 연결 메시지
+  const connEl = document.getElementById('pet-connection');
+  if (selectedBreed) {
+    const petLabel = petName ? `<strong>${petName}(${selectedBreed})</strong>` : `<strong>${selectedBreed}</strong>`;
+    const sameType = (breed.type === 'cat' && (CAT_BREEDS['단모종']?.some(b=>b.name===selectedBreed)||CAT_BREEDS['장모종']?.some(b=>b.name===selectedBreed)||CAT_BREEDS['특이종']?.some(b=>b.name===selectedBreed)||CAT_BREEDS['믹스']?.some(b=>b.name===selectedBreed)));
+    const diffType = !sameType;
+    connEl.innerHTML = `🐾 우리 귀여운 ${petLabel}는 전생의 당신과 ${diffType ? '운명적으로 끌렸던' : '함께했던'} 영혼이에요!<br>
+    <span style="font-size:13px;color:rgba(255,255,255,.65);">전생의 ${breed.name}였던 당신이 현생에서 ${selectedBreed}를 반려동물로 선택한 건 우연이 아닐지도 몰라요 ✨</span>`;
+    connEl.classList.add('show');
+  }
 
-  // 이미지 로딩
-  const fallbackEl = document.getElementById('r-fallback');
-  const photoEl    = document.getElementById('r-photo');
-  fallbackEl.textContent = breed.fallback;
-  fallbackEl.style.background = `linear-gradient(135deg,${breed.color}33,${breed.color}11)`;
+  document.getElementById('rcard').style.border = `1px solid ${breed.color}44`;
+
+  // 사진 로딩
+  const fallEl = document.getElementById('r-fallback');
+  const photoEl = document.getElementById('r-photo');
+  fallEl.textContent = breed.fallback;
+  fallEl.style.background = `linear-gradient(135deg,${breed.color}33,${breed.color}11)`;
+  fallEl.style.display = 'flex';
+  photoEl.style.display = 'none';
 
   try {
     const url = await breed.imgApi();
     if (url) {
+      photoEl.onload = () => { photoEl.style.display='block'; fallEl.style.display='none'; };
       photoEl.src = url;
-      photoEl.style.display = 'block';
-      fallbackEl.style.display = 'none';
-    } else { fallbackEl.style.display = 'flex'; }
-  } catch(e) { fallbackEl.style.display = 'flex'; }
+    }
+  } catch(e) {}
 
-  // 바 애니메이션
-  setTimeout(() => {
-    document.querySelectorAll('.rbs-fill').forEach(el => {
-      el.style.width = el.dataset.val + '%';
-    });
+  setTimeout(()=>{
+    document.querySelectorAll('.rbs-fill').forEach(el=>{ el.style.width=el.dataset.val+'%'; });
   }, 300);
-
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function photoError() {
-  document.getElementById('r-photo').style.display = 'none';
-  document.getElementById('r-fallback').style.display = 'flex';
+  document.getElementById('r-photo').style.display='none';
+  document.getElementById('r-fallback').style.display='flex';
 }
 
-/* ── 이미지 API ── */
-async function fetchDogImg(breed) {
-  const res = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
-  const data = await res.json();
-  return data.status === 'success' ? data.message : null;
+/* ════════════════════════════════════
+   이미지 API
+════════════════════════════════════ */
+async function fetchDogImg(breedPath) {
+  const r = await fetch(`https://dog.ceo/api/breed/${breedPath}/images/random`);
+  const d = await r.json();
+  return d.status==='success' ? d.message : null;
 }
-
 async function fetchCatImg(breedId) {
-  const res = await fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&limit=1`);
-  const data = await res.json();
-  return (data && data[0]) ? data[0].url : null;
+  const r = await fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&limit=1`);
+  const d = await r.json();
+  return (d && d[0]) ? d[0].url : null;
 }
 
-/* ── 미리보기 이미지 로드 ── */
+/* ════════════════════════════════════
+   미리보기 + 리셋 + 공유
+════════════════════════════════════ */
 async function loadBreedPreviews() {
   const previews = [
-    { el:0, fn: ()=>fetchCatImg('pers') },
-    { el:1, fn: ()=>fetchDogImg('retriever/golden') },
-    { el:2, fn: ()=>fetchCatImg('rblu') },
-    { el:3, fn: ()=>fetchDogImg('samoyed') },
-    { el:4, fn: ()=>fetchCatImg('sfld') },
+    {el:0,fn:()=>fetchCatImg('pers')},
+    {el:1,fn:()=>fetchDogImg('retriever/golden')},
+    {el:2,fn:()=>fetchCatImg('sfld')},
+    {el:3,fn:()=>fetchDogImg('samoyed')},
+    {el:4,fn:()=>fetchCatImg('rblu')},
   ];
-  const items = document.querySelectorAll('.bp-item');
+  const items = document.querySelectorAll('.bp');
   previews.forEach(async p => {
     try {
       const url = await p.fn();
-      if (url) {
-        items[p.el].innerHTML = `<img src="${url}" alt="">`;
-      }
-    } catch(e) {}
+      if (url) items[p.el].innerHTML = `<img src="${url}" alt="">`;
+    } catch(e){}
   });
 }
 
-function resetTest() {
-  qIdx = 0;
-  score = { cat:0, dog:0, fluffy:0, big:0, calm:0, ind:0 };
-  document.getElementById('result').style.display = 'none';
-  document.getElementById('related').style.display = 'none';
-  document.getElementById('hero').style.display = 'flex';
+function resetAll() {
+  selectedAnimalType=null; selectedBreed=null; petName='';
+  qIdx=0; score={cat:0,dog:0,fluffy:0,big:0,calm:0,ind:0};
+  ['result','related','loading','quiz','breed-step'].forEach(id=>{document.getElementById(id).style.display='none';});
+  document.getElementById('hero').style.display='flex';
+  document.querySelectorAll('.animal-btn').forEach(b=>b.classList.remove('on'));
   loadBreedPreviews();
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function shareResult() {
-  if (navigator.share) {
-    navigator.share({
-      title:'펫미스트리 전생 테스트',
-      text:'나의 전생 동물 품종을 AI가 알아봐 줬어! 너는 뭐야? 같이 해봐!',
-      url: window.location.href
-    });
+  if(navigator.share){
+    navigator.share({title:'펫미스트리 전생 테스트',text:'나의 전생 동물 품종을 AI가 알아봐 줬어! 너는 뭐야? 같이 해봐!',url:window.location.href});
   } else {
     navigator.clipboard.writeText(window.location.href);
     alert('링크가 복사됐어요! 친구에게 공유해보세요 😊');
