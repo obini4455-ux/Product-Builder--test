@@ -219,7 +219,14 @@
       <div class="bp"><div class="bf">🐕</div></div>
       <div class="bp"><div class="bf">🐈</div></div>
     </div>
-    <button class="start-btn" onclick="goBreedStep()">🐾 우리 아가 품종 선택하기</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:480px;margin:0 auto 16px;">
+      <button onclick="goBreedStep()" style="background:linear-gradient(135deg,#a78bfa,#f472b6);color:white;border:none;border-radius:18px;padding:20px 14px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(167,139,250,.35);transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        🧑 집사 전생<br><span style="font-size:12px;font-weight:600;opacity:.8;">나의 전생 동물은?</span>
+      </button>
+      <a href="pet-past-life.html" style="background:linear-gradient(135deg,#fb923c,#f59e0b);color:white;border:none;border-radius:18px;padding:20px 14px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 6px 20px rgba(251,146,60,.35);text-decoration:none;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        🐾 아가 전생<br><span style="font-size:12px;font-weight:600;opacity:.8;">우리 아가 전생 직업은?</span>
+      </a>
+    </div>
     <p class="hero-note">10문항 · 무료 · 실사 품종 사진 · 완전 무료</p>
   </div>
 </div>
