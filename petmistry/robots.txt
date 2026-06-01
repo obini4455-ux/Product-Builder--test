@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /myenv/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+Sitemap: https://petmistry.com/sitemap.xml
