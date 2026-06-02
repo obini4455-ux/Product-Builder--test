@@ -34,6 +34,12 @@
   <meta name="twitter:title" content="펫미스트리 - AI 반려동물 궁합 테스트">
   <meta name="twitter:description" content="사진 두 장만 올리면 AI가 10초 만에 분석! 강아지상·고양이상 무료 진단.">
   <meta name="twitter:image" content="https://petmistry.com/favicon.png">
+
+  <!-- 구글 애드센스 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1610156126662607"
+     crossorigin="anonymous"></script>
+  <!-- 구글 서치콘솔 인증 -->
+  <meta name="google-site-verification" content="lC0BDcPs6cjlDlzgqdKY8UoZRbm0ydDrWcJlwlEj-wc" />
   <!-- 네이버 서치어드바이저 인증 -->
   <meta name="naver-site-verification" content="NAVER_VERIFICATION_CODE">
   <link rel="stylesheet" href="style.css">
@@ -245,8 +251,8 @@
       "@type": "WebSite",
       "@id": "https://petmistry.com/#website",
       "url": "https://petmistry.com/",
-      "name": "펫미스트리",
-      "description": "AI 기반 반려동물 궁합 테스트 및 반려동물 정보 플랫폼",
+      "name": "펫미스트리 (Petmistry)",
+      "description": "AI 기반 반려동물 궁합 테스트 플랫폼. 사진 2장으로 10초 만에 강아지상·고양이상 분석 및 궁합 점수 제공. 완전 무료.",
       "inLanguage": "ko",
       "potentialAction": {
         "@type": "SearchAction",
@@ -261,30 +267,58 @@
       "@type": "Organization",
       "@id": "https://petmistry.com/#organization",
       "name": "펫미스트리",
+      "alternateName": "Petmistry",
       "url": "https://petmistry.com/",
+      "description": "반려동물과 보호자의 AI 궁합 분석, 전생 테스트, 반려동물 정보 콘텐츠를 제공하는 무료 플랫폼",
       "logo": {
         "@type": "ImageObject",
         "url": "https://petmistry.com/favicon.png",
         "width": 512,
         "height": 512
-      }
+      },
+      "sameAs": ["https://petmistry.com"]
     },
     {
       "@type": "WebApplication",
       "name": "AI 반려동물 궁합 테스트",
+      "alternateName": "AI Pet Compatibility Test",
       "url": "https://petmistry.com/#test-section",
-      "description": "사진 두 장으로 알아보는 AI 반려동물 궁합 분석 테스트. 강아지상·고양이상 무료 진단.",
+      "description": "내 사진과 반려동물 사진 2장을 업로드하면 AI가 10초 만에 강아지상·고양이상을 분석하고 궁합 점수를 0~100%로 계산해 드립니다. 가입 불필요, 완전 무료, 사진 서버 저장 없음.",
       "applicationCategory": "Entertainment",
       "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "KRW"
-      }
+        "priceCurrency": "KRW",
+        "availability": "https://schema.org/InStock"
+      },
+      "featureList": ["강아지상 고양이상 분석", "궁합 점수 계산", "사진 무저장 완전 무료", "10초 즉시 결과"]
+    },
+    {
+      "@type": "HowTo",
+      "name": "펫미스트리 AI 궁합 테스트 사용법",
+      "description": "내 사진과 반려동물 사진으로 AI 궁합 테스트하는 방법",
+      "totalTime": "PT1M",
+      "estimatedCost": {"@type": "MonetaryAmount", "currency": "KRW", "value": "0"},
+      "step": [
+        {"@type": "HowToStep", "position": 1, "name": "내 사진 업로드", "text": "얼굴이 잘 나온 내 사진을 클릭해서 선택합니다."},
+        {"@type": "HowToStep", "position": 2, "name": "반려동물 사진 업로드", "text": "강아지 또는 고양이 얼굴이 잘 나온 사진을 선택합니다."},
+        {"@type": "HowToStep", "position": 3, "name": "AI 분석 실행", "text": "'궁합 분석하기' 버튼을 누르면 AI가 10초 안에 분석을 완료합니다."},
+        {"@type": "HowToStep", "position": 4, "name": "결과 확인", "text": "강아지상·고양이상 분류와 0~100% 궁합 점수, 상세 설명을 확인합니다."}
+      ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "반려동물과 AI 궁합 테스트를 무료로 할 수 있는 사이트는?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "펫미스트리(petmistry.com)에서 완전 무료로 AI 반려동물 궁합 테스트를 할 수 있습니다. 회원가입 없이 사진 2장만 올리면 10초 만에 강아지상·고양이상 분석과 궁합 점수를 확인할 수 있습니다."
+          }
+        },
         {
           "@type": "Question",
           "name": "펫미스트리 AI 궁합 테스트는 어떻게 사용하나요?",
@@ -295,18 +329,66 @@
         },
         {
           "@type": "Question",
-          "name": "사진이 서버에 저장되나요?",
+          "name": "강아지상 고양이상 테스트 정확도는 어떻게 되나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "아니요, 사진은 서버에 업로드되거나 저장되지 않습니다. 모든 AI 분석은 사용자의 브라우저에서 직접 실행됩니다."
+            "text": "펫미스트리는 Google의 Teachable Machine AI 모델을 활용해 얼굴 이미지를 분석합니다. 얼굴이 정면으로 잘 나온 밝은 사진을 사용할수록 더 정확한 결과를 얻을 수 있습니다."
           }
         },
         {
           "@type": "Question",
-          "name": "강아지상 고양이상 분석이란 무엇인가요?",
+          "name": "어떤 사진을 올려야 결과가 정확한가요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AI가 얼굴 특징을 분석하여 강아지 이미지에 가까운지 고양이 이미지에 가까운지 판단하고, 반려동물과의 궁합 점수를 계산합니다."
+            "text": "얼굴이 정면으로 찍힌 밝은 사진이 가장 좋습니다. 선글라스나 모자로 얼굴이 가려지지 않은 사진, 반려동물은 얼굴 전체가 잘 보이는 사진을 사용하면 더 정확한 분석이 가능합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "사진이 서버에 저장되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아니요, 사진은 서버에 업로드되거나 저장되지 않습니다. 모든 AI 분석은 사용자의 브라우저에서 직접 실행되므로 개인정보가 완전히 보호됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "반려동물 궁합 점수는 어떻게 계산되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI가 나와 반려동물의 동물상(강아지상/고양이상)을 각각 분석한 후, 두 결과의 유사도와 상호 보완성을 기반으로 0~100% 궁합 점수를 산출합니다. 같은 동물상이면 높은 궁합, 다른 동물상이면 다름의 매력 궁합으로 분류됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "펫미스트리에는 어떤 콘텐츠가 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI 반려동물 궁합 테스트 외에도 반려동물 전생 테스트, 내 전생 테스트, 강아지·고양이 심리, 건강, 아로마 테라피 등 40개 이상의 전문 반려동물 정보 콘텐츠, 전국 5,200개 이상 동물병원 지도 검색, 기부형 반려동물 커뮤니티를 제공합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "반려동물 전생 테스트도 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 펫미스트리에서는 내 전생 테스트(past-life.html)와 반려동물 전생 테스트(pet-past-life.html)를 모두 무료로 제공합니다. 재미있는 AI 기반 전생 결과를 확인해 보세요."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "내 MBTI에 맞는 반려동물은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "펫미스트리 블로그에서 MBTI 유형별 최적 반려동물 궁합 정보를 제공합니다. INTJ, ENFP 등 16가지 MBTI 유형별로 가장 잘 맞는 반려묘·반려견 품종과 함께하는 팁을 확인할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "강아지상 고양이상이 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "강아지상은 눈이 크고 둥글며 표정이 풍부하고 친근한 인상을, 고양이상은 눈꼬리가 올라가고 이목구비가 선명하며 시크한 인상을 말합니다. AI가 얼굴 특징을 분석해 어느 쪽에 더 가까운지 판별해 드립니다."
           }
         }
       ]
@@ -338,12 +420,12 @@
   <div class="hero-content">
     <div class="hero-pill">
       <span></span>
-      AI 기반 반려동물 궁합 분석
+      <em data-ko="AI 기반 반려동물 궁합 분석" data-en="AI-Powered Pet Compatibility Analysis" style="font-style:normal;">AI 기반 반려동물 궁합 분석</em>
     </div>
 
     <h1>
-      나와 우리 아이<br>
-      <span class="highlight">얼마나 닮았을까?</span>
+      <span data-ko="나와 우리 아이" data-en="How Much Do We">나와 우리 아이</span><br>
+      <span class="highlight" data-ko="얼마나 닮았을까?" data-en="Look Alike?">얼마나 닮았을까?</span>
     </h1>
 
     <p class="hero-sub" data-ko="사진 두 장만 올리면 AI가 10초 만에 분석해드려요<br>강아지상? 고양이상? 궁합 점수까지 완전 무료!" data-en="Upload 2 photos and AI analyzes in 10 seconds<br>Dog face? Cat face? Compatibility score — completely free!">
@@ -365,15 +447,15 @@
     </div>
 
     <div class="social-proof">
-      <div class="sp-item"><div class="num">10초</div><div class="lbl">빠른 AI 분석</div></div>
-      <div class="sp-item"><div class="num">100%</div><div class="lbl">완전 무료</div></div>
-      <div class="sp-item"><div class="num">40+</div><div class="lbl">반려동물 정보 콘텐츠</div></div>
-      <div class="sp-item"><div class="num">0건</div><div class="lbl">사진 저장 없음</div></div>
+      <div class="sp-item"><div class="num">10s</div><div class="lbl" data-ko="빠른 AI 분석" data-en="Fast AI Analysis">빠른 AI 분석</div></div>
+      <div class="sp-item"><div class="num">100%</div><div class="lbl" data-ko="완전 무료" data-en="Completely Free">완전 무료</div></div>
+      <div class="sp-item"><div class="num">40+</div><div class="lbl" data-ko="반려동물 정보 콘텐츠" data-en="Pet Info Articles">반려동물 정보 콘텐츠</div></div>
+      <div class="sp-item"><div class="num">0</div><div class="lbl" data-ko="사진 저장 없음" data-en="No Photo Storage">사진 저장 없음</div></div>
     </div>
   </div>
 
   <div class="scroll-hint">
-    <span>스크롤</span>
+    <span data-ko="스크롤" data-en="Scroll">스크롤</span>
     <div class="scroll-arrow"></div>
   </div>
 </section>
@@ -381,7 +463,7 @@
 <!-- ── AI 테스트 섹션 ── -->
 <section class="section-white" id="test-section">
   <div style="text-align:center; margin-bottom:48px;">
-    <div class="sec-label">AI 궁합 테스트</div>
+    <div class="sec-label" data-ko="AI 궁합 테스트" data-en="AI Compatibility Test">AI 궁합 테스트</div>
     <h2 class="sec-title" data-ko="사진 두 장으로 알아보는<br>우리의 케미 💕" data-en="Discover Our Chemistry<br>With Just 2 Photos 💕">사진 두 장으로 알아보는<br>우리의 케미 💕</h2>
     <p class="sec-sub" data-ko="내 사진 + 반려동물 사진을 올리면<br>AI가 동물상을 분석하고 궁합 점수를 알려드려요" data-en="Upload your photo + pet photo<br>AI analyzes animal face type and gives compatibility score">내 사진 + 반려동물 사진을 올리면<br>AI가 동물상을 분석하고 궁합 점수를 알려드려요</p>
   </div>
@@ -390,7 +472,7 @@
     <!-- 업로드 -->
     <div id="upload-step">
       <div class="upload-card-new">
-        <div class="uc-label">🧑 내 사진</div>
+        <div class="uc-label" data-ko="🧑 내 사진" data-en="🧑 My Photo">🧑 내 사진</div>
         <div class="uc-zone" onclick="document.getElementById('inp-me').click()">
           <div class="icon">🤳</div>
           <p data-ko="클릭해서 내 사진 선택" data-en="Click to select my photo">클릭해서 내 사진 선택</p>
@@ -400,7 +482,7 @@
       </div>
 
       <div class="upload-card-new">
-        <div class="uc-label">🐾 반려동물 사진</div>
+        <div class="uc-label" data-ko="🐾 반려동물 사진" data-en="🐾 Pet Photo">🐾 반려동물 사진</div>
         <div class="uc-zone" onclick="document.getElementById('inp-pet').click()">
           <div class="icon">🐶</div>
           <p data-ko="클릭해서 반려동물 사진 선택" data-en="Click to select pet photo">클릭해서 반려동물 사진 선택</p>
@@ -427,7 +509,7 @@
           <div class="heart">💕</div>
           <img id="r-pet-img" src="">
         </div>
-        <div class="r-score-label">우리의 궁합 점수</div>
+        <div class="r-score-label" data-ko="우리의 궁합 점수" data-en="Our Compatibility Score">우리의 궁합 점수</div>
         <div class="r-score" id="r-score">0%</div>
         <div class="r-emoji" id="r-emoji"></div>
         <div class="r-title" id="r-title"></div>
@@ -438,8 +520,8 @@
         </div>
         <div class="r-desc" id="r-desc"></div>
       </div>
-      <button class="btn-analyze" onclick="doReset()">🔄 다시 테스트하기</button>
-      <button class="btn-share" onclick="doShare()">📤 결과 공유하기</button>
+      <button class="btn-analyze" onclick="doReset()" data-ko="🔄 다시 테스트하기" data-en="🔄 Try Again">🔄 다시 테스트하기</button>
+      <button class="btn-share" onclick="doShare()" data-ko="📤 결과 공유하기" data-en="📤 Share Result">📤 결과 공유하기</button>
     </div>
   </div>
 </section>
@@ -447,41 +529,41 @@
 <!-- ── 블로그 콘텐츠 프리뷰 ── -->
 <section class="section-gray">
   <div style="text-align:center; margin-bottom:48px;">
-    <div class="sec-label">반려동물 정보</div>
-    <h2 class="sec-title">집사라면 꼭 읽어야 할<br>반려동물 이야기 📖</h2>
-    <p class="sec-sub">심리부터 건강, 아로마 테라피까지<br>40개 이상의 전문 콘텐츠가 기다려요</p>
+    <div class="sec-label" data-ko="반려동물 정보" data-en="Pet Information">반려동물 정보</div>
+    <h2 class="sec-title" data-ko="집사라면 꼭 읽어야 할<br>반려동물 이야기 📖" data-en="Stories Every Pet Owner<br>Must Read 📖">집사라면 꼭 읽어야 할<br>반려동물 이야기 📖</h2>
+    <p class="sec-sub" data-ko="심리부터 건강, 아로마 테라피까지<br>40개 이상의 전문 콘텐츠가 기다려요" data-en="From psychology to health &amp; aromatherapy<br>40+ expert articles await">심리부터 건강, 아로마 테라피까지<br>40개 이상의 전문 콘텐츠가 기다려요</p>
   </div>
   <div class="blog-strip">
     <a href="posts/dog-eye-contact.html" class="blog-card-new">
       <div class="bc-thumb" style="background:linear-gradient(135deg,#fff8e1,#ffe082);">👁️</div>
       <div class="bc-body">
-        <span class="bc-tag">강아지 심리</span>
-        <div class="bc-title">강아지가 주인을 빤히 쳐다보는 진짜 이유</div>
-        <div class="bc-desc">옥시토신 분비부터 경계 신호까지, 강아지 시선의 모든 비밀</div>
-        <div class="bc-meta">6분 읽기</div>
+        <span class="bc-tag" data-ko="강아지 심리" data-en="Dog Psychology">강아지 심리</span>
+        <div class="bc-title" data-ko="강아지가 주인을 빤히 쳐다보는 진짜 이유" data-en="Why Dogs Stare at Their Owners">강아지가 주인을 빤히 쳐다보는 진짜 이유</div>
+        <div class="bc-desc" data-ko="옥시토신 분비부터 경계 신호까지, 강아지 시선의 모든 비밀" data-en="From oxytocin release to warning signals — all secrets of a dog's gaze">옥시토신 분비부터 경계 신호까지, 강아지 시선의 모든 비밀</div>
+        <div class="bc-meta" data-ko="6분 읽기" data-en="6 min read">6분 읽기</div>
       </div>
     </a>
     <a href="posts/mbti-pet-compatibility.html" class="blog-card-new">
       <div class="bc-thumb" style="background:linear-gradient(135deg,#f3e5f5,#ce93d8);">🧠</div>
       <div class="bc-body">
-        <span class="bc-tag">고양이 궁합</span>
-        <div class="bc-title">MBTI 유형별 고양이 집사 환상 궁합 매칭</div>
-        <div class="bc-desc">INTJ는 어떤 고양이와? ENFP는? 성격별 최고의 반려묘</div>
-        <div class="bc-meta">7분 읽기</div>
+        <span class="bc-tag" data-ko="고양이 궁합" data-en="Cat Compatibility">고양이 궁합</span>
+        <div class="bc-title" data-ko="MBTI 유형별 고양이 집사 환상 궁합 매칭" data-en="Perfect Cat Match by MBTI Type">MBTI 유형별 고양이 집사 환상 궁합 매칭</div>
+        <div class="bc-desc" data-ko="INTJ는 어떤 고양이와? ENFP는? 성격별 최고의 반려묘" data-en="Which cat for INTJ? ENFP? Best cat breed by personality">INTJ는 어떤 고양이와? ENFP는? 성격별 최고의 반려묘</div>
+        <div class="bc-meta" data-ko="7분 읽기" data-en="7 min read">7분 읽기</div>
       </div>
     </a>
     <a href="posts/safe-essential-oils.html" class="blog-card-new">
       <div class="bc-thumb" style="background:linear-gradient(135deg,#e8f5e9,#a5d6a7);">🌿</div>
       <div class="bc-body">
-        <span class="bc-tag">아로마 케어</span>
-        <div class="bc-title">반려동물에게 안전한 천연 에센셜 오일 가이드</div>
-        <div class="bc-desc">라벤더, 카모마일 등 써도 되는 오일 vs 위험한 오일 총정리</div>
-        <div class="bc-meta">6분 읽기</div>
+        <span class="bc-tag" data-ko="아로마 케어" data-en="Aroma Care">아로마 케어</span>
+        <div class="bc-title" data-ko="반려동물에게 안전한 천연 에센셜 오일 가이드" data-en="Safe Essential Oil Guide for Pets">반려동물에게 안전한 천연 에센셜 오일 가이드</div>
+        <div class="bc-desc" data-ko="라벤더, 카모마일 등 써도 되는 오일 vs 위험한 오일 총정리" data-en="Lavender, chamomile &amp; safe oils vs. dangerous ones — complete guide">라벤더, 카모마일 등 써도 되는 오일 vs 위험한 오일 총정리</div>
+        <div class="bc-meta" data-ko="6분 읽기" data-en="6 min read">6분 읽기</div>
       </div>
     </a>
   </div>
   <div style="text-align:center; margin-top:36px;">
-    <a href="blog.html" style="display:inline-block; background:white; color:#2D1B69; border:2px solid #2D1B69; border-radius:50px; padding:14px 36px; font-size:15px; font-weight:700; text-decoration:none; transition:all .2s;">전체 글 보기 (40+) →</a>
+    <a href="blog.html" data-ko="전체 글 보기 (40+) →" data-en="View All Articles (40+) →" style="display:inline-block; background:white; color:#2D1B69; border:2px solid #2D1B69; border-radius:50px; padding:14px 36px; font-size:15px; font-weight:700; text-decoration:none; transition:all .2s;">전체 글 보기 (40+) →</a>
   </div>
 </section>
 
@@ -490,11 +572,11 @@
   <div class="comm-preview">
     <div class="cp-top">
       <div>
-        <div class="sec-label">기부형 커뮤니티</div>
-        <h2 class="sec-title" style="margin-bottom:4px;">우리 아이 자랑하고<br>세상도 바꿔요 🌍</h2>
-        <p style="color:#888; font-size:15px;">사진 올릴수록 포인트 적립 → 유기동물 기부</p>
+        <div class="sec-label" data-ko="기부형 커뮤니티" data-en="Donation Community">기부형 커뮤니티</div>
+        <h2 class="sec-title" style="margin-bottom:4px;" data-ko="우리 아이 자랑하고<br>세상도 바꿔요 🌍" data-en="Show Off Your Pet &amp;<br>Change the World 🌍">우리 아이 자랑하고<br>세상도 바꿔요 🌍</h2>
+        <p style="color:#888; font-size:15px;" data-ko="사진 올릴수록 포인트 적립 → 유기동물 기부" data-en="More photos = more points → donate to shelters">사진 올릴수록 포인트 적립 → 유기동물 기부</p>
       </div>
-      <a href="community.html" style="background:#2D1B69; color:white; border-radius:50px; padding:12px 28px; font-size:14px; font-weight:700; text-decoration:none; white-space:nowrap;">커뮤니티 입장 →</a>
+      <a href="community.html" data-ko="커뮤니티 입장 →" data-en="Enter Community →" style="background:#2D1B69; color:white; border-radius:50px; padding:12px 28px; font-size:14px; font-weight:700; text-decoration:none; white-space:nowrap;">커뮤니티 입장 →</a>
     </div>
     <div class="feed-mini">
       <div class="fm-item"><div class="fm-thumb" style="background:linear-gradient(135deg,#ede9ff,#fce4ec);">🐶</div><div class="fm-info"><div class="fm-name">몽이</div><div class="fm-likes">❤️ 142</div></div></div>
@@ -505,38 +587,91 @@
       <div class="fm-item"><div class="fm-thumb" style="background:linear-gradient(135deg,#f3e5f5,#ce93d8);">🐈</div><div class="fm-info"><div class="fm-name">보라</div><div class="fm-likes">❤️ 305</div></div></div>
     </div>
     <div class="point-teaser">
-      <h3>사진 1장 = 1¢ 포인트 🪙</h3>
-      <p>쌓인 포인트는 유기동물 보호협회에 기부하거나<br>우리 아이 얼굴이 박힌 커스텀 굿즈로 교환할 수 있어요!</p>
+      <h3 data-ko="사진 1장 = 1¢ 포인트 🪙" data-en="1 Photo = 1¢ Points 🪙">사진 1장 = 1¢ 포인트 🪙</h3>
+      <p data-ko="쌓인 포인트는 유기동물 보호협회에 기부하거나<br>우리 아이 얼굴이 박힌 커스텀 굿즈로 교환할 수 있어요!" data-en="Donate your points to animal shelters<br>or exchange for custom goods with your pet's face!">쌓인 포인트는 유기동물 보호협회에 기부하거나<br>우리 아이 얼굴이 박힌 커스텀 굿즈로 교환할 수 있어요!</p>
       <div class="point-badges">
-        <span class="pb">📸 사진 +1¢</span>
-        <span class="pb">🎬 영상 +5¢</span>
-        <span class="pb">🔗 공유 +10¢</span>
+        <span class="pb">📸 <span data-ko="사진 +1¢" data-en="Photo +1¢">사진 +1¢</span></span>
+        <span class="pb">🎬 <span data-ko="영상 +5¢" data-en="Video +5¢">영상 +5¢</span></span>
+        <span class="pb">🔗 <span data-ko="공유 +10¢" data-en="Share +10¢">공유 +10¢</span></span>
       </div>
-      <a href="community.html" class="btn-comm">지금 포인트 쌓기 →</a>
+      <a href="community.html" class="btn-comm" data-ko="지금 포인트 쌓기 →" data-en="Start Earning Points →">지금 포인트 쌓기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ 섹션 (GEO 최적화) ── -->
+<section class="section-white" id="faq-section">
+  <div style="max-width:800px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="sec-label" data-ko="자주 묻는 질문" data-en="Frequently Asked Questions">자주 묻는 질문</div>
+      <h2 class="sec-title" data-ko="펫미스트리에 대해<br>궁금한 점을 모았어요 🐾" data-en="Everything You Want to Know<br>About Petmistry 🐾">펫미스트리에 대해<br>궁금한 점을 모았어요 🐾</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px;">
+
+      <details style="background:#f8f7ff; border-radius:16px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-size:16px; font-weight:800; color:#2D1B69; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          <span data-ko="반려동물 AI 궁합 테스트를 무료로 할 수 있나요?" data-en="Is the AI pet compatibility test really free?">반려동물 AI 궁합 테스트를 무료로 할 수 있나요?</span>
+          <span style="font-size:20px; color:#7C3AED;">+</span>
+        </summary>
+        <p style="margin-top:14px; color:#555; line-height:1.8; font-size:15px;" data-ko="네, 완전 무료입니다. 회원가입도 필요 없어요. 내 사진과 반려동물 사진 2장만 올리면 AI가 10초 만에 강아지상·고양이상 분석과 궁합 점수를 무료로 알려드립니다." data-en="Yes, completely free. No sign-up needed. Just upload 2 photos — yours and your pet's — and AI analyzes your compatibility in 10 seconds.">네, 완전 무료입니다. 회원가입도 필요 없어요. 내 사진과 반려동물 사진 2장만 올리면 AI가 10초 만에 강아지상·고양이상 분석과 궁합 점수를 무료로 알려드립니다.</p>
+      </details>
+
+      <details style="background:#f8f7ff; border-radius:16px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-size:16px; font-weight:800; color:#2D1B69; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          <span data-ko="사진이 서버에 저장되나요?" data-en="Are my photos stored on a server?">사진이 서버에 저장되나요?</span>
+          <span style="font-size:20px; color:#7C3AED;">+</span>
+        </summary>
+        <p style="margin-top:14px; color:#555; line-height:1.8; font-size:15px;" data-ko="절대 저장되지 않습니다. 모든 AI 분석은 사용자의 브라우저에서 직접 실행되어 사진이 외부 서버로 전송되지 않습니다. 개인정보가 완벽하게 보호됩니다." data-en="Never. All AI analysis runs directly in your browser — photos are never sent to any server. Your privacy is completely protected.">절대 저장되지 않습니다. 모든 AI 분석은 사용자의 브라우저에서 직접 실행되어 사진이 외부 서버로 전송되지 않습니다. 개인정보가 완벽하게 보호됩니다.</p>
+      </details>
+
+      <details style="background:#f8f7ff; border-radius:16px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-size:16px; font-weight:800; color:#2D1B69; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          <span data-ko="어떤 사진을 올려야 결과가 정확한가요?" data-en="What kind of photo gives the best results?">어떤 사진을 올려야 결과가 정확한가요?</span>
+          <span style="font-size:20px; color:#7C3AED;">+</span>
+        </summary>
+        <p style="margin-top:14px; color:#555; line-height:1.8; font-size:15px;" data-ko="얼굴이 정면으로 찍힌 밝은 사진이 가장 좋아요. 선글라스·모자로 얼굴이 가려지지 않은 사진, 반려동물은 얼굴 전체가 잘 보이는 사진을 사용하면 더 정확한 분석 결과를 받을 수 있습니다." data-en="A clear, well-lit front-facing photo works best. Avoid sunglasses or hats that cover your face. For pets, make sure their full face is visible for the most accurate results.">얼굴이 정면으로 찍힌 밝은 사진이 가장 좋아요. 선글라스·모자로 얼굴이 가려지지 않은 사진, 반려동물은 얼굴 전체가 잘 보이는 사진을 사용하면 더 정확한 분석 결과를 받을 수 있습니다.</p>
+      </details>
+
+      <details style="background:#f8f7ff; border-radius:16px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-size:16px; font-weight:800; color:#2D1B69; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          <span data-ko="강아지상 고양이상이 뭔가요?" data-en="What are 'dog face' and 'cat face' types?">강아지상 고양이상이 뭔가요?</span>
+          <span style="font-size:20px; color:#7C3AED;">+</span>
+        </summary>
+        <p style="margin-top:14px; color:#555; line-height:1.8; font-size:15px;" data-ko="강아지상은 눈이 크고 둥글며 표정이 풍부하고 친근한 인상을, 고양이상은 눈꼬리가 올라가고 이목구비가 선명하며 시크한 인상을 말해요. AI가 얼굴 특징을 분석해 어느 쪽에 더 가까운지 알려드립니다." data-en="'Dog face' describes big, round eyes with expressive, friendly features. 'Cat face' describes sharp features with slightly upturned eyes and a cool vibe. AI analyzes which type you and your pet resemble more.">강아지상은 눈이 크고 둥글며 표정이 풍부하고 친근한 인상을, 고양이상은 눈꼬리가 올라가고 이목구비가 선명하며 시크한 인상을 말해요. AI가 얼굴 특징을 분석해 어느 쪽에 더 가까운지 알려드립니다.</p>
+      </details>
+
+      <details style="background:#f8f7ff; border-radius:16px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-size:16px; font-weight:800; color:#2D1B69; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          <span data-ko="반려동물 전생 테스트도 있나요?" data-en="Is there a pet past life test too?">반려동물 전생 테스트도 있나요?</span>
+          <span style="font-size:20px; color:#7C3AED;">+</span>
+        </summary>
+        <p style="margin-top:14px; color:#555; line-height:1.8; font-size:15px;" data-ko="네! 내 전생 테스트와 반려동물 전생 테스트를 모두 무료로 제공합니다. 우리 아가가 전생에 어떤 존재였는지 재미있는 결과를 확인해 보세요." data-en="Yes! We offer both your own past life test and your pet's past life test — all free. Find out what your little one was in a past life!">네! 내 전생 테스트와 반려동물 전생 테스트를 모두 무료로 제공합니다. 우리 아가가 전생에 어떤 존재였는지 재미있는 결과를 확인해 보세요.</p>
+      </details>
+
     </div>
   </div>
 </section>
 
 <!-- ── 동물병원 CTA ── -->
 <section class="section-gray" style="text-align:center;">
-  <div class="sec-label">전국 동물병원</div>
-  <h2 class="sec-title">우리 아이가 아플 땐?<br>가까운 병원 바로 찾기 🏥</h2>
-  <p class="sec-sub">전국 5,200+ 동물병원 실시간 지도 검색<br>내 주변 병원을 지도에서 바로 확인하세요</p>
-  <a href="vets.html" style="display:inline-block; background:linear-gradient(135deg,#1565C0,#0d47a1); color:white; border-radius:50px; padding:16px 40px; font-size:16px; font-weight:700; text-decoration:none;">📍 동물병원 찾기</a>
+  <div class="sec-label" data-ko="전국 동물병원" data-en="Vet Clinics Nationwide">전국 동물병원</div>
+  <h2 class="sec-title" data-ko="우리 아이가 아플 땐?<br>가까운 병원 바로 찾기 🏥" data-en="When Your Pet is Sick?<br>Find the Nearest Clinic 🏥">우리 아이가 아플 땐?<br>가까운 병원 바로 찾기 🏥</h2>
+  <p class="sec-sub" data-ko="전국 5,200+ 동물병원 실시간 지도 검색<br>내 주변 병원을 지도에서 바로 확인하세요" data-en="Real-time map search of 5,200+ vet clinics<br>Find clinics near you instantly">전국 5,200+ 동물병원 실시간 지도 검색<br>내 주변 병원을 지도에서 바로 확인하세요</p>
+  <a href="vets.html" data-ko="📍 동물병원 찾기" data-en="📍 Find a Vet" style="display:inline-block; background:linear-gradient(135deg,#1565C0,#0d47a1); color:white; border-radius:50px; padding:16px 40px; font-size:16px; font-weight:700; text-decoration:none;">📍 동물병원 찾기</a>
 </section>
 
 <footer style="background:#1a1a2e; color:rgba(255,255,255,.6); padding:48px 24px 32px;">
   <div style="max-width:1100px; margin:0 auto;">
     <div style="font-size:20px; font-weight:900; color:white; margin-bottom:6px;">🐾 Petmistry</div>
-    <div style="font-size:13px; margin-bottom:24px;">나와 반려동물의 궁합을 AI로 분석하는 서비스</div>
+    <div style="font-size:13px; margin-bottom:24px;" data-ko="나와 반려동물의 궁합을 AI로 분석하는 서비스" data-en="AI-powered pet compatibility analysis service">나와 반려동물의 궁합을 AI로 분석하는 서비스</div>
     <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:24px;">
-      <a href="about.html" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">소개</a>
-      <a href="blog.html" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">반려동물 정보</a>
-      <a href="vets.html" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">동물병원</a>
+      <a href="about.html" data-ko="소개" data-en="About" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">소개</a>
+      <a href="blog.html" data-ko="반려동물 정보" data-en="Pet Info" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">반려동물 정보</a>
+      <a href="vets.html" data-ko="동물병원" data-en="Vets" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">동물병원</a>
       <a href="community.html" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">Community</a>
-      <a href="contact.html" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">문의</a>
-      <a href="privacy.html" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">개인정보처리방침</a>
-      <a href="terms.html" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">이용약관</a>
+      <a href="contact.html" data-ko="문의" data-en="Contact" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">문의</a>
+      <a href="privacy.html" data-ko="개인정보처리방침" data-en="Privacy Policy" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">개인정보처리방침</a>
+      <a href="terms.html" data-ko="이용약관" data-en="Terms of Use" style="color:rgba(255,255,255,.55); text-decoration:none; font-size:13px;">이용약관</a>
     </div>
     <div style="font-size:12px; color:rgba(255,255,255,.3); border-top:1px solid rgba(255,255,255,.08); padding-top:20px;">© 2025 Petmistry. All rights reserved.</div>
   </div>
@@ -546,14 +681,23 @@
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script>
 // ── 언어 전환 ──
-let currentLang = 'ko';
-function toggleLang() {
-  currentLang = currentLang === 'ko' ? 'en' : 'ko';
-  document.getElementById('lang-btn').textContent = currentLang === 'ko' ? '🇺🇸 EN' : '🇰🇷 KO';
+let currentLang = localStorage.getItem('petmistry-lang') || 'ko';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('petmistry-lang', lang);
+  document.getElementById('lang-btn').textContent = lang === 'ko' ? '🇺🇸 EN' : '🇰🇷 KO';
   document.querySelectorAll('[data-ko]').forEach(el => {
-    el.innerHTML = el.getAttribute('data-' + currentLang);
+    el.innerHTML = el.getAttribute('data-' + lang);
   });
 }
+
+function toggleLang() {
+  applyLang(currentLang === 'ko' ? 'en' : 'ko');
+}
+
+// 페이지 로드 시 저장된 언어 적용
+if (currentLang === 'en') applyLang('en');
 
 // ── AI 테스트 ──
 const MODEL_URL = "https://teachablemachine.withgoogle.com/models/aN2BwMiiZ/";
@@ -592,25 +736,29 @@ async function doAnalyze() {
   } catch(e) {
     document.getElementById('loading-step').style.display='none';
     document.getElementById('upload-step').style.display='block';
-    alert('분석 중 오류가 발생했어요. 다시 시도해주세요!');
+    alert(currentLang==='ko'?'분석 중 오류가 발생했어요. 다시 시도해주세요!':'An error occurred. Please try again!');
   }
 }
 
 function showResult(isMyDog,myPct,isPetDog,petPct,score) {
+  const isKo = currentLang === 'ko';
   document.getElementById('loading-step').style.display='none';
   document.getElementById('result-step').style.display='block';
   document.getElementById('r-me-img').src = document.getElementById('prev-me').src;
   document.getElementById('r-pet-img').src = document.getElementById('prev-pet').src;
   document.getElementById('r-me-emoji').textContent=isMyDog?'🐶':'🐱';
-  document.getElementById('r-me-type').textContent=isMyDog?'강아지상':'고양이상';
+  document.getElementById('r-me-type').textContent=isMyDog?(isKo?'강아지상':'Dog Face'):(isKo?'고양이상':'Cat Face');
   document.getElementById('r-me-pct').textContent=myPct+'%';
   document.getElementById('r-pet-emoji').textContent=isPetDog?'🐶':'🐱';
-  document.getElementById('r-pet-type').textContent=isPetDog?'강아지':'고양이';
+  document.getElementById('r-pet-type').textContent=isPetDog?(isKo?'강아지':'Dog'):(isKo?'고양이':'Cat');
   document.getElementById('r-pet-pct').textContent=petPct+'%';
-  const d=score>=90?{e:'🔥💕',t:'천생연분이에요!',desc:'세상에 이런 완벽한 궁합이! 전생부터 함께한 인연인 것 같아요 💕'}
-    :score>=78?{e:'😍✨',t:'찰떡궁합이에요!',desc:'정말 잘 어울리는 한 쌍! 함께 있을 때 가장 행복한 사이예요 🌟'}
-    :score>=65?{e:'😊💛',t:'좋은 궁합이에요!',desc:'서로 잘 맞는 편이에요. 함께하는 매 순간이 소중한 사이예요 😊'}
-    :{e:'🤔💙',t:'다름이 매력인 사이!',desc:'달라 보이지만 그래서 더 특별한 사이예요 💙'};
+  const d=score>=90
+    ?{e:'🔥💕',t:isKo?'천생연분이에요!':'A Match Made in Heaven!',desc:isKo?'세상에 이런 완벽한 궁합이! 전생부터 함께한 인연인 것 같아요 💕':'What a perfect match! You two seem destined to be together since a past life 💕'}
+    :score>=78
+    ?{e:'😍✨',t:isKo?'찰떡궁합이에요!':'Perfect Together!',desc:isKo?'정말 잘 어울리는 한 쌍! 함께 있을 때 가장 행복한 사이예요 🌟':'Such a wonderful pair! You are happiest when together 🌟'}
+    :score>=65
+    ?{e:'😊💛',t:isKo?'좋은 궁합이에요!':'A Great Match!',desc:isKo?'서로 잘 맞는 편이에요. 함께하는 매 순간이 소중한 사이예요 😊':'You get along really well. Every moment together is precious 😊'}
+    :{e:'🤔💙',t:isKo?'다름이 매력인 사이!':'Opposites Attract!',desc:isKo?'달라 보이지만 그래서 더 특별한 사이예요 💙':'You may seem different, but that makes you even more special 💙'};
   document.getElementById('r-emoji').textContent=d.e;
   document.getElementById('r-title').textContent=d.t;
   document.getElementById('r-desc').textContent=d.desc;
@@ -628,8 +776,17 @@ function doReset() {
 }
 
 function doShare() {
-  if(navigator.share){navigator.share({title:'펫미스트리 궁합 테스트',text:'나와 반려동물의 궁합을 AI가 분석해줘요!',url:window.location.href});}
-  else{navigator.clipboard.writeText(window.location.href);alert('링크가 복사됐어요! 😊');}
+  const isKo = currentLang === 'ko';
+  if(navigator.share){
+    navigator.share({
+      title: isKo?'펫미스트리 궁합 테스트':'Petmistry Compatibility Test',
+      text: isKo?'나와 반려동물의 궁합을 AI가 분석해줘요!':'Let AI analyze your compatibility with your pet!',
+      url:window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert(isKo?'링크가 복사됐어요! 😊':'Link copied! 😊');
+  }
 }
 </script>
 </body>
