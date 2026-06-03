@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "product-builder-test",
+  "compatibility_date": "2026-06-02",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "petmistry",
+    "html_handling": "auto-trailing-slash"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
